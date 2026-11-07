@@ -1,24 +1,24 @@
 {
-  "version": "0.4.4",
+  "version": "0.4.5",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22096577,
-  "sha256": "7e10514474ec394288246a91dbbecbe3ee56af51a54ee9dd24bc96042b040451",
+  "size": 22091197,
+  "sha256": "01edb73ca7b01256188a5ecaf166fcb046d5546528df013e6f2ea403e635a0d4",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.4",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.4/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.5",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.5/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "自动检查更新：启动约 5 秒后自动检查一次，发现新版本时侧栏「设置」亮红点、顶栏出现「↑ 新版本 vX」按钮，点击直达更新说明，不用再自己去设置页翻。设置里的「检查更新」开关现在真正生效，关闭后不再自动联网检查。附带修复：设置页的更新状态轮询从常驻 700ms 改为仅在「检查中/下载中」时轮询。"
+  "notes": "稳定性与细节修正。Modbus 轮询增加重入保护：设备慢或网络抖动时不再叠加未完成的请求（以前会越跑越卡、点停止也没反应），状态栏会显示跳过了几次。保存终端输出时，若历史已被裁剪会明确提示「仅最近 20 万字符」，避免拿不全的日志排障。连接记录为空时的引导文案改为指向窗口右上角「新建主机」。没有会话时「保存 / 清屏」按钮置灰。"
 }
