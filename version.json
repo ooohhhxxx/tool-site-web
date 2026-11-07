@@ -1,24 +1,24 @@
 {
-  "version": "0.4.8",
+  "version": "0.4.9",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22097071,
-  "sha256": "9addc048d1f79e920b045860d78edc8fdde84a228c5811bd18a93345bd4d221d",
+  "size": 22099693,
+  "sha256": "6d88fbe0f6eb1614ffd09105cdb258ca8a1f1da3c8aeaf6ba6fce433b3aa4732",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.8",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.8/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.9",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.9/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复覆盖安装时弹「安装程序无法自动关闭所有应用程序」。根因是程序在更新时只给窗口发 WM_CLOSE，而「最小化到托盘」模式会把它拦成隐藏窗口、进程继续占着 _internal 里的文件，安装程序关不掉就报错。现在程序会先摘掉托盘图标、刷盘日志后真正退出；安装包本身也启用了 CloseApplications=force 作为兜底，即使旧版本没退干净也会被强制结束，不再弹这个框。"
+  "notes": "性能修复：连一台响应慢的设备时整个程序会卡死。实测连一个要 8 秒才超时的地址，期间其它请求要等 7.5 秒才响应（终端不出字、切页点不动、串口数据也停）。原因是后端 54 个接口都写成异步函数，里面却在跑同步阻塞的网络调用，把整个事件循环占住了。现在阻塞型接口改到线程池执行，同样场景下响应 13 毫秒；同时给 SFTP 通道加了串行锁（并发操作同一个连接会读串数据），终端大数据量输出合并成帧。附带修：连接超时填 5 秒以前要等 15 秒才报错，现在按填写值生效。"
 }
