@@ -1,24 +1,24 @@
 {
-  "version": "0.4.6",
+  "version": "0.4.7",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22089748,
-  "sha256": "5ae468c1030be9210e8ecdab82c72b9e9af89c448534e25eaed1a0d0739d6009",
+  "size": 22095891,
+  "sha256": "d1a95c5662b74a09a1509010736859137a7ed16c1478a31d5964bac648c2ffee",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.6",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.6/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.7",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.7/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "更新流程闭环：点顶栏「↑ 新版本」按钮直接开始下载，按钮内显示下载进度百分比；下载并校验完成后按钮变成「安装」，点一下弹确认即可安装，不再需要先进设置页找按钮。下载好的安装包会缓存复用，取消安装后下次点更新不必重新下载 22MB。"
+  "notes": "修复托盘点击无反应、右键不出菜单。根因是 Windows 在 NOTIFYICON_VERSION_4 下发来的托盘事件格式变了：事件类型在 lParam 低字（单击是 NIN_SELECT、右键是 WM_CONTEXTMENU），而代码还在跟 WM_LBUTTONUP / WM_RBUTTONUP 比较，两个分支永远不成立。现已按新格式解析并保留旧格式兼容；右键菜单增加分隔线、「退出」改为「退出程序」，菜单关闭后补发 WM_NULL（否则菜单可能粘在屏幕上）。退出时会先删图标，1 秒内没退干净则强制结束，不会留下点不动的托盘图标。"
 }
