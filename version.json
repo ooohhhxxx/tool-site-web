@@ -1,24 +1,24 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22079152,
-  "sha256": "34725ac4a3b8435214ce84a400b10a3ec73ae8a833fa2e55e2f2e4b9c6142a21",
+  "size": 22080524,
+  "sha256": "61ee1ffabbda2206f65a8a67f3da63e73c1cef7f05e8f44b78d3d7d2ce974d2b",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.3.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.3.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.0",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.0/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "P0 稳定性：多 SSH 会话状态隔离互不干扰；SFTP 上传改为事务化原子操作（先写 .part 再原子重命名，异常自动清理）；连接记录改为原子写，损坏时按时间戳自动备份而非整文件丢失。P1 体验：终端新增查找（Ctrl+F）/常用命令/输出保存；Modbus 数值变化高亮+CSV 导出+写前确认；串口新增发送历史/常用命令、接收停滞提示、断线自动重连（受全局开关控制）。P2 桌面增强：新增系统托盘（最小化到托盘/双击恢复/菜单退出）、窗口置顶、关闭窗口行为可在「直接退出/最小化到托盘」间切换（设置页）。"
+  "notes": "P3 数据与插件：连接记录支持导出/导入（脱敏 JSON，导入按主机+用户去重、不覆盖本地密码）；设置页新增「配置备份/恢复」（设置+记录一键导出导入）。插件页增强：单插件热重载（改完 .py 无需重启整个程序）、一键打开插件目录、显示插件文件路径/加载失败原因/同名被覆盖提示、启停与执行状态一目了然。"
 }
