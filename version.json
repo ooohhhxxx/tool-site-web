@@ -1,24 +1,24 @@
 {
-  "version": "0.4.5",
+  "version": "0.4.6",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22091197,
-  "sha256": "01edb73ca7b01256188a5ecaf166fcb046d5546528df013e6f2ea403e635a0d4",
+  "size": 22089748,
+  "sha256": "5ae468c1030be9210e8ecdab82c72b9e9af89c448534e25eaed1a0d0739d6009",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.5",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.5/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.6",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.6/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "稳定性与细节修正。Modbus 轮询增加重入保护：设备慢或网络抖动时不再叠加未完成的请求（以前会越跑越卡、点停止也没反应），状态栏会显示跳过了几次。保存终端输出时，若历史已被裁剪会明确提示「仅最近 20 万字符」，避免拿不全的日志排障。连接记录为空时的引导文案改为指向窗口右上角「新建主机」。没有会话时「保存 / 清屏」按钮置灰。"
+  "notes": "更新流程闭环：点顶栏「↑ 新版本」按钮直接开始下载，按钮内显示下载进度百分比；下载并校验完成后按钮变成「安装」，点一下弹确认即可安装，不再需要先进设置页找按钮。下载好的安装包会缓存复用，取消安装后下次点更新不必重新下载 22MB。"
 }
