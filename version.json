@@ -1,24 +1,24 @@
 {
-  "version": "0.4.3",
+  "version": "0.4.4",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22088765,
-  "sha256": "8366e8de42fbb7b9f55222dc3f1597ef8dabacb172c4eb958b05cd4afd868214",
+  "size": 22096577,
+  "sha256": "7e10514474ec394288246a91dbbecbe3ee56af51a54ee9dd24bc96042b040451",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.3",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.3/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.4",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.4/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "设置页修正：原先「关闭窗口时（最小化到托盘）」和「最小化到托盘（立即最小化）」两行标题重复，看着像两个互相矛盾的设置。现已合并为一行——左侧下拉决定点 ✕ 的行为，右侧「立即收起」按钮随时把窗口收进托盘。"
+  "notes": "自动检查更新：启动约 5 秒后自动检查一次，发现新版本时侧栏「设置」亮红点、顶栏出现「↑ 新版本 vX」按钮，点击直达更新说明，不用再自己去设置页翻。设置里的「检查更新」开关现在真正生效，关闭后不再自动联网检查。附带修复：设置页的更新状态轮询从常驻 700ms 改为仅在「检查中/下载中」时轮询。"
 }

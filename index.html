@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.3 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.4 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.3）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.4）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.3 · 2026-11-07</p>
+<p class="section-sub">v0.4.4 · 2026-11-07</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.4</span>
+    <span class="rel-date">2026-11-07</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>自动检查更新并提示</strong>：启动约 5 秒后自动查一次版本（后台进行，不拖慢启动）。发现新版本时，侧栏「设置」亮红点、顶栏出现「↑ 新版本 vX」按钮，点一下直达更新说明——不用再自己进设置页翻。离线或内网查不到只写日志，不弹窗打扰。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>「检查更新」开关真正生效</strong>：此前该开关只保存到配置、后端并不读取，关掉了照样联网。现在关闭后启动不再自动检查。</div></div>
+    <div class="row"><div class="tag">优化</div><div class="txt"><strong>更新状态轮询改为按需</strong>：原先设置页一挂载就每 700ms 查询一次状态并常驻，现在只在「检查中 / 下载中」轮询，其余时间不发请求。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.3</span>
     <span class="rel-date">2026-11-07</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>设置页两行「最小化到托盘」看着像互相矛盾</strong>：原先是「关闭窗口时 → 最小化到托盘」和「最小化到托盘 → 立即最小化」两条独立设置项，标题重复、语义易混。现已合并为一行：左侧下拉决定点 ✕ 的行为（直接退出 / 最小化到托盘），右侧「立即收起」按钮随时把窗口收进托盘，两者不再重复命名。</div></div>
