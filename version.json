@@ -1,24 +1,24 @@
 {
-  "version": "0.4.2",
+  "version": "0.4.3",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22088763,
-  "sha256": "a290e9b0de0526e0e29716e3d1952bf62b378dcb822eb73f53432715f9f80e17",
+  "size": 22088765,
+  "sha256": "8366e8de42fbb7b9f55222dc3f1597ef8dabacb172c4eb958b05cd4afd868214",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.2",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.2/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.3",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.3/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "界面精简与安装体验修正。连接记录去掉右上角「N 台」计数；终端去掉「查找」框与「常用命令」下拉（保留保存输出与清屏），头部更清爽。安装程序向导改为完整简体中文（此前除自定义文案外都是英文）。"
+  "notes": "设置页修正：原先「关闭窗口时（最小化到托盘）」和「最小化到托盘（立即最小化）」两行标题重复，看着像两个互相矛盾的设置。现已合并为一行——左侧下拉决定点 ✕ 的行为，右侧「立即收起」按钮随时把窗口收进托盘。"
 }
