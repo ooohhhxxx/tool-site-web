@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.0 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.1 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.0）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.1）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,27 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.0 · 2026-11-07</p>
+<p class="section-sub">v0.4.1 · 2026-11-07</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.1</span>
+    <span class="rel-date">2026-11-07</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>系统托盘无法使用</strong>：托盘线程启动即崩溃（两处 ctypes 类型错误 + 64 位句柄被截断），此前选「最小化到托盘」关闭窗口后程序会消失且没有托盘图标，只能去任务管理器结束进程。现已正常：托盘图标、双击恢复、右键菜单均可用。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>远端文本保存更安全</strong>：在线编辑保存改为原子写（先写 .part 再替换），中途断线不会把远端原文件截成半截。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>本地服务来源校验</strong>：本机接口与 WebSocket 现在会校验请求来源，阻止其他网页连上本机终端；非浏览器客户端（脚本、探针）不受影响。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>运行日志与异常捕获</strong>：新增运行日志（用户目录 ultimatetool_web.log，按天切割、保留天数可设），主线程 / 后台线程 / 协程异常都会记录，不再静默消失；设置页可一键打开日志，现场排障不用再靠猜。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>SFTP 右键增强</strong>：「查看 / 编辑」直接读写远端文本文件（超过 2 MB 提示下载后编辑）；「修改权限」按八进制改 chmod（如 644 / 755）。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>Modbus 备注可编辑</strong>：点位备注双击即可修改，不再只有「点位 N」这种默认名，几十个点位也能一眼认出。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.0</span>
     <span class="rel-date">2026-11-07</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>导入 / 导出</strong>：连接记录可导出为 JSON 备份，换机或重装后一键导入（按主机+用户名去重，不覆盖本地已存密码；密码为 DPAPI 本机加密，出于安全不导出）。设置页新增「配置备份 / 恢复」，设置与记录一键导出导入。</div></div>

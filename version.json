@@ -1,24 +1,24 @@
 {
-  "version": "0.4.0",
+  "version": "0.4.1",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22080524,
-  "sha256": "61ee1ffabbda2206f65a8a67f3da63e73c1cef7f05e8f44b78d3d7d2ce974d2b",
+  "size": 22095607,
+  "sha256": "fce095609922cca805720f9ffb98413ec0f3343092e69801720da68abd6d1ff0",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.1",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.1/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "P3 数据与插件：连接记录支持导出/导入（脱敏 JSON，导入按主机+用户去重、不覆盖本地密码）；设置页新增「配置备份/恢复」（设置+记录一键导出导入）。插件页增强：单插件热重载（改完 .py 无需重启整个程序）、一键打开插件目录、显示插件文件路径/加载失败原因/同名被覆盖提示、启停与执行状态一目了然。"
+  "notes": "稳定性与易用性更新。修复：系统托盘此前从未真正启动（选「最小化到托盘」后窗口消失、托盘也没有图标），现已正常；远端文本保存改为原子写，断线不会把原文件截成半截。加固：本地服务新增来源校验，阻止其他网页连接本机终端；新增运行日志与全局异常捕获，后台异常不再静默消失，设置页可一键打开日志。新增：SFTP 右键「查看/编辑」远端文本、「修改权限」；Modbus 点位备注支持双击修改。"
 }
