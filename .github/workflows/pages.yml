@@ -1,0 +1,125 @@
+# 用 GitHub Actions 部署 GitHub Pages（替代 legacy builder）
+#
+# 为什么用这个：legacy builder 有「每小时构建次数」限流，同一天多次发版后会卡在
+# building 或直接 errored，而且同一 commit 重触发也救不回来（必须换 SHA）。
+# 换成 Actions 部署后，每次 push 都是独立的一次 workflow run，不再受那套限流约束。
+#
+# 发布流程不变：改页面 → 放新 exe → 更新 version.json → push main。
+# 这里会自动校验 version.json 与 exe 是否对得上，对不上直接失败，避免站上挂着
+# 「version.json 说 A、实际包是 B」的脏状态（会导致用户本地 sha256 校验失败）。
+
+name: 部署站点到 Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 部署不要互相打断：同一时间只允许一条部署链，新的排队等旧的结束
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: 校验 + 打包
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 发版纪律检查：exe 必须存在、大小和 sha256 必须和 version.json 声明一致，
+      # 页面文案里也必须出现当前版本号。任何一项不过就红，宁可不发布也不发错包。
+      - name: 校验 version.json 与安装包
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, sys
+
+          with open('version.json', encoding='utf-8') as f:
+              meta = json.load(f)
+
+          ver = str(meta.get('version') or '').strip()
+          exe = str(meta.get('file') or 'UltimateToolWeb-Setup.exe').strip()
+          print('version :', ver)
+          print('package :', exe)
+
+          if not ver:
+              sys.exit('[FAIL] version.json 缺少 version 字段')
+
+          if not os.path.exists(exe):
+              sys.exit(f'[FAIL] 安装包缺失: {exe}')
+
+          size = os.path.getsize(exe)
+          declared = str(meta.get('size') or '').strip()
+          print(f'size    : {size}  (version.json: {declared or "-"})')
+          if declared.isdigit() and int(declared) != size:
+              sys.exit(f'[FAIL] 大小不一致: version.json={declared} 实际={size}')
+
+          h = hashlib.sha256()
+          with open(exe, 'rb') as fh:
+              for chunk in iter(lambda: fh.read(1024 * 1024), b''):
+                  h.update(chunk)
+          got = h.hexdigest()
+          print('sha256  :', got)
+          declared_sha = str(meta.get('sha256') or '').strip().lower()
+          if len(declared_sha) == 64 and declared_sha != got:
+              sys.exit(f'[FAIL] sha256 不一致: version.json={declared_sha} 实际={got}')
+          if declared_sha in ('', '待填', 'todo', 'tbd'):
+              print('[WARN] version.json 未填 sha256，已跳过该比对')
+
+          for page in ('index.html', 'SOP.html'):
+              if not os.path.exists(page):
+                  sys.exit(f'[FAIL] 缺少页面: {page}')
+              with open(page, encoding='utf-8', errors='replace') as fh:
+                  html = fh.read()
+              if ver not in html:
+                  sys.exit(f'[FAIL] {page} 里没有出现版本号 {ver}，页面文案可能忘了更新')
+              print(f'[OK] {page} 含版本号 {ver}')
+
+          print('[OK] 校验全部通过')
+          PY
+
+      - name: 组装站点目录
+        shell: bash
+        run: |
+          mkdir -p _site
+          # 逐个文件复制太脆（以后加文件还得改 workflow），直接同步整个根目录，
+          # 只排掉 .git / .github / _site 自身。
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            ./ _site/
+          touch _site/.nojekyll
+          echo '--- 发布内容 ---'
+          ls -lhA _site
+          echo '--- 总体积 ---'
+          du -sh _site
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: 发布
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-actions
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
