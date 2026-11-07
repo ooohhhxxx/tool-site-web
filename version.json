@@ -1,24 +1,24 @@
 {
-  "version": "0.2.1",
+  "version": "0.2.2",
   "date": "2026-11-07",
-  "name": "UltimateTool 桌面版",
+  "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22059597,
-  "sha256": "7c79d276d39b4e87f4e5253a777ffd90b6af836f6ba6ccf55a2bd2eb487dbc78",
+  "size": 22060463,
+  "sha256": "3cd9b3b6424258794ae7c7cf79d002475c2c5679599981e5a0d4b5d80859b219",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.2.1",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.2.1/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.2.2",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.2.2/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "① 连接记录现在保存密码：用 Windows DPAPI 加密后存在本机用户目录，前端不接触明文，点一下即可免密连接；右键记录可编辑主机/端口/用户名/密码/编码/备注，密码留空表示不修改。② 新增在线更新：设置页「软件更新」区启动自动检查，发现新版后多源下载（国内镜像优先、失败自动换源）、SHA256 校验、一键启动安装并自动退出本程序。③ 版本号升到 0.2.1，与线上版本清单联动。"
+  "notes": "软件显示名统一改为「调试工具」：窗口标题、开始菜单与桌面快捷方式、安装程序、界面品牌、官网与操作手册全部改名。开始菜单分组用「调试工具 桌面版」以与经典 Tk 版区分，避免快捷方式互相覆盖；AppId、安装目录、安装包文件名保持不变，覆盖升级与下载直链不受影响。产品名与版本号集中到 app_meta.py，改名后完整复跑 9 项回归全部通过。"
 }
