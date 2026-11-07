@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "date": "2026-11-07",
+  "name": "UltimateTool 桌面版",
+  "file": "UltimateToolWeb-Setup.exe",
+  "url": "https://gitee.com/ooohhhxxx/tool-site-web/raw/main/UltimateToolWeb-Setup.exe",
+  "size": 22043562,
+  "sha256": "f898b1aa80683ca180d06f46064c6ad1933dff87bad88bb99f45c00f76f1b10f",
+  "mirrors": [
+    {
+      "name": "Gitee 国内镜像",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/raw/main/UltimateToolWeb-Setup.exe"
+    },
+    {
+      "name": "GitHub Pages",
+      "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
+    },
+    {
+      "name": "GitHub 仓库",
+      "url": "https://github.com/ooohhhxxx/tool-site-web/raw/main/UltimateToolWeb-Setup.exe"
+    }
+  ],
+  "notes": "Vue 3 界面重构的独立 Windows 桌面客户端：原生 WebView2 窗口（不打开浏览器）、单实例唤起、窗口几何记忆、三页可拖动分割条；修复整页滚动条、无控制台启动崩溃、SSH 首屏空白与 SFTP 降级。需系统已装 WebView2 Runtime，与经典 Tk 版可共存。"
+}
