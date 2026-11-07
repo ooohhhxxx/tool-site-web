@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UltimateTool 桌面版 - SSH / Modbus / 串口 三合一</title>
+<title>调试工具 - SSH / Modbus / 串口 三合一</title>
 <link rel="icon" href="./favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="./favicon.ico">
 <style>
@@ -68,7 +68,7 @@ footer a{color:#64748b;text-decoration:underline}
 <body>
 
 <nav>
-  <div class="logo">🛠 UltimateTool 桌面版</div>
+  <div class="logo">🛠 调试工具</div>
   <div>
     <a class="link" href="#features">功能介绍</a>
     <a class="link" href="#compare">与旧版区别</a>
@@ -79,11 +79,11 @@ footer a{color:#64748b;text-decoration:underline}
 </nav>
 
 <header class="hero" id="download">
-  <h1>UltimateTool 桌面版</h1>
+  <h1>调试工具</h1>
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.2.1 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.2.2 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.2.0）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.2.2）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,23 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.2.1 · 2026-11-07</p>
+<p class="section-sub">v0.2.2 · 2026-11-07</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.2.2</span>
+    <span class="rel-date">2026-11-07</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">变更</div><div class="txt"><strong>软件名称统一改为「调试工具」</strong>：窗口标题栏、开始菜单与桌面快捷方式、安装程序、界面品牌、官网与操作手册全部改名。开始菜单分组用「调试工具 桌面版」以与经典 Tk 版的同名分组区分，避免快捷方式互相覆盖；AppId、安装目录、安装包文件名保持不变，覆盖升级与下载直链不受影响。</div></div>
+    <div class="row"><div class="tag">验证</div><div class="txt">改名后完整复跑全部回归脚本：无控制台启动、桌面窗口、单实例、连接记录加密、在线更新状态机、HTTP 路由、端到端、布局与拖动、Webview2 最小窗口。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.2.1</span>
     <span class="rel-date">2026-11-07</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>连接记录保存密码</strong>：新建主机或编辑记录时填一次密码，之后点「连接选中记录」即可直连，不用每次重输。密码用 Windows DPAPI 加密存在本机用户目录，列表接口不回显任何凭据，明文不出后端。</div></div>
@@ -216,7 +227,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>UltimateTool</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / 串口 / 插件 / 设置五个页面，<code>Ctrl+1~5</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / 串口 / 插件 / 设置五个页面，<code>Ctrl+1~5</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 
@@ -225,7 +236,7 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <footer>
-  © 2026 UltimateTool 桌面版 · 个人免费软件 ｜
+  © 2026 调试工具 · 个人免费软件 ｜
   <a href="https://github.com/ooohhhxxx/tool-site-web">GitHub 仓库</a> ·
   <a href="https://gitee.com/ooohhhxxx/tool-site-web">Gitee 仓库</a> ·
   <a href="./version.json">版本清单</a>
