@@ -1,24 +1,24 @@
 {
-  "version": "0.4.9",
+  "version": "0.4.10",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22099693,
-  "sha256": "6d88fbe0f6eb1614ffd09105cdb258ca8a1f1da3c8aeaf6ba6fce433b3aa4732",
+  "size": 22094247,
+  "sha256": "086bcdbeaa871f904faa1efbae057c496343b8b140d0d7b68420675815271f37",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.9",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.9/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.10",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.10/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "性能修复：连一台响应慢的设备时整个程序会卡死。实测连一个要 8 秒才超时的地址，期间其它请求要等 7.5 秒才响应（终端不出字、切页点不动、串口数据也停）。原因是后端 54 个接口都写成异步函数，里面却在跑同步阻塞的网络调用，把整个事件循环占住了。现在阻塞型接口改到线程池执行，同样场景下响应 13 毫秒；同时给 SFTP 通道加了串行锁（并发操作同一个连接会读串数据），终端大数据量输出合并成帧。附带修：连接超时填 5 秒以前要等 15 秒才报错，现在按填写值生效。"
+  "notes": "修复「一直更新失败」。原因有两个叠在一起：① 下载被中断时 read() 只是返回空，循环正常退出，半截文件被当成下载完成，接着 SHA256 自然不匹配，于是把「网络断了」误报成「校验不通过」；② 同一个源失败后直接换下一个，不做重试，三个源轮流挂掉就彻底失败。现在：校验实际收到的字节数（中断会明确报「下载中断 400000/1000000 字节」），每个源重试 3 次，超时从 30 秒放宽到 60 秒，下载全程写运行日志；临时文件名带进程号，多开时不会互相踩。实测 16 秒下载完成。"
 }
