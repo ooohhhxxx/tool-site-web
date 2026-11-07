@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.2.2 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.3.0 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.2.2）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.3.0）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.2.2 · 2026-11-07</p>
+<p class="section-sub">v0.3.0 · 2026-11-07</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.3.0</span>
+    <span class="rel-date">2026-11-07</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">稳定性</div><div class="txt"><strong>P0 会话隔离与原子化</strong>：多 SSH 会话状态彻底隔离，互不串台；SFTP 上传改为事务化原子操作（先写 .part 临时文件，成功后原子重命名，异常自动清理残留）；连接记录改为「临时文件 + os.replace」原子写，文件损坏时按时间戳自动备份而非整体丢失。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>P1 终端 / Modbus / 串口增强</strong>：终端新增查找（Ctrl+F）、常用命令下拉与输出保存；Modbus 数值变化高亮 + CSV 导出 + 写前确认；串口新增发送历史 / 常用命令、接收停滞提示、断线自动重连（受全局「断线自动重连」开关控制）。</div></div>
+    <div class="row"><div class="tag">桌面</div><div class="txt"><strong>P2 系统托盘与窗口置顶</strong>：新增系统托盘（最小化到托盘、双击恢复、右键菜单退出）与窗口置顶；关闭窗口行为可在「直接退出 / 最小化到托盘」之间切换（设置页）。</div></div>
+    <div class="row"><div class="tag">验证</div><div class="txt">回归全部复跑：连接记录 / 更新 34 项、HTTP 路由 12 项、端到端 12 项、Webview2 布局与拖动 13 项、桌面窗口探针；P0 / P1 / P2 三个阶段互不干扰。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.2.2</span>
     <span class="rel-date">2026-11-07</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag">变更</div><div class="txt"><strong>软件名称统一改为「调试工具」</strong>：窗口标题栏、开始菜单与桌面快捷方式、安装程序、界面品牌、官网与操作手册全部改名。开始菜单分组用「调试工具 桌面版」以与经典 Tk 版的同名分组区分，避免快捷方式互相覆盖；AppId、安装目录、安装包文件名保持不变，覆盖升级与下载直链不受影响。</div></div>
