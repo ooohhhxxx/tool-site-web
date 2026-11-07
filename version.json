@@ -1,24 +1,24 @@
 {
-  "version": "0.4.7",
+  "version": "0.4.8",
   "date": "2026-11-07",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22095891,
-  "sha256": "d1a95c5662b74a09a1509010736859137a7ed16c1478a31d5964bac648c2ffee",
+  "size": 22097071,
+  "sha256": "9addc048d1f79e920b045860d78edc8fdde84a228c5811bd18a93345bd4d221d",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.7",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.7/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.8",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.8/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复托盘点击无反应、右键不出菜单。根因是 Windows 在 NOTIFYICON_VERSION_4 下发来的托盘事件格式变了：事件类型在 lParam 低字（单击是 NIN_SELECT、右键是 WM_CONTEXTMENU），而代码还在跟 WM_LBUTTONUP / WM_RBUTTONUP 比较，两个分支永远不成立。现已按新格式解析并保留旧格式兼容；右键菜单增加分隔线、「退出」改为「退出程序」，菜单关闭后补发 WM_NULL（否则菜单可能粘在屏幕上）。退出时会先删图标，1 秒内没退干净则强制结束，不会留下点不动的托盘图标。"
+  "notes": "修复覆盖安装时弹「安装程序无法自动关闭所有应用程序」。根因是程序在更新时只给窗口发 WM_CLOSE，而「最小化到托盘」模式会把它拦成隐藏窗口、进程继续占着 _internal 里的文件，安装程序关不掉就报错。现在程序会先摘掉托盘图标、刷盘日志后真正退出；安装包本身也启用了 CloseApplications=force 作为兜底，即使旧版本没退干净也会被强制结束，不再弹这个框。"
 }
