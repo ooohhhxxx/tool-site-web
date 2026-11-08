@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.10 ｜ 更新于 2026-11-07 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.11 ｜ 更新于 2026-11-08 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.10）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.11）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.10 · 2026-11-07</p>
+<p class="section-sub">v0.4.11 · 2026-11-08</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.11</span>
+    <span class="rel-date">2026-11-08</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>托盘右键菜单从来没弹出来</strong>：0.4.7 改菜单句柄包装时，<code>_show_menu</code> 又包了一层，抛 <code>TypeError: cannot be converted to pointer</code>，所以「打开主窗口 / 退出程序」根本点不到。现已修好，并加了真机探针（发右键事件 → 检查菜单窗口是否真的出现）。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>托盘图标单击就能唤回</strong>：恢复窗口时原来是跨线程调用 pywebview，会卡住托盘消息循环，表现成「要点两次才出来」。现在优先用 Win32 直接显示并前置窗口，不再阻塞；前置失败时还会用临时置顶的方式把它顶到最前。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>打开就自动显示检查结果</strong>：后端一直会在启动约 5 秒后自动检查更新，但设置页只在挂载时读一次，于是永远停在「尚未检查」，让人以为还要手动点一遍。现在每一轮结果都会同步到设置页；「关于」页的后端状态也改成打开即检查，不再显示「未检查」。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt">移除「关闭窗口时」旁边多余的「立即收起」按钮，这一行只保留下拉设置。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.10</span>
     <span class="rel-date">2026-11-07</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>「一直更新失败」</strong>：两个缺陷叠在一起。① 下载被中断时 <code>read()</code> 只是返回空、循环正常退出，于是<strong>半截文件被当成下载完成</strong>，接着 SHA256 自然不匹配，把「网络断了」误报成「校验不通过」；② 同一个源失败后直接换下一个，<strong>不做重试</strong>，三个源轮流挂掉就彻底失败。</div></div>

@@ -1,24 +1,24 @@
 {
-  "version": "0.4.10",
-  "date": "2026-11-07",
+  "version": "0.4.11",
+  "date": "2026-11-08",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22094247,
-  "sha256": "086bcdbeaa871f904faa1efbae057c496343b8b140d0d7b68420675815271f37",
+  "size": 22095320,
+  "sha256": "b4f4331f8d683a469e322a264c474456e914f8cf50ab3887600623f9cedab6a8",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.10",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.10/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.11",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.11/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复「一直更新失败」。原因有两个叠在一起：① 下载被中断时 read() 只是返回空，循环正常退出，半截文件被当成下载完成，接着 SHA256 自然不匹配，于是把「网络断了」误报成「校验不通过」；② 同一个源失败后直接换下一个，不做重试，三个源轮流挂掉就彻底失败。现在：校验实际收到的字节数（中断会明确报「下载中断 400000/1000000 字节」），每个源重试 3 次，超时从 30 秒放宽到 60 秒，下载全程写运行日志；临时文件名带进程号，多开时不会互相踩。实测 16 秒下载完成。"
+  "notes": "按界面反馈修正四处。① 托盘右键菜单一直弹不出来（0.4.7 起的回归：菜单句柄被重复包装成 c_void_p 导致 TypeError），现已修好，「打开 / 恢复主窗口」「退出程序」都可用；② 托盘图标单击即可唤回（原来跨线程调用 pywebview 会阻塞消息循环，要点两次才出来）；③ 设置页与「关于」页打开就自动显示检查结果，不再停在「尚未检查 / 未检查」——后端其实一直在启动 5 秒后自动检查，只是结果没同步到界面；④ 移除「关闭窗口时」旁边多余的「立即收起」按钮。"
 }
