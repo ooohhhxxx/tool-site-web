@@ -1,24 +1,24 @@
 {
-  "version": "0.4.13",
+  "version": "0.4.14",
   "date": "2026-11-08",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22095506,
-  "sha256": "9b0ff0467c625078887f91a71c364d97399306b0188fff4a2188650c6ee58359",
+  "size": 22099018,
+  "sha256": "98355727a3a5223138635ffa7200b0776c96d3d9394d86a35135ec319cf2e80c",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.13",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.13/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.14",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.14/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "彻底修复托盘右键菜单空白。真机抓图确认：菜单里现在能清楚看到「打开 / 恢复主窗口」、分隔线和「退出程序」。根因不是字符串编码——菜单里确实存着正确中文、类型和状态都正常，但 AppendMenuW 创建的旧式菜单在 Windows 11 的新式菜单渲染下不绘制文字（菜单窗口被压到 100x38，三项正常应有约 200x70）。改用 InsertMenuItemW + MENUITEMINFOW 显式建项后，菜单尺寸恢复 185x58、文字正常显示；同时补齐 DefWindowProcW 的参数声明，避免 64 位指针被截断。"
+  "notes": "稳定性加固三项。① 串口数据缓冲改为有上限队列（8192 包），此前插件不读串口时它只进不出，115200 波特率下每小时约涨 41 MB；② 串口线程与插件线程向 WebSocket 投递数据改走事件循环的 call_soon_threadsafe，不再跨线程直接操作 asyncio.Queue（可能丢数据且异常被吞）；③ 同时保持的 SSH 会话上限设为 8，并把正在握手中的连接计入，避免几十个慢连接占满线程池导致整个后端排队。新增 5 条回归断言。"
 }

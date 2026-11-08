@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.13 ｜ 更新于 2026-11-08 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.14 ｜ 更新于 2026-11-08 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.13）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.14）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.13 · 2026-11-08</p>
+<p class="section-sub">v0.4.14 · 2026-11-08</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.14</span>
+    <span class="rel-date">2026-11-08</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">稳定性</div><div class="txt"><strong>串口数据缓冲不再无限增长</strong>：缓存队列只有插件读取时才会消费，没用插件时只进不出，115200 波特率下每小时约涨 41 MB。现在限制为 8192 包，满了丢最旧的数据。</div></div>
+    <div class="row"><div class="tag fix">稳定性</div><div class="txt"><strong>串口 / 插件数据推送改为线程安全</strong>：接收线程此前直接跨线程写 <code>asyncio.Queue</code>，可能丢数据或静默抛异常（表现为"串口偶尔没数据"）。现在统一经事件循环的 <code>call_soon_threadsafe</code> 投递。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>SSH 会话上限 8 个</strong>：慢连接最长阻塞 10 秒，几十个并发会把后端线程池占满、连健康检查都要排队。正在握手中的连接也计入上限，超出时给出明确提示而不是让界面卡住。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.13</span>
     <span class="rel-date">2026-11-08</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>托盘右键菜单终于有文字了</strong>。前两版修的都是「菜单弹不出来」和「字符串编码」，但真机抓图显示菜单里始终只有一条分隔线。排查确认：菜单里确实存着正确的中文、类型和启用状态都正常，问题是 <code>AppendMenuW</code> 创建的旧式菜单在 Windows 11 的新式菜单渲染下<strong>不绘制文字</strong>，菜单窗口还被压到 100×38（三项正常约 200×70）。改用 <code>InsertMenuItemW</code> + <code>MENUITEMINFOW</code> 显式建项后，尺寸恢复 185×58，真机截图里「打开 / 恢复主窗口」「退出程序」清晰可见。</div></div>
