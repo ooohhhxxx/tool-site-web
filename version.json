@@ -1,24 +1,24 @@
 {
-  "version": "0.4.12",
+  "version": "0.4.13",
   "date": "2026-11-08",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22095522,
-  "sha256": "b189cd2a4fce7fd42757c11795e8bfef137d122681d8658a2ff47bab1adb7aec",
+  "size": 22095506,
+  "sha256": "9b0ff0467c625078887f91a71c364d97399306b0188fff4a2188650c6ee58359",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.12",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.12/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.13",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.13/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复托盘右键菜单弹出后是空白的（只有一条分隔线，看不到「打开 / 恢复主窗口」和「退出程序」）。根因是 AppendMenuW 未声明参数类型，Python 字符串被按 ANSI 传给宽字符版函数，中文菜单项写成空串——和之前托盘窗口标题为空是同一个坑。现已显式转宽字符，并加了两道验证：单元测试读回菜单文字、真机探针检查运行日志。以后菜单项再变空白会立刻被拦下。"
+  "notes": "彻底修复托盘右键菜单空白。真机抓图确认：菜单里现在能清楚看到「打开 / 恢复主窗口」、分隔线和「退出程序」。根因不是字符串编码——菜单里确实存着正确中文、类型和状态都正常，但 AppendMenuW 创建的旧式菜单在 Windows 11 的新式菜单渲染下不绘制文字（菜单窗口被压到 100x38，三项正常应有约 200x70）。改用 InsertMenuItemW + MENUITEMINFOW 显式建项后，菜单尺寸恢复 185x58、文字正常显示；同时补齐 DefWindowProcW 的参数声明，避免 64 位指针被截断。"
 }
