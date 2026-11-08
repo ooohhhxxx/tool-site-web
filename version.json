@@ -1,24 +1,24 @@
 {
-  "version": "0.4.11",
+  "version": "0.4.12",
   "date": "2026-11-08",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22095320,
-  "sha256": "b4f4331f8d683a469e322a264c474456e914f8cf50ab3887600623f9cedab6a8",
+  "size": 22095522,
+  "sha256": "b189cd2a4fce7fd42757c11795e8bfef137d122681d8658a2ff47bab1adb7aec",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.11",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.11/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.12",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.12/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "按界面反馈修正四处。① 托盘右键菜单一直弹不出来（0.4.7 起的回归：菜单句柄被重复包装成 c_void_p 导致 TypeError），现已修好，「打开 / 恢复主窗口」「退出程序」都可用；② 托盘图标单击即可唤回（原来跨线程调用 pywebview 会阻塞消息循环，要点两次才出来）；③ 设置页与「关于」页打开就自动显示检查结果，不再停在「尚未检查 / 未检查」——后端其实一直在启动 5 秒后自动检查，只是结果没同步到界面；④ 移除「关闭窗口时」旁边多余的「立即收起」按钮。"
+  "notes": "修复托盘右键菜单弹出后是空白的（只有一条分隔线，看不到「打开 / 恢复主窗口」和「退出程序」）。根因是 AppendMenuW 未声明参数类型，Python 字符串被按 ANSI 传给宽字符版函数，中文菜单项写成空串——和之前托盘窗口标题为空是同一个坑。现已显式转宽字符，并加了两道验证：单元测试读回菜单文字、真机探针检查运行日志。以后菜单项再变空白会立刻被拦下。"
 }
