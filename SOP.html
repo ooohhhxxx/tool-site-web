@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.14 ｜ 生效日期：2026-11-08 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.15 ｜ 生效日期：2026-11-08 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -174,6 +174,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <h2>十四、版本记录</h2>
 <table>
   <tr><th>版本</th><th>日期</th><th>主要内容</th></tr>
+  <tr><td>V0.4.15</td><td>2026-11-08</td><td>代码审查后的一批修复与加固：修复插件实时日志不推送、日志面板 500 条后停更；记录直连纳入 SSH 会话上限；上传/下载改流式（大文件不再整份进内存），上传文件名与静态路径做越界校验、未知接口返回 404；会话字典/串口打开/SSH 断开补锁，终端阻塞收发转线程池；退出统一停插件；修正版本号比较、下载单飞、设置原子写、依赖锁版本。</td></tr>
   <tr><td>V0.4.14</td><td>2026-11-08</td><td>稳定性加固：串口 tap 队列设 8192 包上限；串口/插件线程广播改走 call_soon_threadsafe；SSH 会话上限 8 个（含握手中连接），防止慢连接占满线程池。</td></tr>
   <tr><td>V0.4.13</td><td>2026-11-08</td><td>彻底修复托盘右键菜单空白：AppendMenuW 旧式菜单在 Windows 11 新渲染下不绘制文字，改用 InsertMenuItemW + MENUITEMINFOW；补齐 DefWindowProcW 参数声明；消息窗口改 1x1 WS_POPUP。真机抓图确认文字正常显示。</td></tr>
   <tr><td>V0.4.12</td><td>2026-11-08</td><td>修复托盘右键菜单项文字空白（AppendMenuW 未转宽字符导致中文写成空串）；增加菜单文字单元测试与真机日志验证。</td></tr>
