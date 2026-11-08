@@ -1,24 +1,24 @@
 {
-  "version": "0.4.14",
+  "version": "0.4.15",
   "date": "2026-11-08",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22099018,
-  "sha256": "98355727a3a5223138635ffa7200b0776c96d3d9394d86a35135ec319cf2e80c",
+  "size": 22103104,
+  "sha256": "09a91b7c2fe7250d2508e545d2222996678c6a002f5d6d2e0003e2ba7f0f9219",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.14",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.14/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.15",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.15/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "稳定性加固三项。① 串口数据缓冲改为有上限队列（8192 包），此前插件不读串口时它只进不出，115200 波特率下每小时约涨 41 MB；② 串口线程与插件线程向 WebSocket 投递数据改走事件循环的 call_soon_threadsafe，不再跨线程直接操作 asyncio.Queue（可能丢数据且异常被吞）；③ 同时保持的 SSH 会话上限设为 8，并把正在握手中的连接计入，避免几十个慢连接占满线程池导致整个后端排队。新增 5 条回归断言。"
+  "notes": "代码审查后的一批修复与加固。修复：插件实时日志流不推送（日志 hook 改为注入）、日志面板 500 条后停更（改用单调序号游标）、记录直连绕过 SSH 会话上限（限额下沉到统一建连入口）。安全/内存：上传改分块流式、下载落临时文件再流式发送（大文件不再整段进内存），上传文件名净化、静态资源路径越界校验、未知接口返回 404。并发/收尾：会话字典/串口打开/SSH 断开补锁，终端阻塞收发转线程池，退出统一停插件并关闭会话。可靠性：版本号比较修正、下载单飞+临时名去重、设置/备份原子写、依赖锁版本。"
 }
