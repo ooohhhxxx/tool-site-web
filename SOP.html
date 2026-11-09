@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.19 ｜ 生效日期：2026-11-09 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.20 ｜ 生效日期：2026-11-09 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -174,6 +174,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <h2>十四、版本记录</h2>
 <table>
   <tr><th>版本</th><th>日期</th><th>主要内容</th></tr>
+  <tr><td>V0.4.20</td><td>2026-11-09</td><td>修复 0.4.19 回归：纯私钥记录被门禁挡死、插件面板动作执行失败（host 上下文）、串口/Modbus 断线后无法恢复（状态闭环 + 重连前清理 + 断开按钮解禁）；Modbus 点位改后端存储并纳入备份；串口主动关闭不再误报断开；SFTP 路径草稿与缩放适配。新增 19 项回归测试。</td></tr>
   <tr><td>V0.4.19</td><td>2026-11-09</td><td>补齐旧版能力：私钥路径登录；Modbus 点位写入/持久化/进制与有符号显示/连续段分段批读；串口拔出、SSH 远端断开、Modbus 掉线可感知并自动重连；插件自定义面板（批量/扫描/HEX）；自动 SFTP、记住窗口、默认编码、界面缩放四项设置真正生效；SFTP 路径跳转与下载进度/取消。</td></tr>
   <tr><td>V0.4.18</td><td>2026-11-09</td><td>修复关闭 SSH 会话后全局状态仍显示"已连接"：关闭时同步右上角与底栏状态，还有会话则显示当前主机，全部关闭后显示未连接。</td></tr>
   <tr><td>V0.4.17</td><td>2026-11-09</td><td>修复终端空白：前端创建 SSH 会话后未打开终端 WebSocket，导致连上真实设备但终端无输出；现建会话/切回标签会自动连接终端流。</td></tr>
