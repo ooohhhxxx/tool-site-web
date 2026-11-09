@@ -1,24 +1,24 @@
 {
-  "version": "0.4.18",
+  "version": "0.4.19",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22105600,
-  "sha256": "c56f770c1b85a4fb994dadc8d00e74d9ec4af9a9675c6168b069c493910a072c",
+  "size": 22108299,
+  "sha256": "5415b2d6b44fadc4f0935216045ac23939b481a39b8d3de0e0fbe3856a79a4a8",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.18",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.18/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.19",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.19/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复关闭 SSH 会话后右上角/底栏仍显示「已连接」：关闭会话时会同步全局连接状态——还有会话就显示当前会话的主机，全部关闭则显示「SSH 未连接」，底栏同步提示「已断开」。"
+  "notes": "补齐旧版能力。① 私钥登录：新建主机/编辑记录新增「私钥路径」，支持空密码 + key_path。② Modbus 点位：写入选中点位、点位与连接参数本地持久化、十进制/十六进制/有符号显示、连续地址 ≤125 分段批读。③ 断线可感知：串口拔出、SSH 远端断开、Modbus 掉线同步状态并自动重连（2/4/8/16/30 秒）。④ 插件自定义面板：SSH 批量、Modbus 扫描、串口 HEX 三个面板恢复可用。⑤ 四个死开关真正生效：自动 SFTP、记住窗口、默认编码、界面缩放。⑥ SFTP：远程路径可编辑回车跳转，下载带进度条并可取消。"
 }
