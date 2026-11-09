@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.24 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.25 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.24）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.25）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,26 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.24 · 2026-11-09</p>
+<p class="section-sub">v0.4.25 · 2026-11-09</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.25</span>
+    <span class="rel-date">2026-11-09</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>在线编辑不再被慢响应串号</strong>：弹窗加独立代次，读取的成功 / 失败 / 收尾都只认自己那一代；内容没读全之前「保存」不可用，杜绝把空内容写回远端文件。</div></div>
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>下载不会静默变成半截文件</strong>：改走 chunked，不再拿远端声明的大小当承诺长度；实读字节不符或读中途出错会明确报错，SFTP 的打开 / 读取 / 关闭统一加锁。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>一键重连真的随时可用</strong>：重连凭据与死会话回收解耦，断线一分钟后仍可重连；改为先建新会话成功再拆旧会话，失败不会留下僵尸标签；会话内改过的编码也会带到重连。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>取消操作不再留后患</strong>：前端取消会立刻通知后端写线程在替换远端文件之前停下；刚连上时点取消也不会误杀可用会话；连接标识复用不再互相覆盖。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>快速操作不再串号</strong>：切换标签、切换编码、上传进度轮询都加代次守卫；原生下载不再假报进度；Modbus 暂停不丢错误日志，串口暂停与运行中改编码都即时生效。新增 46 项回归测试（共 196 项），全量 318 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.24</span>
     <span class="rel-date">2026-11-09</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag">体验</div><div class="txt"><strong>上传进度终于是远端写入量</strong>：新增后端真实进度上报，前端按 250ms 轮询，明确区分「正在上传 / 正在写入远端 / 写入完成」，不再拿本地读取字节冒充传输进度。</div></div>

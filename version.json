@@ -1,24 +1,24 @@
 {
-  "version": "0.4.24",
+  "version": "0.4.25",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22139443,
-  "sha256": "2b6444570da47b8eea8970286f16a78f14351b1996ef2757709c13cc4be730ef",
+  "size": 22141015,
+  "sha256": "6ee2d1a76a8fecfe98781e4df432fb60ae99bbe61ee4b4a3a9f5da3753818bf2",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.24",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.24/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.25",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.25/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "把上一轮遗留的五项限制一次性清掉。① 上传进度改为后端真实 SFTP 写入字节数：新增进度上报接口，前端区分「正在上传 / 正在写入远端 / 写入完成」，不再用本地读取量冒充进度。② 连接过程可真正取消：新增 connect_id 与后端取消接口，握手阻塞期间由看门狗关闭 socket 中断 paramiko；新建主机与 SSH 页均支持中途放弃。③ 断线重连不再依赖免密记录：本次认证凭据只保存在进程内存（不落盘、不进日志），密码/私钥会话都能一键恢复。④ 终端与 SFTP 会话协商带超时：invoke_shell 改走带 timeout 的通道打开，老设备不响应时不再挂死整个连接。⑤ 大文件下载彻底不进内存：环境不支持流式文件选择器时，超过 32MB 直接交浏览器原生下载。新增 18 项回归测试（共 150 项），全量 272 项断言零失败。"
+  "notes": "发布后独立复核的缺陷修复版。① 在线编辑弹窗加独立代次，慢响应不再关掉新编辑器或把空内容写回远端文件。② 流式下载改走 chunked：不再用 stat 大小承诺 Content-Length，实际字节不符或读中断会明确报错，避免静默拿到截断文件；SFTP 操作统一加锁。③ 重连凭据与死会话回收解耦，断线一分钟后仍可一键重连；改为先建新会话成功再拆旧会话，失败不再留下僵尸标签。④ 取消竞态收敛：捕获 CancelledError 让写循环在替换远端文件前停下、替换前再查一次取消、握手成功后晚到的取消不再误杀可用会话。⑤ 切换标签 / 编码 / 上传进度轮询加代次守卫；Host 头补 DNS rebinding 校验；SFTP 协商失败不再泄漏通道；编码切换同步到重连凭据。⑥ 原生下载不再假报进度、API 保留取消错误码、Modbus 暂停不丢错误日志、串口暂停仍推进时间戳行首且运行中改编码即时生效。新增 46 项回归测试（共 196 项），全量 318 项断言零失败。"
 }
