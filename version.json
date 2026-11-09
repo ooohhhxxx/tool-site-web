@@ -1,24 +1,24 @@
 {
-  "version": "0.4.19",
+  "version": "0.4.20",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22108299,
-  "sha256": "5415b2d6b44fadc4f0935216045ac23939b481a39b8d3de0e0fbe3856a79a4a8",
+  "size": 22107936,
+  "sha256": "7187c04241bbca1010fe7a7b8a169661a3ed84a27b23990523d0d8938d4cd481",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.19",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.19/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.20",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.20/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "补齐旧版能力。① 私钥登录：新建主机/编辑记录新增「私钥路径」，支持空密码 + key_path。② Modbus 点位：写入选中点位、点位与连接参数本地持久化、十进制/十六进制/有符号显示、连续地址 ≤125 分段批读。③ 断线可感知：串口拔出、SSH 远端断开、Modbus 掉线同步状态并自动重连（2/4/8/16/30 秒）。④ 插件自定义面板：SSH 批量、Modbus 扫描、串口 HEX 三个面板恢复可用。⑤ 四个死开关真正生效：自动 SFTP、记住窗口、默认编码、界面缩放。⑥ SFTP：远程路径可编辑回车跳转，下载带进度条并可取消。"
+  "notes": "修复 0.4.19 回归。① 纯私钥记录此前被「未存密码」挡死，现在密码或私钥任一存在即可连接。② 插件面板能显示但按钮报错，已改用插件上下文执行。③ 串口/Modbus 断线后无法恢复：断线时同步后端状态、重连前清理旧连接、「断开/关闭」不再禁用。④ Modbus 点位改存后端配置并纳入备份，重启不再丢。⑤ 串口主动关闭不再误报「已断开」。⑥ SFTP 路径改为回车成功才跳转；设置页缩放后终端自动重新适配。新增 19 项回归测试。"
 }
