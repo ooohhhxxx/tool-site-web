@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.20 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.21 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.20）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.21）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,20 +180,20 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.20 · 2026-11-09</p>
+<p class="section-sub">v0.4.21 · 2026-11-09</p>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v0.4.20</span>
+    <span class="rel-ver">v0.4.21</span>
     <span class="rel-date">2026-11-09</span>
     <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>纯私钥记录无法连接</strong>：只保存私钥的记录此前被"未存密码"挡死，现在密码或私钥任一存在即可连接。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>插件面板动作执行失败</strong>：面板能显示但按钮报错，已改用插件上下文执行；SSH 批量 / Modbus 扫描 / 串口 HEX 可用。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>串口 / Modbus 断线后无法恢复</strong>：断线时同步后端连接状态，重连前自动清理旧连接，「断开 / 关闭」不再被禁用。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>Modbus 点位重启丢失</strong>：点位与连接参数改为存后端配置并纳入备份，不再受随机端口影响。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>串口主动关闭误报断开</strong>：手动关闭不再弹"串口已断开"、不再触发重连。</div></div>
-    <div class="row"><div class="tag">体验</div><div class="txt"><strong>细节</strong>：SFTP 路径改为回车成功才跳转（半截路径不再被上传误用）；设置页缩放后终端自动重新适配。</div></div>
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>GBK 文件在线编辑不再被改成 UTF-8</strong>：打开时记录实际编码，保存原样回写；<strong>上传替换改为“备份→替换→失败回滚”</strong>，不再先删原文件；上传前会提示目标目录同名/批内重名。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>设置保存不再覆盖 Modbus 点位</strong>：设置改为合并写入，点位/表单独立保存并纳入备份。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>断线状态更可靠</strong>：SSH 识别远端 EOF、串口用连接代次防快速重连竞争、Modbus 单次无响应先重试、异常码显示中文；顶栏按页面显示各自连接状态。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>插件面板</strong>：执行时占用执行位、开始前清理“停止”标志，避免重复点击并发；串口 HEX 面板补循环/停止；仅支持 Tk 面板的第三方插件会明确提示。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>细节补齐</strong>：SFTP 支持 <code>~</code> 展开/复制路径/删除目录手打确认；终端 Ctrl+滚轮缩放、保存剥离 ANSI、清屏同步清缓冲；串口参数范围与编码、Modbus 轮询间隔/手动刷新。</div></div>
+    <div class="row"><div class="tag">安全</div><div class="txt"><strong>更新强制 SHA256</strong>（清单缺失直接拒绝）；托盘不可用时降级为“直接退出”，不再把窗口藏到找不回。</div></div>
   </div>
 </div>
 

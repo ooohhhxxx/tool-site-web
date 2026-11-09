@@ -1,24 +1,24 @@
 {
-  "version": "0.4.20",
+  "version": "0.4.21",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22107936,
-  "sha256": "7187c04241bbca1010fe7a7b8a169661a3ed84a27b23990523d0d8938d4cd481",
+  "size": 22119753,
+  "sha256": "80f00eb96868df3b2d32f234c96e6337be5e7cbb97041e3d84c7448582e55a01",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.20",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.20/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.21",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.21/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "修复 0.4.19 回归。① 纯私钥记录此前被「未存密码」挡死，现在密码或私钥任一存在即可连接。② 插件面板能显示但按钮报错，已改用插件上下文执行。③ 串口/Modbus 断线后无法恢复：断线时同步后端状态、重连前清理旧连接、「断开/关闭」不再禁用。④ Modbus 点位改存后端配置并纳入备份，重启不再丢。⑤ 串口主动关闭不再误报「已断开」。⑥ SFTP 路径改为回车成功才跳转；设置页缩放后终端自动重新适配。新增 19 项回归测试。"
+  "notes": "数据安全与缺陷修复。① GBK 在线编辑记录实际编码并原样回写；上传替换改“备份→替换→失败回滚”，同名/批内重名先确认。② 设置保存改为合并写入，不再覆盖 Modbus 点位。③ SSH 识别远端 EOF；串口连接代次防快速重连竞争；Modbus 单次无响应先重试、异常码中文；顶栏按页显示状态。④ 插件面板占执行位/清 stop；串口 HEX 面板循环/停止；仅 Tk 面板的第三方插件明确提示。⑤ SFTP ~ 展开/复制路径/删除目录确认；终端缩放/ANSI 清洗/清屏清缓冲；串口参数与编码、Modbus 轮询间隔/刷新。⑥ 更新强制 SHA256；托盘不可用降级直接退出。新增 25 项回归测试。"
 }
