@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.21 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.22 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.21）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.22）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,27 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.21 · 2026-11-09</p>
+<p class="section-sub">v0.4.22 · 2026-11-09</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.22</span>
+    <span class="rel-date">2026-11-09</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>上传取消会真正停下来</strong>：前端取消时同步通知后端，写循环在替换远端文件之前中止并清理半截文件；上传前锁定会话与目录，传输进度按会话隔离，切标签不再串号。</div></div>
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>在线编辑不再毁文件</strong>：二进制或无法无损解码的文件改为只读并提示下载到本地编辑；保存使用严格编码，并检测远端文件在打开后是否被其他程序改过，冲突时拒绝覆盖。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>插件批量命令不再串到别的主机</strong>：任务启动时绑定发起会话，执行期间切标签、新建或断开都不影响；面板长任务改后台执行，可随时点「停止」，不再出现 30 秒超时假失败。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>配置与备份不再互相覆盖</strong>：设置改为差量保存并加锁，快速连点开关不会丢更新；备份导入改按键合并（老备份不会清空现有点位），导入后 Modbus 点位表自动重新载入。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>连接状态更稳</strong>：串口连接代次加锁、旧 WebSocket 回调不再拆掉新连接；刷新页面会恢复串口 / Modbus 的后端连接；顶栏主机随活动标签更新；更新下载异常会明确报错而不是一直卡在「下载中」。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>细节</strong>：同一 SSH 会话开多个终端标签不再互相顶掉输出；托盘只有图标真正添加成功才允许最小化；Latin-1 前后端编码表统一；Modbus 状态栏显示真实轮询间隔、CSV 带 BOM / 时间戳 / 原始值。新增 57 项回归测试（共 86 项）。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.21</span>
     <span class="rel-date">2026-11-09</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>GBK 文件在线编辑不再被改成 UTF-8</strong>：打开时记录实际编码，保存原样回写；<strong>上传替换改为“备份→替换→失败回滚”</strong>，不再先删原文件；上传前会提示目标目录同名/批内重名。</div></div>

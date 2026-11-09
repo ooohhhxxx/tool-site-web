@@ -1,24 +1,24 @@
 {
-  "version": "0.4.21",
+  "version": "0.4.22",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22119753,
-  "sha256": "80f00eb96868df3b2d32f234c96e6337be5e7cbb97041e3d84c7448582e55a01",
+  "size": 22131239,
+  "sha256": "fb5ef87d24e54d2970b6ce5e647412e1404b32ec41af94150b3ab310c2a33a78",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.21",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.21/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.22",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.22/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "数据安全与缺陷修复。① GBK 在线编辑记录实际编码并原样回写；上传替换改“备份→替换→失败回滚”，同名/批内重名先确认。② 设置保存改为合并写入，不再覆盖 Modbus 点位。③ SSH 识别远端 EOF；串口连接代次防快速重连竞争；Modbus 单次无响应先重试、异常码中文；顶栏按页显示状态。④ 插件面板占执行位/清 stop；串口 HEX 面板循环/停止；仅 Tk 面板的第三方插件明确提示。⑤ SFTP ~ 展开/复制路径/删除目录确认；终端缩放/ANSI 清洗/清屏清缓冲；串口参数与编码、Modbus 轮询间隔/刷新。⑥ 更新强制 SHA256；托盘不可用降级直接退出。新增 25 项回归测试。"
+  "notes": "数据安全与执行模型修复。① 插件任务绑定发起 SSH 会话，批量命令中途切标签不再打到别的主机；面板长任务改后台执行、可随时停止，不再 30 秒假失败。② 上传取消会通知后端在替换远端文件前停住并清理半截文件，传输状态按会话隔离、上传前锁定会话与目录。③ 在线编辑对二进制/无法无损解码的文件改为只读，写入使用严格编码并检测「打开后被改」冲突，避免静默毁文件。④ 配置读改写加锁、设置改差量保存；备份导入改按键合并并通知 Modbus 重新载入点位。⑤ 串口连接代次加锁、旧 WebSocket 回调不拆新连接；页面刷新恢复串口/Modbus 后端状态；顶栏主机随活动标签更新；更新下载异常不再卡在下载中。⑥ SSH 多终端标签不再互相顶掉输出；托盘就绪标记；Latin-1 前后端编码统一；Modbus CSV 带 BOM 与时间戳。新增 57 项回归测试（共 86 项）。"
 }
