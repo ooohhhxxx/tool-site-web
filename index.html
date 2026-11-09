@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.25 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.26 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.25）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.26）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.25 · 2026-11-09</p>
+<p class="section-sub">v0.4.26 · 2026-11-09</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.26</span>
+    <span class="rel-date">2026-11-09</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>终端查找中文不再偏移</strong>：Ctrl+F 查找按 xterm 终端列换算，中文 / CJK 宽字符高亮精确对齐；切会话时清空查找关键字与游标，不再把旧设备的查找带到新设备；连接记录搜索隐藏了选中项会自动改选可见记录；Ctrl+滚轮监听具名保存并在卸载时注销。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>串口运行中改编码真正生效</strong>：现在会同时改后端发送侧编码与前端的 TextDecoder，发送与显示用同一编码表（Latin-1 自动归一化为 cp1252），不再出现「显示按 GBK、发送仍按 UTF-8」。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>原生下载不再双请求 / 不假报进度</strong>：大小未知时直接交给浏览器，不再先 fetch 一次；响应头才发现是大文件时取消当前流并提示刷新目录；原生下载明确提示由浏览器下载器管理进度与取消。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>后端健壮性</strong>：WebSocket 泵取消时统一收尸 pending getter / watcher，消除 Task was destroyed 残留；新增统一断线事件（接收线程退出与主动断开都触发、去重）；clear_handlers_if 与注册回放对齐锁顺序；_safe_rename 整段串行化到连接级 SFTP 锁。新增 40 项回归测试（共 236 项），全量 359 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.25</span>
     <span class="rel-date">2026-11-09</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>在线编辑不再被慢响应串号</strong>：弹窗加独立代次，读取的成功 / 失败 / 收尾都只认自己那一代；内容没读全之前「保存」不可用，杜绝把空内容写回远端文件。</div></div>

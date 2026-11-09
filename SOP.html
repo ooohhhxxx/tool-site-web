@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.25 ｜ 生效日期：2026-11-09 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.26 ｜ 生效日期：2026-11-09 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -174,6 +174,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <h2>十四、版本记录</h2>
 <table>
   <tr><th>版本</th><th>日期</th><th>主要内容</th></tr>
+  <tr><td>V0.4.26</td><td>2026-11-09</td><td>发布后独立复核的缺陷修复：终端 Ctrl+F 查找按 xterm 终端列换算，中文 / CJK 宽字符高亮不再偏移；切会话清空查找关键字与游标、连接记录搜索隐藏选中项自动改选可见记录、Ctrl+滚轮监听具名保存并卸载注销；串口运行中改编码同时改后端发送侧编码与前端 TextDecoder（Latin-1 归一化为 cp1252）；原生下载大小未知直接交浏览器不再双请求、响应头才发现大文件时取消当前流并提示刷新目录、明确由浏览器下载器管理进度与取消且不假报 100%；后端 WebSocket 泵取消时统一收尸 pending getter / watcher、新增统一断线事件 _notify_closed（去重、接收线程退出与主动断开都触发）、clear_handlers_if 与注册回放对齐锁顺序、_safe_rename 整段串行化到连接级 SFTP 锁。新增 40 项回归测试（共 236 项），全量 359 项断言零失败。</td></tr>
   <tr><td>V0.4.25</td><td>2026-11-09</td><td>发布后独立复核的缺陷修复：在线编辑弹窗加代次守卫与保存就绪门禁，慢响应不再写空文件；流式下载去 Content-Length 改 chunked、字节数与读异常明确报错、SFTP 操作统一加锁；重连凭据独立存表带 TTL（不受死会话回收影响）、先建新再拆旧且失败不销毁旧会话、编码同步凭据；捕获 CancelledError、替换前复查取消、看门狗完成后不误杀、connect_id 复用共享 Event；切换标签/编码/上传进度轮询加代次、dead 会话不重开 WS、Host 头补 DNS rebinding 校验、SFTP 降级路径关闭通道；原生下载不假报进度且大小未知不再双请求、API 保留取消错误码、Modbus 暂停不丢错误、串口暂停行首与运行中改编码。新增 46 项回归测试（共 196 项）。</td></tr>
   <tr><td>V0.4.24</td><td>2026-11-09</td><td>清理上一轮遗留的五项限制：上传进度改按后端真实 SFTP 写入字节上报（区分上传/写入远端/完成）；新增 connect_id 与后端连接取消接口，看门狗在握手阻塞时关闭 socket，可中途放弃连接；重连改用进程内存中的本次认证凭据（不落盘、不进日志），密码/私钥会话均可一键恢复；invoke_shell 改走带 timeout 的通道打开，老设备无响应不再挂死；不支持 showSaveFilePicker 时超过 32MB 走浏览器原生下载，大文件不进内存。新增 18 项回归测试（共 150 项）。</td></tr>
   <tr><td>V0.4.23</td><td>2026-11-09</td><td>体验与健壮性升级：SFTP 下载改流式（真实进度、不落临时文件）、大文件流式写盘；连接记录搜索 / 终端 Ctrl+F / 会话内编码切换 / 手动重连 / 连接中取消；串口时间戳与暂停、Modbus 日志暂停与自动滚动；SFTP 协商与 WS 发送超时、Modbus 重试时间预算、死会话宽限回收、分发串行化、原子写目录 fsync 与 tmp 清理；设置导入归位、自动重连与窗口记忆即时生效。新增 46 项回归测试（共 132 项）。</td></tr>
