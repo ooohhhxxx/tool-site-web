@@ -1,24 +1,24 @@
 {
-  "version": "0.4.22",
+  "version": "0.4.23",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22131239,
-  "sha256": "fb5ef87d24e54d2970b6ce5e647412e1404b32ec41af94150b3ab310c2a33a78",
+  "size": 22138382,
+  "sha256": "a4207cb9de1a7e6a45c21fb98e48cfc6246b4ede7344566e8df931da49c5cd3f",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.22",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.22/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.23",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.23/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "数据安全与执行模型修复。① 插件任务绑定发起 SSH 会话，批量命令中途切标签不再打到别的主机；面板长任务改后台执行、可随时停止，不再 30 秒假失败。② 上传取消会通知后端在替换远端文件前停住并清理半截文件，传输状态按会话隔离、上传前锁定会话与目录。③ 在线编辑对二进制/无法无损解码的文件改为只读，写入使用严格编码并检测「打开后被改」冲突，避免静默毁文件。④ 配置读改写加锁、设置改差量保存；备份导入改按键合并并通知 Modbus 重新载入点位。⑤ 串口连接代次加锁、旧 WebSocket 回调不拆新连接；页面刷新恢复串口/Modbus 后端状态；顶栏主机随活动标签更新；更新下载异常不再卡在下载中。⑥ SSH 多终端标签不再互相顶掉输出；托盘就绪标记；Latin-1 前后端编码统一；Modbus CSV 带 BOM 与时间戳。新增 57 项回归测试（共 86 项）。"
+  "notes": "体验与健壮性升级。① SFTP 下载改为流式：后端边读远端边推送，进度条显示真实传输进度；大文件优先直接流式写盘，不再整份占内存。② 补齐旧版能力：连接记录搜索、终端 Ctrl+F 查找、会话内收发编码切换、手动重连、连接中取消。③ 串口时间戳与暂停显示、Modbus 日志暂停/自动滚动。④ 后端加固：SFTP 协商与 WebSocket 发送带超时、Modbus 重试不再让慢设备等两倍超时、死会话按宽限期回收、终端数据分发串行化、配置/记录原子写补目录 fsync。⑤ 设置导入不再让旧开关复活，自动重连与窗口记忆运行中即时生效。新增 46 项回归测试（共 132 项），全量 254 项断言零失败。"
 }

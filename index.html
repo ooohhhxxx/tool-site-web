@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.22 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.23 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.22）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.23）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,26 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.22 · 2026-11-09</p>
+<p class="section-sub">v0.4.23 · 2026-11-09</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.23</span>
+    <span class="rel-date">2026-11-09</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>下载进度终于是真的</strong>：后端改为边读远端边推送，进度条反映的是 SFTP 实际传输而非本地落盘；大文件优先直接流式写盘，不再把整份文件攒进内存。</div></div>
+    <div class="row"><div class="tag">能力</div><div class="txt"><strong>补齐一批旧版习惯</strong>：连接记录搜索框、终端 Ctrl+F 查找、当前会话内收发编码随时切换、断线后一键重连、连接过程中可取消等待。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>连接不再会挂住</strong>：SFTP 协商与 WebSocket 发送都带超时；Modbus 慢设备重试不再等两倍超时；死会话按宽限期回收；终端多标签的数据分发严格保序。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>排障更顺手</strong>：串口每行时间戳与暂停显示、Modbus 报文日志暂停 / 自动滚动；设置导入后旧开关不再复活，自动重连与窗口记忆改完即时生效。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>数据更稳</strong>：配置与连接记录原子写补目录 fsync 并在失败时清理临时文件；连接记录端口异常不再让整份保存失败。新增 46 项回归测试（共 132 项），全量 254 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.22</span>
     <span class="rel-date">2026-11-09</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>上传取消会真正停下来</strong>：前端取消时同步通知后端，写循环在替换远端文件之前中止并清理半截文件；上传前锁定会话与目录，传输进度按会话隔离，切标签不再串号。</div></div>
