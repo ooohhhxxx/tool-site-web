@@ -1,24 +1,24 @@
 {
-  "version": "0.4.23",
+  "version": "0.4.24",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22138382,
-  "sha256": "a4207cb9de1a7e6a45c21fb98e48cfc6246b4ede7344566e8df931da49c5cd3f",
+  "size": 22139443,
+  "sha256": "2b6444570da47b8eea8970286f16a78f14351b1996ef2757709c13cc4be730ef",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.23",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.23/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.24",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.24/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "体验与健壮性升级。① SFTP 下载改为流式：后端边读远端边推送，进度条显示真实传输进度；大文件优先直接流式写盘，不再整份占内存。② 补齐旧版能力：连接记录搜索、终端 Ctrl+F 查找、会话内收发编码切换、手动重连、连接中取消。③ 串口时间戳与暂停显示、Modbus 日志暂停/自动滚动。④ 后端加固：SFTP 协商与 WebSocket 发送带超时、Modbus 重试不再让慢设备等两倍超时、死会话按宽限期回收、终端数据分发串行化、配置/记录原子写补目录 fsync。⑤ 设置导入不再让旧开关复活，自动重连与窗口记忆运行中即时生效。新增 46 项回归测试（共 132 项），全量 254 项断言零失败。"
+  "notes": "把上一轮遗留的五项限制一次性清掉。① 上传进度改为后端真实 SFTP 写入字节数：新增进度上报接口，前端区分「正在上传 / 正在写入远端 / 写入完成」，不再用本地读取量冒充进度。② 连接过程可真正取消：新增 connect_id 与后端取消接口，握手阻塞期间由看门狗关闭 socket 中断 paramiko；新建主机与 SSH 页均支持中途放弃。③ 断线重连不再依赖免密记录：本次认证凭据只保存在进程内存（不落盘、不进日志），密码/私钥会话都能一键恢复。④ 终端与 SFTP 会话协商带超时：invoke_shell 改走带 timeout 的通道打开，老设备不响应时不再挂死整个连接。⑤ 大文件下载彻底不进内存：环境不支持流式文件选择器时，超过 32MB 直接交浏览器原生下载。新增 18 项回归测试（共 150 项），全量 272 项断言零失败。"
 }
