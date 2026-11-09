@@ -1,24 +1,24 @@
 {
-  "version": "0.4.15",
-  "date": "2026-11-08",
+  "version": "0.4.16",
+  "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22103104,
-  "sha256": "09a91b7c2fe7250d2508e545d2222996678c6a002f5d6d2e0003e2ba7f0f9219",
+  "size": 22106760,
+  "sha256": "195859e87c19b318745b132d31c47357ceb034fdc782e16a5d5f8dfaa96d6f46",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.15",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.15/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.16",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.16/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "代码审查后的一批修复与加固。修复：插件实时日志流不推送（日志 hook 改为注入）、日志面板 500 条后停更（改用单调序号游标）、记录直连绕过 SSH 会话上限（限额下沉到统一建连入口）。安全/内存：上传改分块流式、下载落临时文件再流式发送（大文件不再整段进内存），上传文件名净化、静态资源路径越界校验、未知接口返回 404。并发/收尾：会话字典/串口打开/SSH 断开补锁，终端阻塞收发转线程池，退出统一停插件并关闭会话。可靠性：版本号比较修正、下载单飞+临时名去重、设置/备份原子写、依赖锁版本。"
+  "notes": "第二轮代码审查修复与加固。① 修复 WebSocket 丢帧统计失效（跨线程 QueueFull 不计入、还刷堆栈日志）；② 日志序号自增与写入放进同一临界区，插件日志不再偶发漏条；③ 远端断线立即标记连接失效，死会话不再占满 SSH 会话上限；④ 下载临时文件保证清理（取消/异常也删）并在启动时清扫残留；⑤ 终端缓冲设上限；串口开关/下载/插件启停补锁；⑥ 窗口与在线更新退出前先停插件、断开 SSH/串口；⑦ SFTP 列表补 is_link、命令执行加整体超时；⑧ 日志/插件列表连续重载不再偶发 500。"
 }
