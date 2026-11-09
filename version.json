@@ -1,24 +1,24 @@
 {
-  "version": "0.4.16",
+  "version": "0.4.17",
   "date": "2026-11-09",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22106760,
-  "sha256": "195859e87c19b318745b132d31c47357ceb034fdc782e16a5d5f8dfaa96d6f46",
+  "size": 22103492,
+  "sha256": "e9d0f6178caec4ec9aa2bb6cdc211f2f6693f67a1f4d4f4d3236acbfd6673789",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.16",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.16/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.17",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.17/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "第二轮代码审查修复与加固。① 修复 WebSocket 丢帧统计失效（跨线程 QueueFull 不计入、还刷堆栈日志）；② 日志序号自增与写入放进同一临界区，插件日志不再偶发漏条；③ 远端断线立即标记连接失效，死会话不再占满 SSH 会话上限；④ 下载临时文件保证清理（取消/异常也删）并在启动时清扫残留；⑤ 终端缓冲设上限；串口开关/下载/插件启停补锁；⑥ 窗口与在线更新退出前先停插件、断开 SSH/串口；⑦ SFTP 列表补 is_link、命令执行加整体超时；⑧ 日志/插件列表连续重载不再偶发 500。"
+  "notes": "修复「终端空白」：前端创建 SSH 会话后漏了打开终端 WebSocket，导致已连接真实设备但终端一直没有输出。现在建会话、切回标签都会自动连接终端流；设备未启用 SFTP 时仍会提示「终端可用」，不影响终端使用。"
 }

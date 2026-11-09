@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.16 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.17 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.16）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.17）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,20 +180,16 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.16 · 2026-11-09</p>
+<p class="section-sub">v0.4.17 · 2026-11-09</p>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v0.4.16</span>
+    <span class="rel-ver">v0.4.17</span>
     <span class="rel-date">2026-11-09</span>
     <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>丢帧统计与日志风暴</strong>：WebSocket 队列满时的丢弃改为在事件循环内处理并计入 <code>ws_dropped</code>，不再每丢一帧刷一条堆栈日志。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>插件日志偶发漏条</strong>：日志序号自增与写入放进同一临界区，客户端按 seq 增量拉取不再越过尚未落地的日志。</div></div>
-    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>死会话占满上限</strong>：远端断开时立即标记连接失效，会话上限只统计真正连着的连接。</div></div>
-    <div class="row"><div class="tag">加固</div><div class="txt"><strong>大文件与并发</strong>：下载临时文件保证清理（取消/异常也删）并在启动时清扫残留；终端缓冲设上限；串口开关、下载、插件启停补锁。</div></div>
-    <div class="row"><div class="tag">加固</div><div class="txt"><strong>退出更干净</strong>：窗口退出与在线更新退出都会先停插件、断开 SSH/串口，再结束进程，设备侧连接不再靠超时释放。</div></div>
-    <div class="row"><div class="tag">体验</div><div class="txt"><strong>细节</strong>：SFTP 列表补 <code>is_link</code>（符号链接识别正确）、命令执行增加整体超时、日志/插件列表在连续重载时不再偶发 500。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>终端空白（连上设备却没有输出）</strong>：前端创建会话后漏了打开终端 WebSocket，终端一直是空的。现在建会话、切回标签都会自动连上终端流。</div></div>
+    <div class="row"><div class="tag">提示</div><div class="txt">设备未启用 SFTP 子系统时仍会提示「已连接，但服务端未启用 SFTP（终端可用）」，终端功能不受影响。</div></div>
   </div>
 </div>
 
