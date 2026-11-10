@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.26 ｜ 更新于 2026-11-09 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.27 ｜ 更新于 2026-11-10 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.26）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.27）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.26 · 2026-11-09</p>
+<p class="section-sub">v0.4.27 · 2026-11-10</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.27</span>
+    <span class="rel-date">2026-11-10</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>在线编辑保存与下载再补三道防线</strong>：「保存」也加代次守卫，保存途中打开别的文件不会关掉新编辑器或刷错会话；下载流结束校验实收字节，半截文件不再落盘并假报成功；中途取消下载由响应对象可靠关闭远端文件句柄。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>串口改编码与终端断线不再竞态</strong>：编码切换加代次守卫与请求串行化，失败自动回滚下拉框，重连沿用新编码；终端收尾把清订阅提到所有等待之前，二次取消不再留下无效订阅。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>异常输入与并发不再出错</strong>：畸形端口、脏端口连接记录、非法串口编码不再返回 500；并发列目录不串路径；远端文件在读取期间变大不再被误判为下载不完整；设置备份导入与差量保存串行化。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>查找与操作细节打磨</strong>：终端查找按列逐字符折叠对齐、长跑后游标自动平移、点当前标签不再清空查找态；原生下载提供可达的取消说明入口；大文件判定收紧，未知大小不会被读进内存。新增 42 项回归测试（共 279 项），全量 402 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.26</span>
     <span class="rel-date">2026-11-09</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>终端查找中文不再偏移</strong>：Ctrl+F 查找按 xterm 终端列换算，中文 / CJK 宽字符高亮精确对齐；切会话时清空查找关键字与游标，不再把旧设备的查找带到新设备；连接记录搜索隐藏了选中项会自动改选可见记录；Ctrl+滚轮监听具名保存并在卸载时注销。</div></div>
