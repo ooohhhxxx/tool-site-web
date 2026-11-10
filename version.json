@@ -1,24 +1,24 @@
 {
-  "version": "0.4.26",
-  "date": "2026-11-09",
+  "version": "0.4.27",
+  "date": "2026-11-10",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22145289,
-  "sha256": "f789198f94442dd9de55d9a5ea498706d710a1ebb6750262dab511bfd8fb3430",
+  "size": 22151684,
+  "sha256": "4c216bb42e3ee6909412b64edf0c169137ebd61ff469320db6e89fbe9d9e9754",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.26",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.26/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.27",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.27/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "发布后独立复核的缺陷修复版（0.4.26）：① 终端 Ctrl+F 查找按 xterm 终端列换算，中文/CJK 宽字符高亮不再偏移；切会话时清空查找关键字与游标，不再把旧设备的查找带到新设备；连接记录搜索隐藏了选中项会自动改选可见记录；Ctrl+滚轮监听具名保存并在卸载时注销。② 串口运行中改编码现在同时改后端发送侧编码与前端的 TextDecoder，发送与显示用同一编码表（Latin-1 自动归一化为 cp1252）。③ 原生下载：大小未知时直接交给浏览器、不再先 fetch 一次造成双请求；响应头才发现是大文件时取消当前流并提示刷新目录，不再多发一次 GET；原生下载明确提示由浏览器下载器管理进度与取消、不再假报 100%。④ 后端健壮性：WebSocket 泵取消时统一收尸 pending getter/watcher，消除 Task was destroyed 残留；新增统一断线事件 _notify_closed（用 _close_notified 去重，接收线程退出与主动断开都触发）；clear_handlers_if 与注册回放对齐锁顺序；_safe_rename 整段串行化到连接级 SFTP 锁。新增 40 项回归测试（共 236 项），全量 359 项断言零失败。"
+  "notes": "发布后独立复核的缺陷修复版（0.4.27）：① 数据安全补三道防线 —— 在线编辑「保存侧」加代次守卫，保存途中打开别的文件不再关掉新编辑器或刷错会话；下载流结束校验实收字节，半截文件不再落盘并假报成功；客户端中途取消下载时由响应对象的 finally 可靠关闭远端 SFTP 句柄（Starlette 取消路径不关底层 generator）。② 状态机收敛 —— 串口运行中改编码加代次守卫与请求串行化，失败回滚下拉框且重连沿用新编码；终端 WebSocket 收尾把清订阅提到所有 await 之前，二次取消不再泄漏订阅；设置备份导入与差量保存串行化。③ 容错 —— 畸形端口 Host、脏端口连接记录、非法串口编码不再返回 500；并发列目录不串路径；远端文件在 stat 之后变大不再被误判为下载不完整。④ 体验 —— 终端查找按列逐字符折叠对齐、scrollback 裁剪后游标自动平移、点当前标签不再清空查找态、原生下载提供可达的取消说明入口、大文件判定收紧。新增 42 项回归测试（共 279 项），全量 402 项断言零失败。"
 }
