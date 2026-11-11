@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.27 ｜ 更新于 2026-11-10 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.28 ｜ 更新于 2026-11-11 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.27）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.28）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.27 · 2026-11-10</p>
+<p class="section-sub">v0.4.28 · 2026-11-11</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.28</span>
+    <span class="rel-date">2026-11-11</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>终端查找与串口编码回到正确状态</strong>：查找游标改用命中行内容校验，修正上一版平移方向错误导致的跳行与重命中；关键字与行文本统一折叠规则。页面刷新恢复后端串口时补回编码，不再乱码，重连也不会丢设置。</div></div>
+    <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>下载句柄关闭更可靠</strong>：关闭失败会记日志并允许重试，不再「最多尝试一次」；收尾不与在途读操作抢 SFTP 锁；响应构造异常也有兜底，避免远端句柄残留。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>异常输入与极速文件变化不再出错</strong>：脏连接记录、畸形端口、非法编码返回可读 400 而非 500；在线编辑读取改分块带上界，远端文件在读取期间暴涨不再整份进内存；终端 WebSocket 收尾与流式泵统一收尸。</div></div>
+    <div class="row"><div class="tag">体验</div><div class="txt"><strong>状态一致性细节打磨</strong>：保存到已关闭会话不再串扰、保存中输入框同步禁用、导入与设置保存严格有序、异常下载主动取消响应流、原生下载给出可执行的取消指引。新增 30 项回归测试（共 314 项），全量 437 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.27</span>
     <span class="rel-date">2026-11-10</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">数据安全</div><div class="txt"><strong>在线编辑保存与下载再补三道防线</strong>：「保存」也加代次守卫，保存途中打开别的文件不会关掉新编辑器或刷错会话；下载流结束校验实收字节，半截文件不再落盘并假报成功；中途取消下载由响应对象可靠关闭远端文件句柄。</div></div>

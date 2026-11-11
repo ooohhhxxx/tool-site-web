@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.27 ｜ 生效日期：2026-11-10 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.28 ｜ 生效日期：2026-11-11 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -174,6 +174,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <h2>十四、版本记录</h2>
 <table>
   <tr><th>版本</th><th>日期</th><th>主要内容</th></tr>
+  <tr><td>V0.4.28</td><td>2026-11-11</td><td>发布后独立复核的缺陷修复：终端查找删掉基于 xterm baseY 差值的错误平移，改用命中行文本 findCursorText 校验裁剪位移，新增 foldText 让关键字与行文本统一逐 code point 折叠（Final_Sigma 一致）；SerialView onMounted 恢复分支读取 st.meta.encoding 并映射下拉框值、encRestoring 抑制多余请求、同步 encApplied/lastForm；_SftpDownloadResponse.close_remote 改为成功后才置位、失败记日志可重试，局部 closer 不再抢 conn._sftp_lock；ssh_terminal 与 _stream_ws 对齐用 shield(gather_task)/shield(ws.close()) 且内层 finally 兜底；record_connect 整段脏记录容错返回 400；chunks 用默认参数绑定 closer 消除循环引用与 NameError、resp 构造异常直接 close_remote 兜底；sftp_download_bytes 分块读并带上界；__call__ 的 shield 显式 ensure_future + add_done_callback 消费异常；保存守卫拆 owned/stillMine、textarea 补 busy、importBackup 的 load 排进 saveChain、下载异常 reader.cancel()+abort()、原生下载中性提示与 findActiveDownload 全表查找。新增 30 项回归测试（共 314 项），全量 437 项断言零失败。</td></tr>
   <tr><td>V0.4.27</td><td>2026-11-10</td><td>发布后独立复核的缺陷修复：在线编辑「保存侧」加代次守卫，保存途中打开别的文件不再关掉新编辑器；下载流结束校验实收字节（单向小于），半截文件不再落盘并假报成功；新增 _SftpDownloadResponse 在 __call__ 级 finally 幂等关闭远端句柄，修正 Starlette 取消路径不关底层 generator 的前提；串口编码切换加 encSeq 代次守卫与请求串行化、失败回滚下拉框、同步重连快照；ssh_terminal 把同步清订阅提到所有 await 之前；sent 改单向小于、_same_origin 端口读取纳入 try、record_connect 复用 _port_of、串口 connect 校验编码并增量写 meta、serial_send 捕获 LookupError、sftp_list 锁内取 path、_stream_ws 用 shield 收尸并补 ws.close；lineCells 逐 code point 折叠对齐、findCursor 用 baseY 平移、activate 区分同会话、原生下载取消入口可达、串口卸载清理、大小判定用 Number.isFinite、importBackup 排进 saveChain。新增 42 项回归测试（共 279 项），全量 402 项断言零失败。</td></tr>
   <tr><td>V0.4.26</td><td>2026-11-09</td><td>发布后独立复核的缺陷修复：终端 Ctrl+F 查找按 xterm 终端列换算，中文 / CJK 宽字符高亮不再偏移；切会话清空查找关键字与游标、连接记录搜索隐藏选中项自动改选可见记录、Ctrl+滚轮监听具名保存并卸载注销；串口运行中改编码同时改后端发送侧编码与前端 TextDecoder（Latin-1 归一化为 cp1252）；原生下载大小未知直接交浏览器不再双请求、响应头才发现大文件时取消当前流并提示刷新目录、明确由浏览器下载器管理进度与取消且不假报 100%；后端 WebSocket 泵取消时统一收尸 pending getter / watcher、新增统一断线事件 _notify_closed（去重、接收线程退出与主动断开都触发）、clear_handlers_if 与注册回放对齐锁顺序、_safe_rename 整段串行化到连接级 SFTP 锁。新增 40 项回归测试（共 236 项），全量 359 项断言零失败。</td></tr>
   <tr><td>V0.4.25</td><td>2026-11-09</td><td>发布后独立复核的缺陷修复：在线编辑弹窗加代次守卫与保存就绪门禁，慢响应不再写空文件；流式下载去 Content-Length 改 chunked、字节数与读异常明确报错、SFTP 操作统一加锁；重连凭据独立存表带 TTL（不受死会话回收影响）、先建新再拆旧且失败不销毁旧会话、编码同步凭据；捕获 CancelledError、替换前复查取消、看门狗完成后不误杀、connect_id 复用共享 Event；切换标签/编码/上传进度轮询加代次、dead 会话不重开 WS、Host 头补 DNS rebinding 校验、SFTP 降级路径关闭通道；原生下载不假报进度且大小未知不再双请求、API 保留取消错误码、Modbus 暂停不丢错误、串口暂停行首与运行中改编码。新增 46 项回归测试（共 196 项）。</td></tr>

@@ -1,24 +1,24 @@
 {
-  "version": "0.4.27",
-  "date": "2026-11-10",
+  "version": "0.4.28",
+  "date": "2026-11-11",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22151684,
-  "sha256": "4c216bb42e3ee6909412b64edf0c169137ebd61ff469320db6e89fbe9d9e9754",
+  "size": 22153601,
+  "sha256": "0c9f6f03c396a202a83e81e95a52b4c9b3a390a610274ec03394947a36ddb1d5",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.27",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.27/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.28",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.28/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "发布后独立复核的缺陷修复版（0.4.27）：① 数据安全补三道防线 —— 在线编辑「保存侧」加代次守卫，保存途中打开别的文件不再关掉新编辑器或刷错会话；下载流结束校验实收字节，半截文件不再落盘并假报成功；客户端中途取消下载时由响应对象的 finally 可靠关闭远端 SFTP 句柄（Starlette 取消路径不关底层 generator）。② 状态机收敛 —— 串口运行中改编码加代次守卫与请求串行化，失败回滚下拉框且重连沿用新编码；终端 WebSocket 收尾把清订阅提到所有 await 之前，二次取消不再泄漏订阅；设置备份导入与差量保存串行化。③ 容错 —— 畸形端口 Host、脏端口连接记录、非法串口编码不再返回 500；并发列目录不串路径；远端文件在 stat 之后变大不再被误判为下载不完整。④ 体验 —— 终端查找按列逐字符折叠对齐、scrollback 裁剪后游标自动平移、点当前标签不再清空查找态、原生下载提供可达的取消说明入口、大文件判定收紧。新增 42 项回归测试（共 279 项），全量 402 项断言零失败。"
+  "notes": "发布后独立复核的缺陷修复版（0.4.28）：① 终端查找游标改用命中行内容校验，修正上一版基于 xterm baseY 差值的平移方向错误（缓冲未满时误跳行、真正裁剪时反而不平移），关键字与行文本统一逐字符折叠，希腊语词尾也能命中。② 页面刷新恢复后端串口时补回编码，不再出现后端 GBK / 前端 UTF-8 的乱码与重连丢设置。③ 下载句柄关闭改为「至少成功一次」：首次失败会记日志并允许重试，且收尾不再与在途读操作抢同一把 SFTP 锁；终端 WebSocket 收尾与串口/插件流式泵统一采用 shield 收尸。④ 脏连接记录、畸形端口、非法编码一律返回可读 400，不再 500；在线编辑读取改分块带上界，远端文件在 stat 之后暴涨不再整份进内存；下载响应构造异常也有句柄兜底。⑤ 体验：保存到已关闭会话的状态串扰、保存中输入框可编辑导致修改丢失、导入与设置保存乱序、异常下载流残留、原生下载取消提示误导等一并收敛。新增 30 项回归测试（共 314 项），全量 437 项断言零失败。"
 }
