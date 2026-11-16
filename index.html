@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.28 ｜ 更新于 2026-11-11 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.29 ｜ 更新于 2026-11-16 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -171,7 +171,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.28）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.29）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -180,12 +180,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.28 · 2026-11-11</p>
+<p class="section-sub">v0.4.29 · 2026-11-16</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.29</span>
+    <span class="rel-date">2026-11-16</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>西门子 S7 PLC 模块</strong>：原生支持 S7 协议（ISO-on-TCP，端口 102），标签页位于「Modbus TCP」与「串口调试」之间，可像 Modbus 一样连接、读写、建地址表轮询。协议栈为纯 Python 实现，不依赖 snap7.dll，安装包开箱可用。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>S7 读写与监控</strong>：支持 DB / M / I / Q 四类存储区，地址写法与博途一致（DB1.DBX0.0、DB1.DBW0、M10.0、I0.0、Q2.1），类型覆盖 BOOL / BYTE / WORD / INT / DWORD / DINT / REAL；地址表可按间隔轮询、十进制或十六进制显示、备注可改，读写日志带耗时。连接参数含机架/槽位并提示 S7-1200/1500 的 PUT/GET 与 DB 优化访问要求。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>下载句柄与终端查找</strong>：远端文件句柄关闭收敛为单一入口（一个锁、一个幂等标志），不再重复发关闭请求或与在途读并发；终端查找改用命中关键词邻域重定位，原地重绘或 scrollback 裁剪后不再跳错行。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>状态一致性</strong>：页面刷新恢复串口时补回编码不再乱码；设置导入期间保留在途修改，前后端不再分叉；取消下载不再误报「下载不完整」；S7 写整型地址传小数会明确报错而不是静默截断。新增 27 项 S7 协议测试（共 365 项），全量 488 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.28</span>
     <span class="rel-date">2026-11-11</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>终端查找与串口编码回到正确状态</strong>：查找游标改用命中行内容校验，修正上一版平移方向错误导致的跳行与重命中；关键字与行文本统一折叠规则。页面刷新恢复后端串口时补回编码，不再乱码，重连也不会丢设置。</div></div>
