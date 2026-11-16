@@ -30,11 +30,11 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V0.4.30 ｜ 生效日期：2026-11-16 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
-<p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
+<p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试、西门子 S7 PLC 调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
 
 <h2>二、适用范围</h2>
 <ul>
-  <li>需要同时管理 SSH 主机、Modbus TCP 设备与串口设备的现场调试、运维、产线排障场景；</li>
+  <li>需要同时管理 SSH 主机、Modbus TCP 设备、西门子 S7 PLC 与串口设备的现场调试、运维、产线排障场景；</li>
   <li>Windows 10 / 11 x64 桌面环境；</li>
   <li>本工具与「经典 Tk 版调试工具」是<strong>两个独立软件</strong>，可同时安装、互不影响。本 SOP 只适用于桌面版 v0.2.0。</li>
 </ul>
@@ -68,7 +68,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </ol>
 <div class="tip">💡 用户数据（连接记录与已加密的密码、窗口几何、插件开关）都存放在用户目录，覆盖安装不会清除。在线更新只使用 127.0.0.1 之外的官网/Gitee 地址，不会上传任何本机配置。</div>
 <h3>4.3 卸载</h3>
-<p>通过「设置 → 应用 → 安装的应用」或开始菜单的「卸载」入口执行。卸载不会删除用户目录下的配置与日志文件，需要彻底清理时手动删除第十节列出的路径。</p>
+<p>通过「设置 → 应用 → 安装的应用」或开始菜单的「卸载」入口执行。卸载不会删除用户目录下的配置与日志文件，需要彻底清理时手动删除第十一节列出的路径。</p>
 <div class="warn">⚠️ 本软件未购买数字签名证书，Windows Defender / 360 等可能误报，请先核对 SHA256 再添加信任。</div>
 
 <h2>五、启动、单实例与运行原理</h2>
@@ -113,7 +113,19 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </ol>
 <div class="danger">🚨 <strong>安全红线：</strong>对运行中的设备（尤其是控制物理动作的 PLC）写入任何线圈或寄存器前，必须与现场人员确认地址含义。擅自写入可能导致设备动作或生产事故！</div>
 
-<h2>八、串口调试操作流程</h2>
+<h2>八、S7 PLC 调试操作流程</h2>
+<ol>
+  <li>左侧点「S7 PLC」，填写 PLC 的 IP、端口（默认 102）、<strong>机架</strong>与<strong>槽位</strong>（S7-1200/1500 常用 0/1，S7-300 常用 0/2）、超时，点「连接」。连接成功后状态栏会显示 PDU 协商结果。</li>
+  <li>「快速读写」区输入地址：<code>DB1.DBX0.0</code>（位）、<code>DB1.DBB0</code>（字节）、<code>DB1.DBW0</code>（字）、<code>DB1.DBD0</code>（双字），位存储区写 <code>M10.0</code>，输入/输出写 <code>I0.0</code> / <code>Q0.1</code>。类型可选「自动」按地址后缀推断，也可显式指定 BOOL / BYTE / WORD / INT / DWORD / DINT / REAL。</li>
+  <li>读取时填「数量」可一次读多个元素（BOOL 读多个位会显示成 0/1 序列）。写入值支持逗号分隔的多个值（如 <code>1,0,1,1</code> 写 4 个位、<code>1,2,3</code> 写 3 个字），BOOL 按位打包。写整型地址时传小数会被明确拒绝，需写浮点请把类型选成 REAL。</li>
+  <li>地址表：把常用地址加入监控列表并给备注，点「开始轮询」按设定间隔刷新。<strong>所有点位会合并成一次请求</strong>（每批最多 20 个地址），状态栏显示本轮耗时与请求次数；某个地址读失败只把该行标红并显示原因，不影响其他点位。地址表保存在本机，刷新页面不丢。</li>
+  <li>块读取 / 结构解析：填起始地址与字节长度，点「读取块」一次读回整块，再按「偏移 + 类型 + 数量」在右侧表格拆成多个字段——<strong>BOOL 按位偏移，其他类型按字节偏移</strong>；可切换十进制 / HEX / 位图显示，并查看原始报文。适合一次解析一个结构体，比逐字段请求少很多往返。</li>
+  <li>左右分栏之间有可拖动分割条，双击恢复默认。</li>
+</ol>
+<div class="danger">🚨 <strong>安全红线：</strong>向运行中的 PLC 写入 DB / M / Q 区域前，必须与现场人员确认地址含义与允许范围。误写可能直接触发设备动作或造成生产事故！</div>
+<div class="tip">💡 <strong>连不上或读不到数据的三个常见原因：</strong>① S7-1200/1500 未在 CPU 属性中勾选「允许来自远程对象的 PUT/GET 通信访问」；② 数据块勾了「优化的块访问」，必须取消后才能用 DB1.DBX 这类绝对地址读写；③ 机架/槽位填错（1200/1500 多为 0/1，300 多为 0/2）。另外端口 102 需网络可达，现场交换机或防火墙可能拦截。</div>
+
+<h2>九、串口调试操作流程</h2>
 <ol>
   <li>左侧点「串口调试」，点「刷新端口」枚举本机 COM 口，选择端口、波特率、数据位、校验位、停止位与编码，点「打开串口」。</li>
   <li>在发送区输入内容，可选 HEX 模式（字节用空格分隔）、自动换行、定时循环发送；<code>Ctrl+回车</code> 直接发送。</li>
@@ -122,7 +134,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </ol>
 <div class="warn">⚠️ Windows 的串口是独占资源。若提示「端口被占用」，请关闭其他串口助手、PLC 编程软件，或确认没有第二个本工具实例在跑（见 5.1）。循环发送间隔建议不小于 50ms。</div>
 
-<h2>九、插件功能</h2>
+<h2>十、插件功能</h2>
 <ol>
   <li>左侧点「插件」，页面列出已发现的插件、版本、状态与说明。</li>
   <li>用开关启用 / 停用插件；选中插件后双击命令即可执行，长任务可点「停止」。</li>
@@ -131,7 +143,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </ol>
 <div class="tip">💡 内置 3 个示例插件共 9 个动作：SSH 批处理、Modbus 扫描、串口 HEX。插件沿用经典 Tk 版的 <code>PluginBase</code> 契约，已有插件可直接复用。</div>
 
-<h2>十、设置与数据存放位置</h2>
+<h2>十一、设置与数据存放位置</h2>
 <table>
   <tr><th>内容</th><th>位置</th><th>说明</th></tr>
   <tr><td>界面设置</td><td>WebView2 配置目录内的 localStorage</td><td><code>~/.ultimatetool_web_webview2/</code>，编码与缩放等</td></tr>
@@ -143,18 +155,21 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </table>
 <div class="warn">⚠️ 设置页中「关闭窗口时：最小化到托盘」「断线自动重连」「日志保留天数」目前仍是<strong>界面占位项</strong>，未接入后端逻辑；其余（编码、界面缩放、连接记录清空、窗口几何）为真实生效功能。</div>
 
-<h2>十一、故障排查</h2>
+<h2>十二、故障排查</h2>
 <table>
   <tr><th>现象</th><th>排查方向</th></tr>
   <tr><td>双击没反应 / 弹错误框</td><td>查看 <code>~/ultimatetool_web_launcher.log</code>；确认没有其他进程占用端口；必要时设 <code>UTWEB_PORT</code> 固定端口重试</td></tr>
   <tr><td>窗口白屏</td><td>确认系统已安装 Microsoft Edge WebView2 Runtime；检查杀毒软件是否拦截了本机回环连接</td></tr>
   <tr><td>提示端口被占用</td><td>关闭其他实例；或设 <code>UTWEB_PORT</code> 换一个固定端口</td></tr>
   <tr><td>本机连接被代理拦截 / WebSocket 502</td><td>启动器已自动设置 <code>NO_PROXY=127.0.0.1,localhost</code>；如自行改写环境变量请勿覆盖</td></tr>
-  <tr><td>串口打不开</td><td>见第八节，确认无其他软件占用 COM 口</td></tr>
+  <tr><td>串口打不开</td><td>见第九节，确认无其他软件占用 COM 口</td></tr>
+  <tr><td>S7 连接超时或被拒绝</td><td>确认 PLC 的 102 端口可达；核对机架/槽位；S7-1200/1500 需开启 PUT/GET 权限（见第八节）</td></tr>
+  <tr><td>S7 读 DB 返回项状态 0x05</td><td>DB 不存在、偏移越界，或数据块开启了「优化的块访问」；改用非优化块或核对偏移</td></tr>
+  <tr><td>S7 写 DWORD / REAL 失败</td><td>确认数据类型选对（浮点必须选 REAL）；写整型地址传小数会被拒绝</td></tr>
   <tr><td>连接记录 / 窗口大小没记住</td><td>确认用户目录可写；逃生口多开的第二个实例使用独立配置目录，不共享记录</td></tr>
 </table>
 
-<h2>十二、安全与合规</h2>
+<h2>十三、安全与合规</h2>
 <ul>
   <li>程序不访问外网、不上传任何连接信息或设备数据，全部通信由操作人员主动发起；</li>
   <li>对生产设备执行写操作（Modbus 写入、SSH 破坏性命令、串口控制指令）前必须双人确认；</li>
@@ -162,16 +177,18 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
   <li>本软件为个人免费工具，无数字签名，请从官方仓库核对 SHA256 后再分发。</li>
 </ul>
 
-<h2>十三、已知限制</h2>
+<h2>十四、已知限制</h2>
 <ul>
   <li>依赖系统 WebView2 Runtime；老机器可能需要单独安装 Evergreen Bootstrapper。</li>
   <li>在线更新已内置；托盘最小化、全局快捷键、文件关联与命令行传参暂未实现。</li>
-  <li>设置页部分开关为原型占位（见第十节）。</li>
+  <li>设置页部分开关为原型占位（见第十一节）。</li>
   <li>在线更新依赖能访问官网或 Gitee；完全离线的环境请手动下载安装包覆盖升级。</li>
+  <li>S7 模块为纯 Python 协议栈，已用内置模拟服务端做字节级校验，但真机兼容性（批量读的 PDU 预算、位数组、写数据项编码）仍需现场验证。</li>
+  <li>S7 暂不支持符号寻址、程序块上传/下载与 PLC 启停；S7CommPlus（S7-1200 V4+ 的加密协议）不在支持范围内。</li>
   <li>未做 WebView2 Runtime 的随包分发，离线纯净系统需提前准备运行时。</li>
 </ul>
 
-<h2>十四、版本记录</h2>
+<h2>十五、版本记录</h2>
 <table>
   <tr><th>版本</th><th>日期</th><th>主要内容</th></tr>
   <tr><td>V0.4.30</td><td>2026-11-16</td><td>S7 模块增强：新增批量读 read_many（一个 Read Var 请求带多个 S7ANY item，最多 20 个，地址表轮询 N 个点位一次往返，单项失败只标记该行）；新增块读取 read_bytes + 前端「偏移/类型/数量」结构解析（BOOL 按位偏移、其他按字节偏移，支持十进制/HEX/位图，保留原始报文）；写入支持多值与位数组（逗号分隔，BOOL 按位打包）；地址表新增「数量」列；新增可展开「地址示例」。修正两处真机会暴露的协议问题：数据项传输尺寸改用数据项专用编码（位 0x03、字节/字/双字 0x04、INT 0x05、DINT 0x06、REAL 0x07），此前写 DWORD/REAL 会被 PLC 拒绝；BOOL 多值按数量逐位解包/打包（读 M0.0 起 8 位得 0/1 数组），此前只读写 1 位；读响应字节不足时明确报「返回数据不足」。新增 8 项 S7 批量读测试（共 373 项），全量 496 项断言零失败。</td></tr>

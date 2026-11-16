@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>调试工具 - SSH / Modbus / 串口 三合一</title>
+<title>调试工具 - SSH / Modbus / S7 / 串口 四合一</title>
 <link rel="icon" href="./favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="./favicon.ico">
 <style>
@@ -80,7 +80,7 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 西门子 S7 PLC · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
   <p class="meta">版本 v0.4.30 ｜ 更新于 2026-11-16 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
@@ -132,6 +132,17 @@ footer a{color:#64748b;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
+    <div class="icon">🏭</div>
+    <h3>S7 PLC 调试</h3>
+    <ul>
+      <li>原生西门子 S7 协议（ISO-on-TCP，端口 102），纯 Python 实现，无需 snap7.dll</li>
+      <li>支持 DB / M / I / Q 存储区，地址写法与博途一致（DB1.DBW0、M10.0、Q0.1）</li>
+      <li>BOOL / BYTE / WORD / INT / DWORD / DINT / REAL，写入支持多值与位数组</li>
+      <li>批量读：多个点位合并为一次请求；块读取后按偏移解析结构</li>
+      <li>地址表轮询、十六进制显示、读写日志带耗时；机架/槽位可配</li>
+    </ul>
+  </div>
+  <div class="card">
     <div class="icon">🔌</div>
     <h3>串口调试</h3>
     <ul>
@@ -176,6 +187,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
     <tr><td>SSH / Modbus / 串口 / 插件</td><td>已实现</td><td>已实现，接口与参数保持一致</td></tr>
+    <tr><td>西门子 S7</td><td>不支持</td><td>已支持：DB / M / I / Q 读写、批量读、块解析、地址表轮询</td></tr>
   </table>
 </div>
 
@@ -542,7 +554,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / 串口 / 插件 / 设置五个页面，<code>Ctrl+1~5</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 插件 / 设置六个页面，<code>Ctrl+1~6</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 
