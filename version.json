@@ -1,24 +1,24 @@
 {
-  "version": "0.4.30",
-  "date": "2026-11-16",
+  "version": "0.4.31",
+  "date": "2026-11-17",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22177216,
-  "sha256": "93847ea5701144a2b641cb653902240e07aab76c567a79749b24952c019a8a0d",
+  "size": 22182372,
+  "sha256": "59d75e3888b9ceaa784d007a9858aebd725d42cb675ec18f25dbba8c1cb7b1d8",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.30",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.30/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.31",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.31/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "S7 模块增强（0.4.30）：参照 HSL S7 调试工具的常用能力，把「逐点请求」升级为「批量读 + 结构解析」。① 批量读：一个 S7 Read Var 请求可带多个地址（最多 20 个），地址表轮询的 N 个点位只走一次往返，状态栏显示本轮耗时与请求次数；单项失败（如地址不存在）只标记该行，不拖垮整批。② 块读取 / 结构解析：填起始地址与字节数，一次读回整块，再按「偏移 + 类型 + 数量」在本地拆成多个字段（BOOL 按位偏移、其他按字节偏移），比逐字段请求少 N-1 次往返；支持十进制 / HEX / 位图显示并保留原始报文。③ 多值与位数组：写入值支持逗号分隔（1,0,1,1 或 1,2,3），BOOL 按位打包；地址表新增「数量」列，可一次监控 8 个位或一段数组。④ 新增可展开的「地址示例」，列出 DBX/DBB/DBW/DBD、M/MB/MW/MD、I/Q 写法。⑤ 修正两处会在真机暴露的协议问题：数据项的传输尺寸改用与请求 item 不同的那套编码（位 0x03、字节/字/双字 0x04、INT 0x05、DINT 0x06、REAL 0x07），此前写 DWORD/REAL 会被 PLC 拒绝；BOOL 多值改为按数量逐位解包/打包（读 M0.0 起 8 位得 0/1 数组），此前只读写 1 位。另：读响应字节不足时明确报「返回数据不足」，不再静默返回空值。新增 8 项 S7 批量读测试（共 373 项），全量 496 项断言零失败。"
+  "notes": "S7 模块两个数据正确性问题修复 + SSH 终端复制粘贴体验（0.4.31）。① 修复批量读解析错位：S7 多项读响应的参数区只有「功能码 + 项数」两个字节，每项返回码在数据区各自的数据项里；此前实现把参数区后面当成返回码，导致地址表第 2 个点位起全部误报失败，个别情况下还会把别的地址数据当成本项结果。现已按规范逐项解析，失败项也正确推进偏移。② 修复链路失步后串值：读超时或对端异常时，连接此前不会作废，socket 里残留的响应会被下一次请求消费 —— 读 A 地址超时后再读 B 地址，可能拿到 A 的值并显示成功；写请求也可能读到残留响应而假报成功。现在超时/半帧/连接重置都会立即断链并提示重新连接，同时校验响应的 PDU 序号是否与请求一致。③ 写布尔值时只接受 0/1、true/false、on/off，其他值明确报错，不再静默写成 0 还提示成功；裸地址（M10、I0、Q5）前后端统一按位解析，避免「按字输入 100、实际写了一个位 0」。④ 顺带加固：批量读与写入都按协商 PDU 校验数据量（位数据按位计算）；重连复位 PDU；字节偏移上限改为 S7 地址字段真实支持的 2097151，超限与 DB0 直接拒绝而不是抛 500。⑤ SSH 终端新增复制粘贴提示与快捷键：选中即复制、Ctrl+V 粘贴、Ctrl+C 复制（无选中时为中断）、右键菜单复制/粘贴/全选/清屏，终端下方有一行常驻提示。新增 5 项链路失步测试（共 378 项），全量 500 项断言零失败。"
 }

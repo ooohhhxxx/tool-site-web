@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 西门子 S7 PLC · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.30 ｜ 更新于 2026-11-16 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.31 ｜ 更新于 2026-11-17 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -182,7 +182,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.30）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.31）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -192,12 +192,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.30 · 2026-11-16</p>
+<p class="section-sub">v0.4.31 · 2026-11-17</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.31</span>
+    <span class="rel-date">2026-11-17</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>S7 批量读第 2 个点位起全错</strong>：S7 多项读响应里，参数区只有「功能码 + 项数」，每项返回码在各自的数据项中。此前把参数区后面当成返回码，导致地址表从第 2 个点位开始误报失败，个别情况下还会把别的地址的数据显示成本项结果。现已按规范逐项解析，失败项也正确推进偏移。</div></div>
+    <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>读超时后会串值 / 写入假成功</strong>：一次超时后连接此前不作废，socket 里残留的响应会被下一次请求消费——读 DB1.DBW0 超时后再读 DB1.DBW2，可能拿到 DB1.DBW0 的值并显示成功；写请求也可能读到残留响应而假报成功。现在超时、半帧、连接重置都会立即断链并提示重新连接，同时校验响应的 PDU 序号与请求一致。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>SSH 终端复制粘贴</strong>：选中即复制、Ctrl+V 粘贴、Ctrl+C 复制（无选中时为中断）、右键菜单可复制/粘贴/全选/清屏；终端下方常驻一行快捷键提示，不用再猜怎么复制。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>S7 边界与类型校验</strong>：写布尔值只接受 0/1、true/false、on/off，其他值明确报错，不再静默写 0 还提示成功；裸地址 M10/I0/Q5 前后端统一按位解析；批量读与写入按协商 PDU 校验数据量（位数据按位计算）；重连复位 PDU；偏移上限改为 S7 地址字段真实支持的 2097151，超限与 DB0 直接拒绝而不是报 500。新增 5 项链路失步测试（共 378 项），全量 500 项断言零失败。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.30</span>
     <span class="rel-date">2026-11-16</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">增强</div><div class="txt"><strong>S7 批量读：N 个点位只走一次往返</strong>：一个请求可带最多 20 个地址，地址表轮询从「逐点请求」改为「批量」，状态栏显示本轮耗时与请求次数；单项失败只标记该行，不拖垮整批。</div></div>
