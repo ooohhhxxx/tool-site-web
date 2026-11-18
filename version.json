@@ -1,24 +1,24 @@
 {
-  "version": "0.4.33",
+  "version": "0.4.34",
   "date": "2026-11-18",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22184763,
-  "sha256": "1f9556bb8700c0fc7cfcec3839c2da78c30fcb34c8ed685904e7f443df28325d",
+  "size": 22185038,
+  "sha256": "72fcd06fd86689e1f273ae2562670deafa6c0156f6a146a2ef3bf29d77d8530b",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.4.33",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.33/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.4.34",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.4.34/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "遗留问题收尾：串口停滞告警解耦、发送历史持久化、插件状态自动复位、刷新恢复终端内容（0.4.33）。① 串口「接收停滞」告警不再受「断线自动重连」开关限制：这两个设置本不相关，此前关掉自动重连后，设备停发数据也不会再提示。② 串口发送历史改为持久化保存，重启后仍可下拉选用常用帧。③ 插件异步任务结束后，「执行中」徽标与「停止任务」按钮会自动复位（低频轮询直到任务退出），不再需要手动重载才能刷新。④ 在设置页下载更新完成后，顶栏状态同步变为「安装」，不再一直显示「↑ 新版本」。⑤ 新建主机的编码下拉补上 Latin-1，与设置页保持一致。⑥ 页面刷新后恢复终端输出与远程文件所在目录：以前 F5 之后终端一片空白、文件面板回到根目录，现场排障的上下文全丢（同一次运行内刷新有效）。⑦ SFTP 遇到通道中断、协议错误这类异常时，返回可读的中文错误而不是笼统的 500，便于区分网络、权限与服务端 SFTP 子系统问题。⑧ 配置备份导入只接受程序已知的设置项，手改过的备份文件里夹带未知字段会被忽略。⑨ S7 批量读：单个地址写错只让该项失败，不再整批报错——此前一条脏点位会让整轮轮询退化成逐点串行请求。另：滚动条统一为细条（深色日志面板不再出现亮色系统滚动条）、卡片圆角内不再露出直角、过长文件名省略显示、SSH 左栏按钮文案在窄窗口不再溢出。SOP 新增「本地服务边界」「插件与配置文件」「在线更新」三节，说明本机服务无鉴权、插件等同本地代码、更新包 SHA256 的验证边界，请运维人员阅读。"
+  "notes": "侧栏可折叠 + S7 表单控件显示完整（0.4.34）。① 左侧导航可以收起了：点侧栏底部右侧的箭头按钮，导航收起为只显示图标的窄栏（64px），终端、地址表、日志等主区域随之变宽，终端会自动重算列数显示更多内容；再点一次展开。收起状态会被记住，重启后保持；收起时图标悬停显示页面名称，当前页仍有高亮。② 修正 S7「块读取 / 结构解析」的控件宽度：长度输入框收窄，「显示」下拉不再被挤掉（此前「十进制」显示不全）；同一区域「类型」下拉与地址表的类型列也一并放宽，WORD / BOOL / REAL 不再显示成 WOR、BOOI。③ 侧栏品牌副标题改为「多协议调试工具」，并加省略号保护，避免窗口较窄时把顶部挤成两行。"
 }
