@@ -7,3 +7,5 @@ Thumbs.db
 .DS_Store
 .release.json
 .release_id
+# 安装包不进版本控制（体积治理，改走 Release 附件）
+UltimateToolWeb-Setup.exe

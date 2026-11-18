@@ -14,10 +14,6 @@
     {
       "name": "Gitee 固定版本 v0.5.1",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.5.1/UltimateToolWeb-Setup.exe"
-    },
-    {
-      "name": "GitHub Pages",
-      "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
   "notes": "v0.5.1 内部重构，界面与功能与 0.5.0 完全一致。本版把后端原本单文件的协议实现按协议拆开（SSH / SFTP、Modbus TCP、S7、串口各成模块），并保留一个兼容入口，所有既有调用与插件接口保持不变。对使用者没有可见变化；收益是后续新增协议、定位某个协议的问题都更清晰，也避免单文件继续膨胀到难以维护。同版本内已跑完全量回归（含 SSH 端到端、S7 协议栈、串口收发、插件执行、SFTP 传输），行为与 0.5.0 一致。若现场运行 0.5.0 稳定，可不升级；升级不会改变任何操作方式。"

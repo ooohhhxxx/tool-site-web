@@ -53,26 +53,38 @@ jobs:
           if not ver:
               sys.exit('[FAIL] version.json 缺少 version 字段')
 
+          # v0.5.2 起安装包不进仓库（体积治理，改走 Release 附件）。
+          # 此时无法在 CI 里做文件级校验，但必须保证 version.json 自身完整，
+          # 客户端自更新就是靠 size + sha256 判断的。
           if not os.path.exists(exe):
-              sys.exit(f'[FAIL] 安装包缺失: {exe}')
+              print(f'[OK] 安装包不在仓库（走 Release 附件）: {exe}')
+              if not str(meta.get('size') or '').strip().isdigit():
+                  sys.exit('[FAIL] 安装包不在仓库时，version.json 必须写明 size')
+              if len(str(meta.get('sha256') or '').strip()) != 64:
+                  sys.exit('[FAIL] 安装包不在仓库时，version.json 必须写明 sha256')
+              print('size    :', meta.get('size'), '(声明值)')
+              print('sha256  :', meta.get('sha256'))
+              size = None
+          else:
+              size = os.path.getsize(exe)
 
-          size = os.path.getsize(exe)
-          declared = str(meta.get('size') or '').strip()
-          print(f'size    : {size}  (version.json: {declared or "-"})')
-          if declared.isdigit() and int(declared) != size:
-              sys.exit(f'[FAIL] 大小不一致: version.json={declared} 实际={size}')
+          if size is not None:
+              declared = str(meta.get('size') or '').strip()
+              print(f'size    : {size}  (version.json: {declared or "-"})')
+              if declared.isdigit() and int(declared) != size:
+                  sys.exit(f'[FAIL] 大小不一致: version.json={declared} 实际={size}')
 
-          h = hashlib.sha256()
-          with open(exe, 'rb') as fh:
-              for chunk in iter(lambda: fh.read(1024 * 1024), b''):
-                  h.update(chunk)
-          got = h.hexdigest()
-          print('sha256  :', got)
-          declared_sha = str(meta.get('sha256') or '').strip().lower()
-          if len(declared_sha) == 64 and declared_sha != got:
-              sys.exit(f'[FAIL] sha256 不一致: version.json={declared_sha} 实际={got}')
-          if declared_sha in ('', '待填', 'todo', 'tbd'):
-              print('[WARN] version.json 未填 sha256，已跳过该比对')
+              h = hashlib.sha256()
+              with open(exe, 'rb') as fh:
+                  for chunk in iter(lambda: fh.read(1024 * 1024), b''):
+                      h.update(chunk)
+              got = h.hexdigest()
+              print('sha256  :', got)
+              declared_sha = str(meta.get('sha256') or '').strip().lower()
+              if len(declared_sha) == 64 and declared_sha != got:
+                  sys.exit(f'[FAIL] sha256 不一致: version.json={declared_sha} 实际={got}')
+              if declared_sha in ('', '待填', 'todo', 'tbd'):
+                  print('[WARN] version.json 未填 sha256，已跳过该比对')
 
           for page in ('index.html', 'SOP.html'):
               if not os.path.exists(page):
