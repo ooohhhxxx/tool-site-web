@@ -1,20 +1,20 @@
 {
-  "version": "0.6.0",
+  "version": "0.5.2",
   "date": "2026-11-18",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22897574,
-  "sha256": "e8a4975483fbdc3a7caf65a4d4f46e365e5568abd8e8353700b2f5abb26d7dad",
+  "size": 22893034,
+  "sha256": "cdfd517540f74a7fc3c097e57078fdbcf549c28505360114f7b4ef8e48bc2459",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.6.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.6.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.5.2",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.5.2/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v0.6.0 结构性重构：后端按协议拆分、前端文件面板逻辑独立成模块。界面与操作方式与 0.5.1 完全一致。① 后端把原本单文件的协议实现拆成 SSH/SFTP、Modbus TCP、S7、串口各自独立的模块，并保留兼容入口，插件接口与既有功能不受影响。② 前端把 SSH 页面里文件浏览与传输的逻辑（约 500 行）独立成模块，页面代码减少三分之一，后续修文件传输相关问题更快定位。③ 两处改动都跑完了全量回归（SSH 端到端、SFTP 列目录/上传/下载/编辑、S7 协议栈、串口收发、插件执行、采集监控），行为与 0.5.1 一致；页面逐项截图核对，浏览器控制台无报错。本版没有新增功能，也没有修复用户可见的问题——若现场运行 0.5.1 稳定，可以跳过；升级不会改变任何操作方式。另外：从本版起安装包不再提交进站点仓库（改由 Release 附件分发），仓库只保留页面文件，下载地址与校验方式不变。"
+  "notes": "v0.5.2 结构性重构：后端按协议拆分、前端文件面板逻辑独立成模块。界面与操作方式与 0.5.1 完全一致。① 后端把原本单文件的协议实现拆成 SSH/SFTP、Modbus TCP、S7、串口各自独立的模块，并保留兼容入口，插件接口与既有功能不受影响。② 前端把 SSH 页面里文件浏览与传输的逻辑（约 500 行）独立成模块，页面代码减少三分之一，后续修文件传输相关问题更快定位。③ 两处改动都跑完了全量回归（SSH 端到端、SFTP 列目录/上传/下载/编辑、S7 协议栈、串口收发、插件执行、采集监控），行为与 0.5.1 一致；页面逐项截图核对，浏览器控制台无报错。本版没有新增功能，也没有修复用户可见的问题——若现场运行 0.5.1 稳定，可以跳过；升级不会改变任何操作方式。另外：从本版起安装包不再提交进站点仓库（改由 Release 附件分发），仓库只保留页面文件，下载地址与校验方式不变。"
 }
