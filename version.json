@@ -1,24 +1,24 @@
 {
-  "version": "0.5.0",
+  "version": "0.5.1",
   "date": "2026-11-18",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22887758,
-  "sha256": "5c1a6ede32661e9c74c8cb3e2de37a858f15b3e5a93b6cbdc055c24a4683e9b9",
+  "size": 22897860,
+  "sha256": "ea63f1ecd6d8f04c40409008051f65ec98b3b7e2fa49d5e9ea7122c593521460",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.5.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.5.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.5.1",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.5.1/UltimateToolWeb-Setup.exe"
     },
     {
       "name": "GitHub Pages",
       "url": "https://ooohhhxxx.github.io/tool-site-web/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v0.5.0 新增「采集监控」：长期采样、历史趋势与阈值告警。以前四个调试模块都是「连上、看一眼、断开」，值读完就没了——现场偶发故障等你赶到时已经恢复，手上没有任何证据。这一版把时间维度补上了。① 采集监控（新页面）：把 Modbus / S7 的点位加入监控列表，设定各自采样周期（最快 200ms），点「开始采集」后后台持续轮询并落盘到本地数据库；值不变也照常记录，因此能看出「值卡住不刷新」这种隐性故障。② 趋势曲线：选中点位即可看历史曲线，支持最近 10 分钟 / 1 小时 / 6 小时 / 1 天 / 7 天；数据量大时自动按时间桶聚合（平均值 / 最小 / 最大），不会因为查询 7 天就卡住。③ 阈值告警：每个点位可配一条条件（大于/小于/≥/≤/等于/不等于/超出范围）、级别（提示/警告/严重）、冷却时间与自定义消息；触发后进入告警列表并按级别着色，支持单条确认与全部确认。④ 数据管理：原始采样保留 7 天、告警保留 30 天，到期自动清理；数据库为本地单文件，不上传任何数据。⑤ 导航新增「采集监控」页（Ctrl+7），可用侧栏底部箭头收起为图标栏。说明：采集复用现有 Modbus / S7 连接，未连接时会记为错误并在统计里显示，不影响其它功能；串口无地址概念，暂不参与数值采集。"
+  "notes": "v0.5.1 内部重构，界面与功能与 0.5.0 完全一致。本版把后端原本单文件的协议实现按协议拆开（SSH / SFTP、Modbus TCP、S7、串口各成模块），并保留一个兼容入口，所有既有调用与插件接口保持不变。对使用者没有可见变化；收益是后续新增协议、定位某个协议的问题都更清晰，也避免单文件继续膨胀到难以维护。同版本内已跑完全量回归（含 SSH 端到端、S7 协议栈、串口收发、插件执行、SFTP 传输），行为与 0.5.0 一致。若现场运行 0.5.0 稳定，可不升级；升级不会改变任何操作方式。"
 }
