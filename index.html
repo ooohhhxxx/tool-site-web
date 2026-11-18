@@ -80,10 +80,10 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP · 西门子 S7 PLC · 串口调试 · 采集监控 —— Vue 界面重构的独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP · 西门子 S7 PLC · 串口调试 · 采集监控 · 写操作审计 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.5.2 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.6.0 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -163,6 +163,16 @@ footer a{color:#64748b;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
+    <div class="icon">🛡️</div>
+    <h3>写操作审计</h3>
+    <ul>
+      <li>Modbus / S7 写入记录「改前 → 改后」、结果与失败原因，写前自动读一次原值</li>
+      <li>SFTP 删除 / 重命名 / 改权限 / 保存 / 上传、串口发送、SSH 远程命令同样留痕</li>
+      <li>按协议、时间、关键字筛选；失败记录整行标红；默认保留 90 天，全程本地</li>
+      <li>只读模式一键拦下所有设备写入与文件修改，适合培训、陪产、远程指导</li>
+    </ul>
+  </div>
+  <div class="card">
     <div class="icon">🧩</div>
     <h3>插件系统</h3>
     <ul>
@@ -192,7 +202,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.5.2）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.6.0）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -202,12 +212,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.5.2 · 2026-11-18</p>
+<p class="section-sub">v0.6.0 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.6.0</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>审计日志</strong>：以前改完 PLC 或寄存器，出问题只能靠回忆「刚才谁改的、原来是多少」。现在每次写入都留一条记录——Modbus / S7 会<strong>先读一次原值</strong>，记下「改前 → 改后」、结果与失败原因；SFTP 的删除 / 重命名 / 改权限 / 保存 / 上传、串口发送、SSH 远程命令也一并留痕。默认保留 90 天，只存本机。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>只读模式</strong>：一个开关拦下所有设备写入与远程文件修改，适合培训、陪产、远程指导这类「只看不动」的场景。开启需二次确认，状态跨重启保持，误触写入时会直接提示去哪里关闭。</div></div>
+    <div class="row"><div class="tag">边界</div><div class="txt">SSH 交互式终端<strong>不拦截</strong>——终端里读命令和写命令无法从字节流区分，拦了连 ps、cat 都用不了，排障会直接断掉。这条边界写在页面说明与 SOP 里，由操作人自律。串口「循环发送」做了节流，同内容 1 秒内只记一条。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.5.2</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag">结构性重构</div><div class="txt"><strong>界面与操作方式与 0.5.1 完全一致</strong>。后端把原本单文件的协议实现拆成 SSH/SFTP、Modbus TCP、S7、串口各自独立的模块，保留兼容入口，插件接口与既有功能不受影响；前端把 SSH 页面的文件浏览与传输逻辑（约 500 行）独立成模块，后续修文件传输问题定位更快。</div></div>
@@ -651,7 +673,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 采集监控 / 插件 / 设置七个页面，<code>Ctrl+1~7</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 采集监控 / 审计日志 / 插件 / 设置八个页面，<code>Ctrl+1~8</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 
