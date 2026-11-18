@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 西门子 S7 PLC · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.31 ｜ 更新于 2026-11-17 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.32 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -182,7 +182,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.31）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.32）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -192,12 +192,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.31 · 2026-11-17</p>
+<p class="section-sub">v0.4.32 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.32</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>串口「发送数据」发不出去</strong>：按钮把原生事件直接传进了发送函数，文本被当成事件对象处理而抛错，界面没有任何提示（Ctrl+Enter 同样失效）。现已修正并加参数兜底。同原因的 SFTP 工具栏「下载」「删除」一并修复——此前下载会请求不存在的路径、删除会提示「删除 undefined」。</div></div>
+    <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>上传/下载的「取消」点不到</strong>：取消按钮原先被塞进 8px 高的进度条容器里，被裁得只剩一条边。现在进度条与文案、按钮分开布局，上传、下载、浏览器原生下载与设置页更新下载四处统一。</div></div>
+    <div class="row"><div class="tag new">改进</div><div class="txt"><strong>窄窗口不再挤压控件</strong>：连接记录多了不再把底部按钮裁掉（列表内部滚动）；插件页在 1200/980px 以下分档降级；S7/Modbus 连接行恢复换行，机架与槽位输入框不再被压到 20px；卡片标题栏允许换行，会话标签横向滚动；远程文件路径框自适应宽度。界面缩放 125% 时底部状态栏也不再被裁。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>S7 地址表改存后端配置</strong>：以前存在浏览器本地，而程序每次启动端口随机变化，重启就丢点位；现在重启保留、随备份导出，老数据自动迁移一次。S7 断链后状态不再卡在「已连接」；串口刷新后恢复数据位/校验/停止位，自动重连不再把 7E2 改成 8N1；SSH 刷新后标签高亮与终端内容一致。另：辅助文字对比度提升、悬停与选中可区分、数字列右对齐、右键菜单在缩放下不再偏移。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.31</span>
     <span class="rel-date">2026-11-17</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>S7 批量读第 2 个点位起全错</strong>：S7 多项读响应里，参数区只有「功能码 + 项数」，每项返回码在各自的数据项中。此前把参数区后面当成返回码，导致地址表从第 2 个点位开始误报失败，个别情况下还会把别的地址的数据显示成本项结果。现已按规范逐项解析，失败项也正确推进偏移。</div></div>
