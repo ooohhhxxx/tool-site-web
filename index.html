@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 西门子 S7 PLC · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.32 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.4.33 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -182,7 +182,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.32）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.33）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -192,12 +192,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.32 · 2026-11-18</p>
+<p class="section-sub">v0.4.33 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.4.33</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>刷新页面不再丢上下文</strong>：以前按 F5 之后终端一片空白、远程文件面板回到根目录，现场排障的上下文全丢。现在会恢复各会话的终端输出与所在目录（同一次运行内刷新有效）。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>几处状态不同步</strong>：串口「接收停滞」告警此前被「断线自动重连」开关连带关掉（两者本不相关）；插件异步任务结束后「执行中」徽标与「停止任务」不自动复位；设置页下载完更新后顶栏仍显示「↑ 新版本」。以上均已修正。</div></div>
+    <div class="row"><div class="tag new">改进</div><div class="txt"><strong>串口发送历史持久化</strong>：常用帧重启后仍可下拉选用。新建主机的编码下拉补上 Latin-1。SFTP 遇到通道中断/协议错误时返回可读中文错误，不再只显示 500。</div></div>
+    <div class="row"><div class="tag">加固</div><div class="txt"><strong>S7 批量读单项容错</strong>：单个地址写错只让该项失败，不再整批报错——此前一条脏点位会让整轮轮询退化成逐点串行请求。配置备份导入只接受已知设置项。另：滚动条统一细条、卡片圆角不再露直角、过长文件名省略显示。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.32</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag fix">重要修复</div><div class="txt"><strong>串口「发送数据」发不出去</strong>：按钮把原生事件直接传进了发送函数，文本被当成事件对象处理而抛错，界面没有任何提示（Ctrl+Enter 同样失效）。现已修正并加参数兜底。同原因的 SFTP 工具栏「下载」「删除」一并修复——此前下载会请求不存在的路径、删除会提示「删除 undefined」。</div></div>
