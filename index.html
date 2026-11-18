@@ -80,10 +80,10 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP 调试 · 西门子 S7 PLC · 串口调试 —— Vue 界面重构的独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP · 西门子 S7 PLC · 串口调试 · 采集监控 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.4.34 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.5.0 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">国内镜像较慢时可用 <a href="./UltimateToolWeb-Setup.exe">GitHub Pages 源</a> 或 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -153,6 +153,16 @@ footer a{color:#64748b;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
+    <div class="icon">📈</div>
+    <h3>采集监控</h3>
+    <ul>
+      <li>把 Modbus / S7 点位加入监控列表，按各自周期（最快 200ms）长期采样并落盘</li>
+      <li>历史趋势曲线：10 分钟 / 1 小时 / 6 小时 / 1 天 / 7 天，大数据量自动按时间桶聚合</li>
+      <li>阈值告警：大于 / 小于 / 等于 / 超出范围，分提示·警告·严重三级，带冷却时间</li>
+      <li>值不变也记录，能看出「卡住不刷新」；原始数据保留 7 天，全程本地不上传</li>
+    </ul>
+  </div>
+  <div class="card">
     <div class="icon">🧩</div>
     <h3>插件系统</h3>
     <ul>
@@ -182,7 +192,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.4.34）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.5.0）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -192,12 +202,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.4.34 · 2026-11-18</p>
+<p class="section-sub">v0.5.0 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.5.0</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">重要更新</div><div class="txt"><strong>新增「采集监控」页面</strong>：以前四个调试模块都是「连上、看一眼、断开」，值读完就没了——现场偶发故障等你赶到时已经恢复，手上没有任何证据。现在可以把 Modbus / S7 点位加入监控列表，设定各自采样周期（最快 200ms），后台持续采集并落盘到本地数据库；<strong>值不变也照常记录</strong>，因此能看出「值卡住不刷新」这类隐性故障。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>历史趋势曲线</strong>：选中点位即可看 10 分钟 / 1 小时 / 6 小时 / 1 天 / 7 天的历史曲线；数据量大时自动按时间桶聚合成平均值与上下界，查询 7 天也不会卡。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>阈值告警</strong>：每个点位可配一条条件（大于 / 小于 / ≥ / ≤ / 等于 / 不等于 / 超出范围）、级别（提示·警告·严重）、冷却时间与自定义消息；触发后进入告警列表并按级别着色，支持单条或全部确认。冷却机制避免持续越限刷屏。</div></div>
+    <div class="row"><div class="tag">说明</div><div class="txt">数据保存在本地单文件数据库（原始采样 7 天、告警 30 天，到期自动清理），不上传任何数据。采集复用现有 Modbus / S7 连接，未连接时记为错误并在统计里显示，不影响其它功能；串口无地址概念，暂不参与数值采集。导航新增 Ctrl+7 快捷切页。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.4.34</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>侧栏可折叠</strong>：点左侧导航底部的箭头按钮，导航收起为只显示图标的窄栏（64px），终端、地址表、日志等主区域随之变宽，终端会自动重算列数、显示更多内容；再点一次展开。收起状态会被记住，重启后保持；收起时图标悬停显示页面名称，当前页仍有高亮。</div></div>
@@ -605,7 +628,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 插件 / 设置六个页面，<code>Ctrl+1~6</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 采集监控 / 插件 / 设置七个页面，<code>Ctrl+1~7</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 
