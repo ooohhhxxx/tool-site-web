@@ -80,10 +80,10 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP · 西门子 S7 PLC · 串口调试 · 采集监控 · 写操作审计 —— Vue 界面重构的独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 —— 独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.6.0 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.7.1 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -123,7 +123,7 @@ footer a{color:#64748b;text-decoration:underline}
   </div>
   <div class="card">
     <div class="icon">⚙️</div>
-    <h3>Modbus TCP</h3>
+    <h3>Modbus TCP / RTU</h3>
     <ul>
       <li>连接 / 断开、超时设置、快速读写线圈与保持寄存器</li>
       <li>监控点位分组批量轮询，报文日志实时记录</li>
@@ -139,7 +139,18 @@ footer a{color:#64748b;text-decoration:underline}
       <li>支持 DB / M / I / Q 存储区，地址写法与博途一致（DB1.DBW0、M10.0、Q0.1）</li>
       <li>BOOL / BYTE / WORD / INT / DWORD / DINT / REAL，写入支持多值与位数组</li>
       <li>批量读：多个点位合并为一次请求；块读取后按偏移解析结构</li>
+      <li>RTU / ASCII：串口从站直连，串口/波特率/数据位/校验/停止位可配</li>
       <li>地址表轮询、十六进制显示、读写日志带耗时；机架/槽位可配</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="icon">🔗</div>
+    <h3>OPC UA</h3>
+    <ul>
+      <li>连接（匿名或用户名密码）后逐层浏览节点树，点节点直接读值</li>
+      <li>读值含数据类型、状态码与时间戳；变量节点可写值</li>
+      <li>写入按节点当前类型自动转换：布尔认 true/false，整数支持 0x 前缀</li>
+      <li>OPC UA 写入同样进审计、同样受只读模式拦截</li>
     </ul>
   </div>
   <div class="card">
@@ -202,7 +213,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.6.0）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.7.1）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -212,12 +223,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.6.0 · 2026-11-18</p>
+<p class="section-sub">v0.7.1 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.7.1</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>OPC UA</strong>：连接后可逐层浏览节点树，点节点直接读值（含数据类型、状态码、时间戳）；变量节点可写值，写入按节点当前类型自动转换——布尔认 true/false，整数支持 0x 前缀。适用于 S7-1500、SCADA、仪表网关等支持 OPC UA 的设备。写入同样进审计、同样受只读模式拦截。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>Modbus RTU / ASCII</strong>：Modbus 页连接卡片新增传输方式下拉，可直连串口从站（电表、变频器、温控器）。串口/波特率/数据位/校验/停止位可配，参数随表单保存，重启后保持。</div></div>
+    <div class="row"><div class="tag">说明</div><div class="txt">串口调试是「收发原始字节」，RTU/ASCII 是「按协议读写寄存器」——两者共用同一个 COM 口但不能同时打开；排障时可用串口页看原始回波，快速分清接线问题和地址问题。安装包因 OPC UA 依赖增加约 1.9MB。暂未支持 OPC UA 加密通道（需证书分发）、订阅推送、方法调用与历史数据。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.6.0</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>审计日志</strong>：以前改完 PLC 或寄存器，出问题只能靠回忆「刚才谁改的、原来是多少」。现在每次写入都留一条记录——Modbus / S7 会<strong>先读一次原值</strong>，记下「改前 → 改后」、结果与失败原因；SFTP 的删除 / 重命名 / 改权限 / 保存 / 上传、串口发送、SSH 远程命令也一并留痕。默认保留 90 天，只存本机。</div></div>
@@ -673,7 +696,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus TCP / S7 PLC / 串口调试 / 采集监控 / 审计日志 / 插件 / 设置八个页面，<code>Ctrl+1~8</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / S7 PLC / OPC UA / 串口调试 / 采集监控 / 审计日志 / 插件 / 设置九个页面，<code>Ctrl+1~9</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 

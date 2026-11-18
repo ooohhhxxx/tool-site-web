@@ -1,20 +1,20 @@
 {
-  "version": "0.6.0",
+  "version": "0.7.1",
   "date": "2026-11-18",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 22909451,
-  "sha256": "a70b3bcae3cd4b2ed10a7b306e57d2a206541768cf4da313d33cdecca967c142",
+  "size": 24855739,
+  "sha256": "f2dc5244ed13d05b9634429d99f0d2639db491f32e8bf95d49963a9cf3923f9d",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.6.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.6.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v0.7.1",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.7.1/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v0.6.0 新增「审计日志」与「只读模式」：谁在什么时候改了哪个地址、原来是多少，现在都有记录。① 写操作全记录：Modbus / S7 写入会先读一次原值，记录「改前 → 改后」、结果与失败原因；SFTP 的删除、重命名、改权限、保存文件、上传，以及串口发送、SSH 远程命令也都留痕。② 审计日志页（Ctrl+8）：按协议、时间范围、只看失败、关键字（地址/内容）筛选；失败记录整行标红，一眼能看出哪些操作没成功。默认保留 90 天，只存本机不上传。③ 只读模式：一个开关拦下所有设备写入与远程文件修改，适合培训、陪产、远程指导等「只看不动」场景。开启需二次确认，状态跨重启保持，误触写入时会直接提示去哪里关闭。④ 边界说明：SSH 交互式终端不拦截——终端里读命令和写命令无法从字节流区分，拦了连 ps、cat 都用不了，排障会直接断掉；这条边界写在页面说明与 SOP 里，由操作人自律。另：串口「循环发送」做了节流，同内容 1 秒内只记一条，避免每秒几十次的发送把有效记录冲掉。"
+  "notes": "v0.7.1 新增「OPC UA」与「Modbus RTU / ASCII」，协议覆盖面从 TCP 扩到串口与 OPC UA。① OPC UA：连接（匿名或用户名密码）后可在左侧节点树里逐层浏览，点节点直接读值（含数据类型、状态码、时间戳）；变量节点可写值，写入会按节点当前类型自动转换——布尔认 true/false，整数支持 0x 前缀。适用于 S7-1500、SCADA、仪表网关等支持 OPC UA 的设备。② Modbus RTU / ASCII：Modbus 页的连接卡片新增传输方式下拉，可连串口从站（电表、变频器、温控器）。串口/波特率/数据位/校验/停止位可配，参数随表单保存，重启后保持。③ 与串口调试的关系：串口调试是「收发原始字节」，RTU/ASCII 是「按协议读写寄存器」，两者共用同一个 COM 口但不能同时打开；排障时可用串口页看原始回波。④ OPC UA 的写入同样进审计、同样受只读模式拦截。⑤ 安装包体积因 OPC UA 依赖增加约 1.9MB。未支持：OPC UA 加密通道（需要证书分发）、订阅推送、方法调用、历史数据。"
 }
