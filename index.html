@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP · 西门子 S7 PLC · 串口调试 · 采集监控 —— Vue 界面重构的独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.5.1 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v0.6.0 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -192,7 +192,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.5.1）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.6.0）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -202,12 +202,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.5.1 · 2026-11-18</p>
+<p class="section-sub">v0.6.0 · 2026-11-18</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v0.6.0</span>
+    <span class="rel-date">2026-11-18</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">结构性重构</div><div class="txt"><strong>界面与操作方式与 0.5.1 完全一致</strong>。后端把原本单文件的协议实现拆成 SSH/SFTP、Modbus TCP、S7、串口各自独立的模块，保留兼容入口，插件接口与既有功能不受影响；前端把 SSH 页面的文件浏览与传输逻辑（约 500 行）独立成模块，后续修文件传输问题定位更快。</div></div>
+    <div class="row"><div class="tag">说明</div><div class="txt">两处改动都跑完了全量回归（SSH 端到端、SFTP 列目录/上传/下载/编辑、S7 协议栈、串口收发、插件执行、采集监控），页面逐项截图核对，浏览器控制台无报错。<strong>本版没有新增功能，也没有修复用户可见的问题——现场运行 0.5.1 稳定可以跳过，升级不改变任何操作方式。</strong></div></div>
+    <div class="row"><div class="tag">分发</div><div class="txt">从本版起安装包不再提交进站点仓库（改由 Release 附件分发），仓库只保留页面文件。下载地址、版本清单与 SHA256 校验方式都不变。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.5.1</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag">内部重构</div><div class="txt"><strong>本版界面与功能与 0.5.0 完全一致</strong>。把后端原本单文件的协议实现按协议拆开（SSH / SFTP、Modbus TCP、S7、串口各成模块），并保留兼容入口，所有既有调用与插件接口保持不变。</div></div>
