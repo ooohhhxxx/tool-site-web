@@ -1,0 +1,8 @@
+# 安装包与图标按二进制处理：不做换行转换、不做文本 diff、不参与合并。
+# 只约束二进制类型——页面文件不在这里改换行策略，避免一次提交里出现全文件重排的噪音。
+*.exe binary
+*.ico binary
+*.png binary
+
+# 安装包不做 delta 之外的额外压缩尝试（保持默认打包行为，别加 -delta 之类）
+UltimateToolWeb-Setup.exe -text -diff
