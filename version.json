@@ -1,20 +1,20 @@
 {
-  "version": "0.7.1",
-  "date": "2026-11-18",
+  "version": "1.0.0",
+  "date": "2026-11-19",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 24855739,
-  "sha256": "f2dc5244ed13d05b9634429d99f0d2639db491f32e8bf95d49963a9cf3923f9d",
+  "size": 24923368,
+  "sha256": "dea42cf07bd6485e7e03c83094b005803458bd79468c4f30e96f59db6f8a4293",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v0.7.1",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v0.7.1/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.0",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.0/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v0.7.1 新增「OPC UA」与「Modbus RTU / ASCII」，协议覆盖面从 TCP 扩到串口与 OPC UA。① OPC UA：连接（匿名或用户名密码）后可在左侧节点树里逐层浏览，点节点直接读值（含数据类型、状态码、时间戳）；变量节点可写值，写入会按节点当前类型自动转换——布尔认 true/false，整数支持 0x 前缀。适用于 S7-1500、SCADA、仪表网关等支持 OPC UA 的设备。② Modbus RTU / ASCII：Modbus 页的连接卡片新增传输方式下拉，可连串口从站（电表、变频器、温控器）。串口/波特率/数据位/校验/停止位可配，参数随表单保存，重启后保持。③ 与串口调试的关系：串口调试是「收发原始字节」，RTU/ASCII 是「按协议读写寄存器」，两者共用同一个 COM 口但不能同时打开；排障时可用串口页看原始回波。④ OPC UA 的写入同样进审计、同样受只读模式拦截。⑤ 安装包体积因 OPC UA 依赖增加约 1.9MB。未支持：OPC UA 加密通道（需要证书分发）、订阅推送、方法调用、历史数据。"
+  "notes": "v1.0.0 新增「场景编排」与「诊断知识库」，并带上 OPC UA 加密通道与数据订阅。① 场景编排：把 SSH 看状态 → Modbus 读状态字 → 串口问一句 → HTTP 查平台串成一条场景，一键复跑。十种步骤（SSH 执行 / Modbus 读写 / S7 读写 / OPC UA 读写 / 串口收发 / HTTP GET / 等待），每步可设断言（等于/区间/包含/正则等十二种）、重试、单步超时、失败是否继续；上一步取到的值可存成变量，用 ${名称} 传进后面的地址或 URL。跑完给出逐步结果与 Markdown 报告，运行历史保留最近 200 次。② 诊断知识库：16 条内置条目（SFTP 子系统缺失、paramiko 4 移除 SHA-1、RTU 超时、Modbus 02/03 异常码、CRC 干扰、COM 口占用、S7 rack/slot、OPC UA 证书与令牌、串口无回包等），场景失败时自动按报错文本匹配并给出处置；可自己增删条目，内置条目不可改（升级不覆盖）。③ OPC UA 加密通道：Basic256Sha256 / SignAndEncrypt，客户端证书自动生成（带 SAN），服务端证书需显式指定并校验证书有效期，不自动信任、不降级。④ OPC UA 订阅：最多 100 点、周期 0.1–60 秒，变化实时滚动，停止订阅时一并删除服务端订阅。⑤ 边界：场景步骤只调用已连好的连接、不保存凭据，写入仍受只读模式拦截并进审计；只支持线性步骤，HTTP 步骤为 GET；左侧导航增至十一个页面（Ctrl+1~9 对应前九个）。"
 }

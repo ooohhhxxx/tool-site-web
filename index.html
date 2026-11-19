@@ -80,10 +80,10 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 —— 独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v0.7.1 ｜ 更新于 2026-11-18 ｜ Windows 10/11 x64 ｜ 约 21 MB ｜ 完全免费</p>
+  <p class="meta">版本 v1.0.0 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -184,6 +184,27 @@ footer a{color:#64748b;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
+    <div class="icon">🧭</div>
+    <h3>场景编排</h3>
+    <ul>
+      <li>十种步骤跨协议串联：SSH / Modbus / S7 / OPC UA / 串口 / HTTP</li>
+      <li>每步可断言（等于/区间/包含/正则…）、重试、超时、失败是否继续</li>
+      <li>上一步的取值存成变量，用 <code>${名称}</code> 传进后面的地址或 URL</li>
+      <li>一键复跑，逐步结果 + Markdown 报告导出，运行历史留最近 200 次</li>
+      <li>步骤只调用已连好的连接，不把设备凭据写进场景文件</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="icon">📚</div>
+    <h3>诊断知识库</h3>
+    <ul>
+      <li>16 条内置条目：SFTP 子系统缺失、RTU 超时、02/03 异常码、CRC 干扰…</li>
+      <li>场景某步失败时自动按报错文本匹配，把原因与处置贴在结果旁</li>
+      <li>按现象、关键词搜索，可按协议过滤</li>
+      <li>可自己加条目；内置条目不可改，升级不会被覆盖</li>
+    </ul>
+  </div>
+  <div class="card">
     <div class="icon">🧩</div>
     <h3>插件系统</h3>
     <ul>
@@ -213,7 +234,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v0.7.1）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.0）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -223,12 +244,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v0.7.1 · 2026-11-18</p>
+<p class="section-sub">v1.0.0 · 2026-11-19</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.0</span>
+    <span class="rel-date">2026-11-19</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>场景编排</strong>：把「SSH 看状态 → Modbus 读状态字 → 串口问一句 → HTTP 查平台」串成一条场景，一键复跑。十种步骤（SSH 执行 / Modbus 读写 / S7 读写 / OPC UA 读写 / 串口收发 / HTTP GET / 等待），每步可设断言（等于/不等于/区间/包含/正则等十二种）、重试、单步超时、失败是否继续；上一步取到的值可存成变量，用 <code>${名称}</code> 传进后面的地址或 URL。跑完给出逐步结果与 Markdown 报告（可直接贴工单），运行历史保留最近 200 次。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>诊断知识库</strong>：把「现象 → 原因 → 处置」沉淀成可搜索条目，内置 16 条现场真踩过的坑——SFTP 子系统缺失（EOF during negotiation）、paramiko 4 移除 SHA-1 系算法、RTU 超时、Modbus 02/03 异常码、CRC 干扰、COM 口被占用、S7 rack/slot 与优化块、OPC UA 证书不受信、串口无回包等。场景某步失败时会自动按报错文本匹配，把最可能的原因和处置直接贴在结果旁边。可自己增删条目，内置条目不可修改（升级不会被覆盖），点「编辑」会转成自己的版本。</div></div>
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>OPC UA 加密通道与订阅</strong>：支持 Basic256Sha256 / SignAndEncrypt——客户端证书首次使用自动生成（带 SAN，兼容 S7-1500、Kepware 这类严格校验），把 <code>client.der</code> 导入设备信任列表即可；服务端证书必须自己指定并校验有效期，<strong>不自动接受自签证书、不静默降级到不加密</strong>。数据订阅最多 100 个节点、周期 0.1–60 秒，变化实时滚动（留最近 200 条），停止订阅或断开时会把服务端订阅一并删掉。</div></div>
+    <div class="row"><div class="tag">说明</div><div class="txt">场景步骤<strong>只调用已经连好的连接</strong>，不会替你把设备凭据存进场景文件；写入类步骤仍受只读模式拦截、仍进审计。目前只支持线性步骤，没有循环与分支；HTTP 步骤为 GET。左侧导航从九个页面增加到十一个（<code>Ctrl+1~9</code> 仍对应前九个）。OPC UA 的用户名密码仍允许在未加密策略下使用（部分设备只支持 None），界面会明确提示「凭据将明文传输」。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v0.7.1</span>
     <span class="rel-date">2026-11-18</span>
-    <span class="rel-badge">当前版本</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>OPC UA</strong>：连接后可逐层浏览节点树，点节点直接读值（含数据类型、状态码、时间戳）；变量节点可写值，写入按节点当前类型自动转换——布尔认 true/false，整数支持 0x 前缀。适用于 S7-1500、SCADA、仪表网关等支持 OPC UA 的设备。写入同样进审计、同样受只读模式拦截。</div></div>
@@ -696,7 +730,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / S7 PLC / OPC UA / 串口调试 / 采集监控 / 审计日志 / 插件 / 设置九个页面，<code>Ctrl+1~9</code> 可快速切页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / S7 PLC / OPC UA / 串口调试 / 采集监控 / 审计日志 / 插件 / 场景编排 / 诊断知识库 / 设置十一个页面，<code>Ctrl+1~9</code> 可快速切到前九页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 
