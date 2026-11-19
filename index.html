@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v1.0.1 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
+  <p class="meta">版本 v1.0.2 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -234,7 +234,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.1）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.2）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -244,12 +244,24 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v1.0.1 · 2026-11-19</p>
+<p class="section-sub">v1.0.2 · 2026-11-19</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.2</span>
+    <span class="rel-date">2026-11-19</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>更新下载失败后要等六分钟</strong>：在本机连不上 gitee 的网络里（直连被拦），旧版会把六个重试机会全花在同一条死路上，用户看到「下载中断，正在重试 2/2」然后一直 0%。现在<strong>先走本机代理</strong>——自动探测 7890 / 7891 / 9981 / 10809 / 1080 这几个端口，有代理就直接用；单次超时从 60 秒压到 15 秒，整次下载还有 100 秒总预算，失败后一分钟内给出「网络连不上，可开代理或手动下载」的明确提示。</div></div>
+    <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>打开软件偶发一直白屏</strong>：查下来有四个成因，逐个堵住——① 首页 <code>index.html</code> 被 WebView2 缓存，升级后它引用的脚本文件名已变，请求 404 导致整页纯白，现在首页强制 <code>no-store</code>、带哈希的产物才长期缓存；② 同时开着两个实例时共用一个浏览器数据目录，后启动的那个初始化必然失败（<code>0x8007139F</code>），现在非主实例各用独立目录；③ 启动时若旧实例正在退出，先等它释放单实例锁再以主实例干净启动；④ 万一页面 12 秒仍未加载，自动重载一次，仍失败就弹框说明并给出日志路径，不再让你对着白屏干等。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.1</span>
     <span class="rel-date">2026-11-19</span>
-    <span class="rel-badge">当前版本</span>
+    <span class="rel-badge">上一版</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>场景运行历史</strong>：「运行结果」卡片右上角多了<strong>历史记录</strong>，列出最近 100 次运行（时间 / 场景名 / 结论 / 通过步数 / 耗时）。点任意一条，那次的每一步结果、取值和报错会直接载入右侧面板；每条还能单独导出 Markdown 报告。以前场景跑完换个页面就看不到结果了。</div></div>
