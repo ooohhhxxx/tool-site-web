@@ -83,7 +83,7 @@ footer a{color:#64748b;text-decoration:underline}
   <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v1.0.0 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
+  <p class="meta">版本 v1.0.1 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
   <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -234,7 +234,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.0）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.1）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -244,12 +244,25 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 <h2 class="section-title" id="changelog">更新内容</h2>
-<p class="section-sub">v1.0.0 · 2026-11-19</p>
+<p class="section-sub">v1.0.1 · 2026-11-19</p>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.1</span>
+    <span class="rel-date">2026-11-19</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag new">新增</div><div class="txt"><strong>场景运行历史</strong>：「运行结果」卡片右上角多了<strong>历史记录</strong>，列出最近 100 次运行（时间 / 场景名 / 结论 / 通过步数 / 耗时）。点任意一条，那次的每一步结果、取值和报错会直接载入右侧面板；每条还能单独导出 Markdown 报告。以前场景跑完换个页面就看不到结果了。</div></div>
+    <div class="row"><div class="tag">优化</div><div class="txt"><strong>审计日志只在你看它的时候刷新</strong>：以前切到别的页面仍在后台每 5 秒拉一次，现在切走即停、切回立即拉一次。另外统一了表单行的控件尺寸——小号按钮、下拉框与 32px 输入框高度对齐，S7 连接的机架/槽位/超时、串口顶部的开关按钮不再参差；窄窗口下操作按钮成组换行，不再被拆到两行两端。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">采集监控的趋势区首次进入是空白（页面隐藏时算不出尺寸，切过来不重绘）；审计表「动作」列的「新建目录」被折成两行；OPC UA / 采集监控 / 审计日志 / 场景编排 / 诊断知识库五个页面的顶栏状态胶囊是空的（只剩一个圆点）；诊断知识库搜索框提示文字被截断；SSH 远程文件表头「修改时间」在窄窗口折行；场景卡片标签没有与输入框左对齐。</div></div>
+  </div>
+</div>
+
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.0</span>
     <span class="rel-date">2026-11-19</span>
-    <span class="rel-badge">当前版本</span>
+    <span class="rel-badge">上一版</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag new">新增</div><div class="txt"><strong>场景编排</strong>：把「SSH 看状态 → Modbus 读状态字 → 串口问一句 → HTTP 查平台」串成一条场景，一键复跑。十种步骤（SSH 执行 / Modbus 读写 / S7 读写 / OPC UA 读写 / 串口收发 / HTTP GET / 等待），每步可设断言（等于/不等于/区间/包含/正则等十二种）、重试、单步超时、失败是否继续；上一步取到的值可存成变量，用 <code>${名称}</code> 传进后面的地址或 URL。跑完给出逐步结果与 Markdown 报告（可直接贴工单），运行历史保留最近 200 次。</div></div>

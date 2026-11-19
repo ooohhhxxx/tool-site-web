@@ -1,20 +1,20 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-19",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 24923368,
-  "sha256": "dea42cf07bd6485e7e03c83094b005803458bd79468c4f30e96f59db6f8a4293",
+  "size": 24925897,
+  "sha256": "6710615bf9b1c42b1e51780a1988a83b883bc95a367ec2a01352e61d20f922a5",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.0",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.0/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.1",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.1/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.0 新增「场景编排」与「诊断知识库」，并带上 OPC UA 加密通道与数据订阅。① 场景编排：把 SSH 看状态 → Modbus 读状态字 → 串口问一句 → HTTP 查平台串成一条场景，一键复跑。十种步骤（SSH 执行 / Modbus 读写 / S7 读写 / OPC UA 读写 / 串口收发 / HTTP GET / 等待），每步可设断言（等于/区间/包含/正则等十二种）、重试、单步超时、失败是否继续；上一步取到的值可存成变量，用 ${名称} 传进后面的地址或 URL。跑完给出逐步结果与 Markdown 报告，运行历史保留最近 200 次。② 诊断知识库：16 条内置条目（SFTP 子系统缺失、paramiko 4 移除 SHA-1、RTU 超时、Modbus 02/03 异常码、CRC 干扰、COM 口占用、S7 rack/slot、OPC UA 证书与令牌、串口无回包等），场景失败时自动按报错文本匹配并给出处置；可自己增删条目，内置条目不可改（升级不覆盖）。③ OPC UA 加密通道：Basic256Sha256 / SignAndEncrypt，客户端证书自动生成（带 SAN），服务端证书需显式指定并校验证书有效期，不自动信任、不降级。④ OPC UA 订阅：最多 100 点、周期 0.1–60 秒，变化实时滚动，停止订阅时一并删除服务端订阅。⑤ 边界：场景步骤只调用已连好的连接、不保存凭据，写入仍受只读模式拦截并进审计；只支持线性步骤，HTTP 步骤为 GET；左侧导航增至十一个页面（Ctrl+1~9 对应前九个）。"
+  "notes": "v1.0.1 补上「场景运行历史」，并修了一批界面细节。① 运行历史：运行结果卡片右上角新增「历史记录」，列出最近 100 次运行（时间 / 场景名 / 结论 / 通过步数 / 耗时），点任意一条即把那次每一步的结果、取值和报错载入右侧面板，每条可单独导出 Markdown 报告。② 审计日志改为只在页面可见时刷新：切走即停、切回立即拉一次，不再在后台每 5 秒空转。③ 界面统一：表单行里的小号按钮与下拉框跟 32px 输入框对齐，S7 连接的机架/槽位/超时与串口顶部按钮不再参差；窄窗口下操作按钮成组换行，不再被拆到两行两端。④ 修复：采集监控趋势区首次进入空白、审计表「动作」列折行、OPC UA/采集监控/审计/场景编排/知识库五个页面顶栏状态胶囊为空、诊断知识库搜索提示被截断、远程文件表头「修改时间」折行、场景卡片标签未与输入框左对齐。功能行为与 v1.0.0 一致，升级不丢配置。"
 }
