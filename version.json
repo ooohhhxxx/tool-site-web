@@ -1,20 +1,20 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.1",
   "date": "2026-11-19",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 24926166,
-  "sha256": "e69b916371cf0f98af245901804f0c9ffd757bcfeb5a0ed10131d1e12f3685db",
+  "size": 24925897,
+  "sha256": "6710615bf9b1c42b1e51780a1988a83b883bc95a367ec2a01352e61d20f922a5",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
       "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.2",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.2/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.1",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.1/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.2 修两个影响使用的问题。① 更新下载：以前在本机连不上 gitee 的网络里（直连被拦）会连续重试六次、卡六分钟才报失败；现在先走本机代理（自动探测 7890 / 7891 / 9981 / 10809 / 1080 端口），单次超时从 60 秒压到 15 秒，并给整次下载设总预算，失败后一分钟内给出「网络连不上，可开代理或手动下载」的明确提示。② 打开偶发白屏：首页改为不缓存（升级后旧缓存会让页面引用的脚本 404，整页纯白）；同时开多个实例时各自使用独立的浏览器数据目录（共用会初始化失败）；启动时若旧实例正在退出，先等它释放再以主实例启动；万一页面 12 秒仍未加载，会自动重载一次，仍失败则弹框说明并给出日志路径，不再对着白屏干等。功能与 v1.0.1 一致。"
+  "notes": "v1.0.1 补上「场景运行历史」，并修了一批界面细节。① 运行历史：运行结果卡片右上角新增「历史记录」，列出最近 100 次运行（时间 / 场景名 / 结论 / 通过步数 / 耗时），点任意一条即把那次每一步的结果、取值和报错载入右侧面板，每条可单独导出 Markdown 报告。② 审计日志改为只在页面可见时刷新：切走即停、切回立即拉一次，不再在后台每 5 秒空转。③ 界面统一：表单行里的小号按钮与下拉框跟 32px 输入框对齐，S7 连接的机架/槽位/超时与串口顶部按钮不再参差；窄窗口下操作按钮成组换行，不再被拆到两行两端。④ 修复：采集监控趋势区首次进入空白、审计表「动作」列折行、OPC UA/采集监控/审计/场景编排/知识库五个页面顶栏状态胶囊为空、诊断知识库搜索提示被截断、远程文件表头「修改时间」折行、场景卡片标签未与输入框左对齐。功能行为与 v1.0.0 一致，升级不丢配置。"
 }
