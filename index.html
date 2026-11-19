@@ -84,7 +84,7 @@ footer a{color:#64748b;text-decoration:underline}
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
   <p class="meta">版本 v1.0.2 ｜ 更新于 2026-11-19 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
-  <p class="mirror-tip">需要历史版本时可在 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a> 选择；也可以查看 <a href="./version.json">版本清单 version.json</a>（含 SHA256 校验值）</p>
+  <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="./UltimateToolWeb-Setup.exe">本站备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
 </header>
 
 <div class="update-hint">
@@ -254,6 +254,7 @@ footer a{color:#64748b;text-decoration:underline}
   <div class="updates">
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>更新下载失败后要等六分钟</strong>：在本机连不上 gitee 的网络里（直连被拦），旧版会把六个重试机会全花在同一条死路上，用户看到「下载中断，正在重试 2/2」然后一直 0%。现在<strong>先走本机代理</strong>——自动探测 7890 / 7891 / 9981 / 10809 / 1080 这几个端口，有代理就直接用；单次超时从 60 秒压到 15 秒，整次下载还有 100 秒总预算，失败后一分钟内给出「网络连不上，可开代理或手动下载」的明确提示。</div></div>
     <div class="row"><div class="tag fix">修复</div><div class="txt"><strong>打开软件偶发一直白屏</strong>：查下来有四个成因，逐个堵住——① 首页 <code>index.html</code> 被 WebView2 缓存，升级后它引用的脚本文件名已变，请求 404 导致整页纯白，现在首页强制 <code>no-store</code>、带哈希的产物才长期缓存；② 同时开着两个实例时共用一个浏览器数据目录，后启动的那个初始化必然失败（<code>0x8007139F</code>），现在非主实例各用独立目录；③ 启动时若旧实例正在退出，先等它释放单实例锁再以主实例干净启动；④ 万一页面 12 秒仍未加载，自动重载一次，仍失败就弹框说明并给出日志路径，不再让你对着白屏干等。</div></div>
+    <div class="row"><div class="tag">分发</div><div class="txt">从本版起站点首页增加<strong>备用下载</strong>：gitee 打不开（部分网络会直接超时）时可改从本站 GitHub Pages 下载同一个安装包，两者 SHA256 完全一致。仓库里只保留当前版本这一个 exe，发新版直接覆盖，不累积。</div></div>
   </div>
 </div>
 
