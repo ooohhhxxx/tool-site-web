@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V1.0.2 ｜ 生效日期：2026-11-19 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V1.0.3 ｜ 生效日期：2026-11-20 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试、西门子 S7 PLC 调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -36,12 +36,14 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <ul>
   <li>需要同时管理 SSH 主机、Modbus TCP 设备、西门子 S7 PLC 与串口设备的现场调试、运维、产线排障场景；</li>
   <li>Windows 10 / 11 x64 桌面环境；</li>
-  <li>本工具与「经典 Tk 版调试工具」是<strong>两个独立软件</strong>，可同时安装、互不影响。本 SOP 只适用于桌面版 v1.0.2。</li>
+  <li>本工具与「经典 Tk 版调试工具」是<strong>两个独立软件</strong>，可同时安装、互不影响。本 SOP 只适用于桌面版 v1.0.3。</li>
 </ul>
 
 <h2>三、运行环境要求</h2>
 <table>
   <tr><th>项目</th><th>要求</th></tr>
+  <tr><td>V1.0.3</td><td>2026-11-20</td><td>v1.0.3 新增「HTTP 调试」页：不用再开 Postman，选模板（任务下发 / 继续任务 / 取消任务 / 绑定解绑）填上 RCS 的 IP 就能发；支持自定义请求头、自动生成 X-lr-request-id、跳过自签名证书校验，请求历史可回填重发。同一能力也进了场景编排（HTTP 请求动作），可做接口巡检断言。另外冷启动提速约 42%（OPC UA 改为按需加载）。</td></tr>
+  
   <tr><td>操作系统</td><td>Windows 10 / 11，64 位</td></tr>
   <tr><td>运行时</td><td>Microsoft Edge WebView2 Runtime（Win10/11 通常随系统或 Edge 预装；缺失时窗口会白屏或无法启动）</td></tr>
   <tr><td>网络</td><td>本机回环 127.0.0.1 可用；程序默认自动选择空闲端口，不要求联网</td></tr>
