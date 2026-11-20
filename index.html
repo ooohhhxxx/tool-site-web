@@ -80,10 +80,10 @@ footer a{color:#64748b;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · OPC UA · 串口调试 · 采集监控 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
+  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · 串口调试 · HTTP 调试 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v1.0.3 ｜ 更新于 2026-11-20 ｜ Windows 10/11 x64 ｜ 约 24 MB ｜ 完全免费</p>
+  <p class="meta">版本 v1.0.4 ｜ 更新于 2026-11-20 ｜ Windows 10/11 x64 ｜ 约 23 MB ｜ 完全免费</p>
   <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
 </header>
 
@@ -144,13 +144,13 @@ footer a{color:#64748b;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🔗</div>
-    <h3>OPC UA</h3>
+    <div class="icon">🌐</div>
+    <h3>HTTP 调试</h3>
     <ul>
-      <li>连接（匿名或用户名密码）后逐层浏览节点树，点节点直接读值</li>
-      <li>读值含数据类型、状态码与时间戳；变量节点可写值</li>
-      <li>写入按节点当前类型自动转换：布尔认 true/false，整数支持 0x 前缀</li>
-      <li>OPC UA 写入同样进审计、同样受只读模式拦截</li>
+      <li>替代 Postman 调现场接口：GET/POST/PUT/DELETE，请求头行编辑，body 支持 JSON</li>
+      <li>内置海康 RCS-2000 模板（任务下发 / 继续 / 取消 / 绑定解绑），填 IP 就能发</li>
+      <li>自签名证书一键跳过校验；自动生成 X-lr-request-id 并回显，方便与对方日志对账</li>
+      <li>响应显示状态码 / 耗时 / 字节数；历史可回填，只回填不重发（避免误触发设备动作）</li>
     </ul>
   </div>
   <div class="card">
@@ -161,16 +161,6 @@ footer a{color:#64748b;text-decoration:underline}
       <li>HEX 与文本双向收发，定时循环发送、发送历史</li>
       <li>接收区实时刷新与暂停，TX / RX 字节计数</li>
       <li>增量解码，中文不乱码</li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="icon">📈</div>
-    <h3>采集监控</h3>
-    <ul>
-      <li>把 Modbus / S7 点位加入监控列表，按各自周期（最快 200ms）长期采样并落盘</li>
-      <li>历史趋势曲线：10 分钟 / 1 小时 / 6 小时 / 1 天 / 7 天，大数据量自动按时间桶聚合</li>
-      <li>阈值告警：大于 / 小于 / 等于 / 超出范围，分提示·警告·严重三级，带冷却时间</li>
-      <li>值不变也记录，能看出「卡住不刷新」；原始数据保留 7 天，全程本地不上传</li>
     </ul>
   </div>
   <div class="card">
@@ -187,7 +177,7 @@ footer a{color:#64748b;text-decoration:underline}
     <div class="icon">🧭</div>
     <h3>场景编排</h3>
     <ul>
-      <li>十种步骤跨协议串联：SSH / Modbus / S7 / OPC UA / 串口 / HTTP</li>
+      <li>多种步骤跨协议串联：SSH / Modbus / S7 / 串口 / HTTP</li>
       <li>每步可断言（等于/区间/包含/正则…）、重试、超时、失败是否继续</li>
       <li>上一步的取值存成变量，用 <code>${名称}</code> 传进后面的地址或 URL</li>
       <li>一键复跑，逐步结果 + Markdown 报告导出，运行历史留最近 200 次</li>
@@ -234,7 +224,7 @@ footer a{color:#64748b;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.3）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.4）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -246,9 +236,20 @@ footer a{color:#64748b;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v1.0.3</span>
+    <span class="rel-ver">v1.0.4</span>
     <span class="rel-date">2026-11-20</span>
     <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">发布</div><div class="txt">v1.0.4 下线 OPC UA 和「采集监控」两个页面（现场用不到），安装包从 24.97 MB 降到 23.08 MB，启动也更快。HTTP 调试按海康 RCS 手册补齐了请求头（Accept / Accept-Encoding / Connection / User-Agent），并支持 gzip 压缩响应自动解压——之前声明了压缩却不会解，遇到压缩响应会看到乱码。另外修了打包脚本的编码问题：cmd 按系统 ANSI 解析批处理文件，原来的 UTF-8 中文注释会被拆成无效命令，导致临时目录清理逻辑一直没生效（不影响出包，但会留垃圾）。</div></div>
+  </div>
+</div>
+
+
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.3</span>
+    <span class="rel-date">2026-11-20</span>
   </div>
   <div class="updates">
     <div class="row"><div class="tag">发布</div><div class="txt">v1.0.3 新增「HTTP 调试」页：不用再开 Postman，选模板（任务下发 / 继续任务 / 取消任务 / 绑定解绑）填上 RCS 的 IP 就能发；支持自定义请求头、自动生成 X-lr-request-id、跳过自签名证书校验，请求历史可回填重发。同一能力也进了场景编排（HTTP 请求动作），可做接口巡检断言。另外冷启动提速约 42%（OPC UA 改为按需加载）。</div></div>
@@ -256,7 +257,7 @@ footer a{color:#64748b;text-decoration:underline}
 </div>
 
 
-<p class="section-sub">v1.0.3 · 2026-11-20</p>
+<p class="section-sub">v1.0.4 · 2026-11-20</p>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.2</span>
@@ -768,7 +769,7 @@ footer a{color:#64748b;text-decoration:underline}
 <div class="steps">
   <div class="step"><div class="num">1</div><div class="txt">点击页面顶部「立即免费下载」，得到 <code>UltimateToolWeb-Setup.exe</code>。</div></div>
   <div class="step"><div class="num">2</div><div class="txt">双击安装包一路「下一步」完成安装（可勾选创建桌面快捷方式）。旧版 Tk 版不用卸载。</div></div>
-  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / S7 PLC / OPC UA / 串口调试 / 采集监控 / 审计日志 / 插件 / 场景编排 / 诊断知识库 / 设置十一个页面，<code>Ctrl+1~9</code> 可快速切到前九页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
+  <div class="step"><div class="num">3</div><div class="txt">从桌面或开始菜单打开 <strong>调试工具</strong>，程序自动在本机起服务并弹出窗口；左侧切换 SSH / Modbus / S7 PLC / 串口调试 / HTTP 调试 / 审计日志 / 插件 / 场景编排 / 诊断知识库 / 设置十个页面，<code>Ctrl+1~9</code> 可快速切到前九页。设置页「软件更新」区会自动检查新版本，发现新版可一键下载安装。</div></div>
   <div class="step"><div class="num">4</div><div class="txt">详细操作步骤、数据存放位置与故障排查，见 <a href="./SOP.html" style="color:#38bdf8;text-decoration:underline">标准操作程序（SOP）</a>。</div></div>
 </div>
 

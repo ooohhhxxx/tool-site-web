@@ -27,7 +27,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <button class="print-btn" onclick="window.print()">🖨 打印 / 保存为PDF</button>
 
 <h1>调试工具<br>标准操作程序（SOP）</h1>
-<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V1.0.3 ｜ 生效日期：2026-11-20 ｜ 编制：工具开发组</p>
+<p class="meta">文件编号：SOP-UTW-001 ｜ 版本：V1.0.4 ｜ 生效日期：2026-11-20 ｜ 编制：工具开发组</p>
 
 <h2>一、目的</h2>
 <p>为规范「调试工具」（以下简称"本工具"）的安装、配置与日常使用，确保操作人员能够正确、安全地完成 SSH 远程管理、Modbus TCP 通信调试、西门子 S7 PLC 调试与串口设备调试，降低误操作风险，提高排障效率，特制定本 SOP。</p>
@@ -36,7 +36,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <ul>
   <li>需要同时管理 SSH 主机、Modbus TCP 设备、西门子 S7 PLC 与串口设备的现场调试、运维、产线排障场景；</li>
   <li>Windows 10 / 11 x64 桌面环境；</li>
-  <li>本工具与「经典 Tk 版调试工具」是<strong>两个独立软件</strong>，可同时安装、互不影响。本 SOP 只适用于桌面版 v1.0.3。</li>
+  <li>本工具与「经典 Tk 版调试工具」是<strong>两个独立软件</strong>，可同时安装、互不影响。本 SOP 只适用于桌面版 v1.0.4。</li>
 </ul>
 
 <h2>三、运行环境要求</h2>
@@ -215,15 +215,15 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 <p>场景编排用于把一次排障动作固化成可重复执行的流程；诊断知识库用于把「现象 → 原因 → 处置」沉淀下来。两者配合，现场排障从「凭经验挨个查」变成「跑一遍、看结论」。</p>
 <h3>15.1 前置条件</h3>
 <ul>
-  <li>先在对应的协议页（SSH / Modbus / S7 PLC / OPC UA / 串口）把设备连上，确认单独操作正常；</li>
+  <li>先在对应的协议页（SSH / Modbus / S7 PLC / 串口 / HTTP 调试）把设备连上，确认单独操作正常；</li>
   <li>场景步骤<strong>只调用已经连好的连接</strong>，不会自己发起连接，也不会保存账号密码——凭据仍留在各协议页的连接记录里；</li>
   <li>场景页顶部会提示「未连接：Modbus / 串口…」，用到这些协议的步骤会直接失败，不是工具故障。</li>
 </ul>
 <h3>15.2 新建与编辑场景</h3>
 <ol>
   <li>进入「场景编排」，填写「名称」（如"网关健康检查"）与「说明」；</li>
-  <li>在右上角选择步骤类型后点「添加步骤」。可选：SSH 执行命令、Modbus 读/写寄存器、S7 读/写变量、OPC UA 读/写节点、串口收发、HTTP GET、等待；</li>
-  <li>点开步骤填参数：Modbus 需选寄存器区并填地址（0 基）、S7 填 <code>DB1.DBD0</code> 这类绝对地址、OPC UA 填 NodeId、串口可切换十六进制发送；</li>
+  <li>在右上角选择步骤类型后点「添加步骤」。可选：SSH 执行命令、Modbus 读/写寄存器、S7 读/写变量、串口收发、HTTP GET、HTTP 请求、等待；</li>
+  <li>点开步骤填参数：Modbus 需选寄存器区并填地址（0 基）、S7 填 <code>DB1.DBD0</code> 这类绝对地址、HTTP 填完整 URL、串口可切换十六进制发送；</li>
   <li>需要判定结果时设「断言」：等于 / 不等于 / 大于 / 小于 / ≥ / ≤ / 在区间内 / 包含 / 不包含 / 正则匹配 / 非空 / 为空。断言对象是这一步的"主要取值"：SSH 取输出、寄存器取数值、串口与 HTTP 取回包文本；</li>
   <li>需要在后面复用时填「存为变量」（如 <code>ver</code>），后续参数里写 <code>${ver}</code> 即可引用，支持 <code>${a.b.0}</code> 形式取嵌套值；</li>
   <li>可选设置：重试次数（0–3）、单步超时（0.5–120 秒）、失败是否继续。默认是"失败即停"，避免后续步骤在下游状态不确定时继续写设备；</li>
@@ -239,7 +239,7 @@ code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-family:Consolas,m
 </ul>
 <h3>15.4 诊断知识库</h3>
 <ul>
-  <li>内置 16 条条目，覆盖本项目现场真踩过的问题：SFTP 子系统缺失、paramiko 4 移除 SHA-1 算法、RTU 超时、Modbus 02/03 异常码、CRC 干扰、COM 口被占用、S7 rack/slot 与优化块、OPC UA 证书不受信与身份令牌、串口无回包、HTTP 4xx 等；</li>
+  <li>内置 13 条条目，覆盖本项目现场真踩过的问题：SFTP 子系统缺失、paramiko 4 移除 SHA-1 算法、RTU 超时、Modbus 02/03 异常码、CRC 干扰、COM 口被占用、S7 rack/slot 与优化块、串口无回包、HTTP 4xx 等；</li>
   <li>场景某步失败时，结果下方会自动列出最可能的原因与处置（最多 3 条）；</li>
   <li>支持按现象/关键词搜索与按协议过滤；</li>
   <li>可新建、编辑、删除自己的条目；<strong>内置条目不可修改也不可删除</strong>（避免工具升级后覆盖），点「编辑」会自动转为"另存为我的版本"。</li>

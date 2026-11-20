@@ -1,11 +1,11 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "date": "2026-11-20",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 24972505,
-  "sha256": "cfc47836e870ee803d7c7713465fdd2a8c2f9196074e4f49522dd53df3c6fbae",
+  "size": 23085950,
+  "sha256": "4f202a0eaedcac5e293202d5fb5f02cac169a40abf5756400cc4cbd92b08aa7a",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.3",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.3/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.4",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.4/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.3 新增「HTTP 调试」页：不用再开 Postman，选模板（任务下发 / 继续任务 / 取消任务 / 绑定解绑）填上 RCS 的 IP 就能发；支持自定义请求头、自动生成 X-lr-request-id、跳过自签名证书校验，请求历史可回填重发。同一能力也进了场景编排（HTTP 请求动作），可做接口巡检断言。另外冷启动提速约 42%（OPC UA 改为按需加载）。"
+  "notes": "v1.0.4 下线 OPC UA 和「采集监控」两个页面（现场用不到），安装包从 24.97 MB 降到 23.08 MB，启动也更快。HTTP 调试按海康 RCS 手册补齐了请求头（Accept / Accept-Encoding / Connection / User-Agent），并支持 gzip 压缩响应自动解压——之前声明了压缩却不会解，遇到压缩响应会看到乱码。另外修了打包脚本的编码问题：cmd 按系统 ANSI 解析批处理文件，原来的 UTF-8 中文注释会被拆成无效命令，导致临时目录清理逻辑一直没生效（不影响出包，但会留垃圾）。"
 }
