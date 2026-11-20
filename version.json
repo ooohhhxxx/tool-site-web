@@ -1,11 +1,11 @@
 {
-  "version": "1.0.5",
+  "version": "1.0.6",
   "date": "2026-11-20",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23084372,
-  "sha256": "d382ceb41567ed8f97d96cc1e82b1d5524192240edfa40a39dcf701c9e160af8",
+  "size": 23084612,
+  "sha256": "da2c23f55fbd2c5c59facb8909ca295f517407572af2817498d79ea6406ee542",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.5",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.5/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.6",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.6/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.5 修了 HTTP 调试页一个会发错地址的问题：基础路径（默认 /rcs/rtas）以前在界面上不可见，填非 RCS 的接口会被拼成错误的 URL；现在基础路径可以改，直接粘完整地址也不会再拼接，输入框下方还会实时显示「将请求 <最终地址>」。另外请求头改成弹框编辑（不再挤压请求体），默认请求头补到 5 个，响应区加了「复制」按钮，Ctrl+0 可以直接跳到设置页。场景里如果还留着已下线的 OPC UA 步骤，会明确提示「该功能已在 v1.0.4 下线」而不是「未知步骤类型」。"
+  "notes": "v1.0.6 界面调整：HTTP 调试页的请求区和响应区之间加了可拖拽的分割条（双击恢复默认比例），拖大请求区时请求体会跟着长高，不再固定高度；「请求头」和「请求体」两条标题合并成一行，把省下的高度让给输入区。请求头的具体内容改为鼠标悬停「设置请求头」按钮查看。"
 }
