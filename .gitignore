@@ -8,8 +8,8 @@ Thumbs.db
 .release.json
 .release_id
 
-# 安装包：Gitee Release 是主下载源，同时把**当前版本**放进仓库一份，
-# 作为 GitHub Pages 的备用镜像（gitee 被墙时仍能下载）。
-# 规矩：仓库里只保留当前版本这一个 exe，发新版时直接覆盖，不要累积多份。
-# Pages 部署前会校验它的 size/sha256 与 version.json 是否一致，不一致直接失败。
-# 哪天不想占这份空间，把它加回忽略列表即可，工作流会自动退化为"走 Release 附件"。
+# 安装包不进本仓库：Gitee 仓库配额（git + 附件合计 1GB）很紧张，
+# 25MB 的 exe 每发一版就永久留在历史里，删都删不掉。
+# 备用下载改由独立仓库 tool-site-mirror 托管（GitHub Pages，不推 Gitee），
+# 每次发版只覆盖那一个文件，主站这边保持干净。
+UltimateToolWeb-Setup.exe
