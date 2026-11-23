@@ -8,40 +8,40 @@
 <link rel="apple-touch-icon" href="./favicon.ico">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Microsoft YaHei","Segoe UI",sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7}
+body{font-family:"Microsoft YaHei","Segoe UI",sans-serif;background:#0f172a;color:#e8eef7;line-height:1.7}
 a{text-decoration:none}
 nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:rgba(15,23,42,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10;border-bottom:1px solid #1e293b}
 nav .logo{font-size:20px;font-weight:bold;color:#38bdf8}
-nav a.link{color:#94a3b8;margin-left:24px}
+nav a.link{color:#a3b1c6;margin-left:24px}
 nav a.link:hover{color:#fff}
 .hero{text-align:center;padding:90px 20px 70px;background:radial-gradient(ellipse at top,#1e3a8a33,transparent),#0f172a}
-.hero h1{font-size:52px;font-weight:800;background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.sub{margin-top:16px;font-size:18px;color:#94a3b8}
-.btn{display:inline-block;margin-top:36px;padding:16px 56px;font-size:20px;font-weight:bold;color:#fff;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:999px;box-shadow:0 10px 30px rgba(37,99,235,.35);transition:.2s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(37,99,235,.5)}
+.hero h1{font-size:52px;font-weight:800;color:#f1f5f9;letter-spacing:-.5px}
+.hero p.sub{margin-top:16px;font-size:18px;color:#a3b1c6}
+.btn{display:inline-block;margin-top:36px;padding:16px 52px;font-size:19px;font-weight:600;color:#fff;background:#2563eb;border-radius:999px;box-shadow:0 6px 20px rgba(37,99,235,.28);transition:background .2s,box-shadow .2s}
+.btn:hover{background:#1d4ed8;box-shadow:0 8px 24px rgba(37,99,235,.4)}
 .btn-doc{background:transparent;border:2px solid #38bdf8;color:#38bdf8;box-shadow:none;margin-left:16px}
 .btn-doc:hover{background:rgba(56,189,248,.15);box-shadow:0 14px 36px rgba(56,189,248,.2)}
-.meta{margin-top:14px;font-size:13px;color:#64748b}
-.mirror-tip{margin-top:6px;font-size:12px;color:#64748b}
+.meta{margin-top:14px;font-size:13px;color:#7b8a9e}
+.mirror-tip{margin-top:6px;font-size:12px;color:#7b8a9e}
 .mirror-tip a{color:#2563eb;text-decoration:underline}
 .section-title{text-align:center;font-size:30px;margin:60px 0 10px;color:#f1f5f9}
-.section-sub{text-align:center;color:#64748b;margin-bottom:36px}
+.section-sub{text-align:center;color:#7b8a9e;margin-bottom:36px}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:24px;max-width:1100px;margin:0 auto;padding:0 20px}
-.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:30px;transition:.2s}
+.card{background:#1e293b;border:1px solid #3b4a61;border-radius:16px;padding:30px;transition:.2s}
 .card:hover{transform:translateY(-4px);border-color:#38bdf8}
 .card .icon{font-size:40px}
 .card h3{margin:14px 0 10px;font-size:20px;color:#f1f5f9}
-.card ul{margin-top:10px;padding-left:20px;color:#94a3b8;font-size:14px}
+.card ul{margin-top:10px;padding-left:20px;color:#a3b1c6;font-size:14px}
 .compare{max-width:900px;margin:0 auto;padding:0 20px}
-.compare table{width:100%;border-collapse:collapse;background:#1e293b;border:1px solid #334155;border-radius:12px;overflow:hidden}
-.compare th,.compare td{padding:12px 16px;text-align:left;border-bottom:1px solid #334155;font-size:14px}
+.compare table{width:100%;border-collapse:collapse;background:#1e293b;border:1px solid #3b4a61;border-radius:12px;overflow:hidden}
+.compare th,.compare td{padding:12px 16px;text-align:left;border-bottom:1px solid #3b4a61;font-size:14px}
 .compare th{background:#253449;color:#f1f5f9}
-.compare td{color:#94a3b8}
+.compare td{color:#a3b1c6}
 .compare tr:last-child td{border-bottom:0}
 .release{max-width:800px;margin:0 auto 30px;padding:0 20px}
 .rel-head{display:flex;align-items:center;gap:12px;padding-bottom:10px;border-bottom:1px solid #1e293b;margin-bottom:2px}
 .rel-ver{font-size:21px;font-weight:800;color:#38bdf8}
-.rel-date{color:#64748b;font-size:13px}
+.rel-date{color:#7b8a9e;font-size:13px}
 .rel-badge{font-size:12px;padding:2px 10px;border-radius:999px;background:#064e3b;color:#6ee7b7}
 .updates .row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #1e293b}
 .updates .tag{flex:0 0 64px;height:26px;line-height:26px;text-align:center;border-radius:6px;font-size:12px;font-weight:bold;background:#1e3a8a;color:#93c5fd}
@@ -53,15 +53,15 @@ nav a.link:hover{color:#fff}
 .step .num{flex:0 0 36px;height:36px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .step .txt{color:#cbd5e1}
 .notice{max-width:800px;margin:40px auto;padding:20px 26px;background:#42200633;border:1px solid #b45309;border-radius:12px;color:#fbbf24;font-size:14px}
-.update-hint{max-width:860px;margin:0 auto 34px;padding:22px 26px;background:linear-gradient(90deg,#1e293b,#1e2b46);border:1px solid #334155;border-radius:16px;display:flex;gap:18px;align-items:center}
+.update-hint{max-width:860px;margin:0 auto 34px;padding:22px 26px;background:#1c2537;border:1px solid #3b4a61;border-radius:16px;display:flex;gap:18px;align-items:center}
 .update-hint .uh-icon{font-size:30px;flex:0 0 auto}
 .update-hint .uh-text{flex:1}
 .update-hint .uh-text strong{color:#f1f5f9;font-size:17px}
-.update-hint .uh-text p{color:#94a3b8;font-size:14px;margin-top:4px}
+.update-hint .uh-text p{color:#a3b1c6;font-size:14px;margin-top:4px}
 .update-hint .uh-btn{flex:0 0 auto;padding:11px 22px;border-radius:999px;background:#2563eb;color:#fff;font-size:14px;font-weight:bold}
 .update-hint .uh-btn:hover{background:#1d4ed8}
 footer{text-align:center;padding:40px 20px;color:#475569;font-size:13px;border-top:1px solid #1e293b;margin-top:60px}
-footer a{color:#64748b;text-decoration:underline}
+footer a{color:#7b8a9e;text-decoration:underline}
 @media(max-width:640px){.update-hint{flex-direction:column;align-items:flex-start}.rel-head{flex-wrap:wrap}.hero h1{font-size:36px}.btn,.btn-doc{display:block;margin:14px auto 0;max-width:320px}}
 </style>
 </head>
