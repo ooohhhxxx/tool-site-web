@@ -21,16 +21,18 @@ nav a.link:hover{color:#fff}
 .btn:hover{background:#1d4ed8;box-shadow:0 8px 24px rgba(37,99,235,.4)}
 .btn-doc{background:transparent;border:2px solid #38bdf8;color:#38bdf8;box-shadow:none;margin-left:16px}
 .btn-doc:hover{background:rgba(56,189,248,.15);box-shadow:0 14px 36px rgba(56,189,248,.2)}
-.meta{margin-top:14px;font-size:13px;color:#7b8a9e}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:0 12px;margin:18px auto 0;width:fit-content;padding:7px 16px;background:#1a2334;border:1px solid #3b4a61;border-radius:999px;font-size:12.5px;color:#a3b1c6}
 .mirror-tip{margin-top:6px;font-size:12px;color:#7b8a9e}
 .mirror-tip a{color:#2563eb;text-decoration:underline}
 .section-title{text-align:center;font-size:30px;margin:60px 0 10px;color:#f1f5f9}
 .section-sub{text-align:center;color:#7b8a9e;margin-bottom:36px}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:24px;max-width:1100px;margin:0 auto;padding:0 20px}
-.card{background:#1e293b;border:1px solid #3b4a61;border-radius:16px;padding:30px;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:#38bdf8}
-.card .icon{font-size:40px}
-.card h3{margin:14px 0 10px;font-size:20px;color:#f1f5f9}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1100px;margin:0 auto;padding:0 20px}
+.features .card:last-child{grid-column:span 2}
+.card{background:#1e293b;border:1px solid #3b4a61;border-radius:14px;padding:22px 24px;transition:border-color .2s}
+.card:hover{border-color:#38bdf8}
+.card .icon{width:22px;height:22px;color:#38bdf8}
+.card .icon svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block}
+.card h3{margin:12px 0 9px;font-size:16px;font-weight:600;color:#f1f5f9}
 .card ul{margin-top:10px;padding-left:20px;color:#a3b1c6;font-size:14px}
 .compare{max-width:900px;margin:0 auto;padding:0 20px}
 .compare table{width:100%;border-collapse:collapse;background:#1e293b;border:1px solid #3b4a61;border-radius:12px;overflow:hidden}
@@ -53,8 +55,9 @@ nav a.link:hover{color:#fff}
 .step .num{flex:0 0 36px;height:36px;border-radius:50%;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .step .txt{color:#cbd5e1}
 .notice{max-width:800px;margin:40px auto;padding:20px 26px;background:#42200633;border:1px solid #b45309;border-radius:12px;color:#fbbf24;font-size:14px}
-.update-hint{max-width:860px;margin:0 auto 34px;padding:22px 26px;background:#1c2537;border:1px solid #3b4a61;border-radius:16px;display:flex;gap:18px;align-items:center}
-.update-hint .uh-icon{font-size:30px;flex:0 0 auto}
+.update-hint{max-width:860px;margin:0 auto 26px;padding:15px 20px;background:#1c2537;border:1px solid #3b4a61;border-radius:16px;display:flex;gap:18px;align-items:center}
+.update-hint .uh-icon{width:20px;height:20px;color:#7b8a9e;flex:0 0 auto}
+.update-hint .uh-icon svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6;fill:none}
 .update-hint .uh-text{flex:1}
 .update-hint .uh-text strong{color:#f1f5f9;font-size:17px}
 .update-hint .uh-text p{color:#a3b1c6;font-size:14px;margin-top:4px}
@@ -80,15 +83,15 @@ footer a{color:#7b8a9e;text-decoration:underline}
 
 <header class="hero" id="download">
   <h1>调试工具</h1>
-  <p class="sub">SSH 远程管理 · Modbus TCP/RTU · 西门子 S7 · 串口调试 · HTTP 调试 · 写操作审计 · 场景编排 · 诊断知识库 —— 独立 Windows 客户端</p>
+  <p class="sub">五协议一个窗口：SSH / Modbus / S7 / 串口 / HTTP —— 调试、写入、留痕一次做完</p>
   <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">⬇ 立即免费下载（国内镜像）</a>
   <a class="btn btn-doc" href="./SOP.html">📄 查看操作手册 (SOP)</a>
-  <p class="meta">版本 v1.0.7 ｜ 更新于 2026-11-20 ｜ Windows 10/11 x64 ｜ 约 23 MB ｜ 完全免费</p>
+  <p class="meta">版本 v1.0.7 · 2026-11-20 · Windows 10/11 x64 · 23 MB · 免费</p>
   <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
 </header>
 
 <div class="update-hint">
-  <div class="uh-icon">🖥️</div>
+  <div class="uh-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/></svg></div>
   <div class="uh-text">
     <strong>是独立桌面软件，不是网页</strong>
     <p>双击安装后弹出的是原生 Windows 窗口：没有地址栏、没有标签栏，也不打开浏览器。界面由 Vue 3 渲染，本地服务只监听 127.0.0.1，不上传任何数据。</p>
@@ -100,7 +103,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <p class="section-sub">沿用经典 Tk 版的能力，换一套现代界面与独立窗口形态</p>
 <div class="features">
   <div class="card">
-    <div class="icon">🪟</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
     <h3>独立桌面窗口</h3>
     <ul>
       <li>原生 WebView2 窗口，无地址栏 / 标签栏，独立任务栏图标</li>
@@ -111,7 +114,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🔐</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 10l3 3-3 3M13 16h4"/></svg></div>
     <h3>SSH 远程管理</h3>
     <ul>
       <li>多会话标签，每个会话独立的 xterm.js 终端与编码设置</li>
@@ -122,7 +125,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">⚙️</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 7.2v3.8M12 11l-5.4 5.6M12 11l5.4 5.6"/></svg></div>
     <h3>Modbus TCP / RTU</h3>
     <ul>
       <li>连接 / 断开、超时设置、快速读写线圈与保持寄存器</li>
@@ -132,7 +135,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🏭</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></div>
     <h3>S7 PLC 调试</h3>
     <ul>
       <li>原生西门子 S7 协议（ISO-on-TCP，端口 102），纯 Python 实现，无需 snap7.dll</li>
@@ -144,7 +147,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🌐</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3.2 3.6 3.2 14.4 0 18"/><path d="M12 3c-3.2 3.6-3.2 14.4 0 18"/></svg></div>
     <h3>HTTP 调试</h3>
     <ul>
       <li>替代 Postman 调现场接口：GET/POST/PUT/DELETE，请求头行编辑，body 支持 JSON</li>
@@ -154,7 +157,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🔌</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v4a6 6 0 0 1-12 0V8z"/><path d="M12 18v3"/></svg></div>
     <h3>串口调试</h3>
     <ul>
       <li>端口自动枚举，波特率 / 数据位 / 校验 / 停止位 / 编码可配</li>
@@ -164,7 +167,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🛡️</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l7 3v6c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
     <h3>写操作审计</h3>
     <ul>
       <li>Modbus / S7 写入记录「改前 → 改后」、结果与失败原因，写前自动读一次原值</li>
@@ -174,7 +177,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🧭</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3.5" width="6.5" height="5" rx="1.2"/><rect x="14.5" y="3.5" width="6.5" height="5" rx="1.2"/><rect x="8" y="15.5" width="6.5" height="5" rx="1.2"/><path d="M9.5 6h5M17.7 8.5v2.2a1.6 1.6 0 0 1-1.6 1.6H13a1.6 1.6 0 0 0-1.6 1.6v1.6"/></svg></div>
     <h3>场景编排</h3>
     <ul>
       <li>多种步骤跨协议串联：SSH / Modbus / S7 / 串口 / HTTP</li>
@@ -185,7 +188,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">📚</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5A2.5 2.5 0 0 1 4 20.5z"/><path d="M8 7h8M8 10.5h5"/></svg></div>
     <h3>诊断知识库</h3>
     <ul>
       <li>16 条内置条目：SFTP 子系统缺失、RTU 超时、02/03 异常码、CRC 干扰…</li>
@@ -195,7 +198,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">🧩</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="8" height="8" rx="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.8"/><path d="M17 13v8M13 17h8"/></svg></div>
     <h3>插件系统</h3>
     <ul>
       <li>沿用经典 Tk 版的插件契约，现有插件可直接复用</li>
@@ -205,7 +208,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     </ul>
   </div>
   <div class="card">
-    <div class="icon">💾</div>
+    <div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"/><path d="M4.5 11.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"/></svg></div>
     <h3>设置与数据</h3>
     <ul>
       <li>默认编码、界面缩放、连接记录、窗口几何均可持久化</li>
