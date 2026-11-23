@@ -1,11 +1,11 @@
 {
-  "version": "1.0.7",
-  "date": "2026-11-20",
+  "version": "1.0.8",
+  "date": "2026-11-23",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23081238,
-  "sha256": "2ec48a1c01f7daaf2f094603de73446ac9e2f7c9be804bdf36dc21fff0d0ecbb",
+  "size": 23090353,
+  "sha256": "2cc75e3e55c11f4cd9c8592498389e666e38c88cbd25563961d16b3595d86f86",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.7",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.7/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.8",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.8/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.7 左侧导航重排：按用途分成「调试（SSH / Modbus / S7 / 串口 / HTTP）」「编排与分析（场景编排 / 诊断知识库 / 审计日志）」「系统（插件 / 设置）」三组，找页面更快，审计日志也不再夹在协议页中间。同时去掉了 Ctrl+1~9 数字快捷键——顺序调整后数字和页面对不上，留着反而容易误按。"
+  "notes": "v1.0.8 界面改造：① 顶栏状态胶囊改成四色；② 连接失败改为可停留的错误条，带「重试 / 详情 / 关闭」；③ Modbus 与 S7 报文日志补空态；④ 日志卡可收起且列宽联动；⑤ 卡头控件收敛为 4 个 + 「···」菜单；⑥ SSH 文件面板可收起，终端宽度 +38%；⑦ 远程文件目录大小显示「—」占位。"
 }
