@@ -85,13 +85,24 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 47 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 48 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.10</span>
+    <span class="rel-date">2026-11-23</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">刚打开停在 SSH 页时，底部状态栏却显示「发现 2 个串口」——所有页面都是常驻挂载的，串口扫描、插件加载这些后台动作的提示全写进了同一个状态栏。现在每条提示只在自己所属的页面显示。</div></div>
+    <div class="row"><div class="tag">优化</div><div class="txt">串口端口不再开机就枚举，首次切到串口页时才扫描（之后可用「刷新端口」手动刷），避免软件刚启动就去动硬件。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.9</span>
     <span class="rel-date">2026-11-23</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">改进</div><div class="txt">连接过程中顶栏显示黄色「连接中…」，不再一直停在灰色「未连接」——之前点连接后 3-10 秒内看不出到底在连还是没反应。</div></div>

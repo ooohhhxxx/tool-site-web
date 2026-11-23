@@ -96,7 +96,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
         <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">立即免费下载</a>
         <a class="btn btn-doc" href="./SOP.html">查看操作手册</a>
       </div>
-      <p class="meta">版本 v1.0.9 · 2026-11-23 · Windows 10/11 x64 · 23 MB · 免费</p>
+      <p class="meta">版本 v1.0.10 · 2026-11-23 · Windows 10/11 x64 · 23 MB · 免费</p>
       <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
     </div>
     <div class="hero-shot">
@@ -242,7 +242,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.9）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.10）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -254,9 +254,20 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v1.0.9</span>
+    <span class="rel-ver">v1.0.10</span>
     <span class="rel-date">2026-11-23</span>
     <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">刚打开停在 SSH 页时，底部状态栏却显示「发现 2 个串口」——所有页面都是常驻挂载的，串口扫描、插件加载这些后台动作的提示全写进了同一个状态栏。现在每条提示只在自己所属的页面显示。</div></div>
+    <div class="row"><div class="tag">优化</div><div class="txt">串口端口不再开机就枚举，首次切到串口页时才扫描（之后可用「刷新端口」手动刷），避免软件刚启动就去动硬件。</div></div>
+  </div>
+</div>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.9</span>
+    <span class="rel-date">2026-11-23</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">改进</div><div class="txt">连接过程中顶栏显示黄色「连接中…」，不再一直停在灰色「未连接」——之前点连接后 3-10 秒内看不出到底在连还是没反应。</div></div>
@@ -274,19 +285,9 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <div class="row"><div class="tag">优化</div><div class="txt">v1.0.8 界面改造：① 顶栏状态胶囊改成四色（绿已连接 / 黄连接中 / 灰未连接 / 红出错）；② 连接失败不再用 3 秒消失的提示，改成可停留的错误条，带「重试 / 详情 / 关闭」，详情能看到原始异常；③ Modbus 与 S7 的报文日志补上空态说明；④ 日志卡可以收起，收起后列宽跟着收缩，主区域自动变宽；⑤ 卡头控件收敛：Modbus 监控从 7 个控件收到 4 个 + 「···」菜单，S7 地址表、场景工具条同样处理；⑥ SSH 文件面板可收起为 64px 图标条，终端宽度增加约 38%；⑦ 远程文件列表的目录大小显示「—」占位，不再留空。</div></div>
   </div>
 </div>
-<div class="release">
-  <div class="rel-head">
-    <span class="rel-ver">v1.0.7</span>
-    <span class="rel-date">2026-11-20</span>
-    
-  </div>
-  <div class="updates">
-    <div class="row"><div class="tag">优化</div><div class="txt">v1.0.7 左侧导航重排：按用途分成「调试（SSH / Modbus / S7 / 串口 / HTTP）」「编排与分析（场景编排 / 诊断知识库 / 审计日志）」「系统（插件 / 设置）」三组，找页面更快，审计日志也不再夹在协议页中间。同时去掉了 Ctrl+1~9 数字快捷键——顺序调整后数字和页面对不上，留着反而容易误按。</div></div>
-  </div>
-</div>
 
 <p style="text-align:center;margin:26px 0 10px">
-  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 47 个版本 →</a>
+  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 48 个版本 →</a>
 </p>
 
 <h2 class="section-title" id="usage">使用方法</h2>
