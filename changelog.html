@@ -85,13 +85,25 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 46 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 47 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.9</span>
+    <span class="rel-date">2026-11-23</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">改进</div><div class="txt">连接过程中顶栏显示黄色「连接中…」，不再一直停在灰色「未连接」——之前点连接后 3-10 秒内看不出到底在连还是没反应。</div></div>
+    <div class="row"><div class="tag">改进</div><div class="txt">断开时区分原因：远端关闭会话（设备重启或管理员踢出）与连接超时（网络中断或设备过载）给出不同提示，不再统一显示「连接已断开」。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">远程文件面板底部的「新建目录 / 删除」按钮改为右对齐，不再紧跟「N 项」计数挂在文字尾巴上。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.8</span>
     <span class="rel-date">2026-11-23</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">优化</div><div class="txt">v1.0.8 界面改造：① 顶栏状态胶囊改成四色（绿已连接 / 黄连接中 / 灰未连接 / 红出错）；② 连接失败不再用 3 秒消失的提示，改成可停留的错误条，带「重试 / 详情 / 关闭」，详情能看到原始异常；③ Modbus 与 S7 的报文日志补上空态说明；④ 日志卡可以收起，收起后列宽跟着收缩，主区域自动变宽；⑤ 卡头控件收敛：Modbus 监控从 7 个控件收到 4 个 + 「···」菜单，S7 地址表、场景工具条同样处理；⑥ SSH 文件面板可收起为 64px 图标条，终端宽度增加约 38%；⑦ 远程文件列表的目录大小显示「—」占位，不再留空。</div></div>
