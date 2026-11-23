@@ -1,11 +1,11 @@
 {
-  "version": "1.0.12",
-  "date": "2026-11-23",
+  "version": "1.0.13",
+  "date": "2026-11-24",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23093050,
-  "sha256": "96b92e735607a80ac8f83760f5e5a4dec3f5c302d1c900ecf7dc101218b113e2",
+  "size": 23094265,
+  "sha256": "fc7f675ff2440a41d66b154ee4f4d8a6e9689137cc9ee83905feffe4bd3d4160",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.12",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.12/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.13",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.13/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.12：修复 Ctrl+V 无法粘贴；记住 Modbus/串口连接参数；新增终端常用命令片段与一键体检；新增深色主题；设置页补充快捷键说明。"
+  "notes": "v1.0.13：修复深色主题下按钮、输入框、左侧导航仍显示白底的问题。"
 }
