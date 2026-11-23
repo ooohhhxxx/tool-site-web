@@ -1,11 +1,11 @@
 {
-  "version": "1.0.11",
+  "version": "1.0.12",
   "date": "2026-11-23",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23086076,
-  "sha256": "eef22ec19a225385605f0b09a74448e4e6400c34820105fb69ccb89345efe89a",
+  "size": 23093050,
+  "sha256": "96b92e735607a80ac8f83760f5e5a4dec3f5c302d1c900ecf7dc101218b113e2",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.11",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.11/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.12",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.12/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.11：修复连接失败时顶栏胶囊变红但文字仍停在「连接中…」的问题，现在会正常显示「未连接」。"
+  "notes": "v1.0.12：修复 Ctrl+V 无法粘贴；记住 Modbus/串口连接参数；新增终端常用命令片段与一键体检；新增深色主题；设置页补充快捷键说明。"
 }

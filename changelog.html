@@ -85,13 +85,28 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 49 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 50 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.12</span>
+    <span class="rel-date">2026-11-23</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">SSH 终端里 Ctrl+V 无法粘贴。界面提示一直写着「Ctrl+V 粘贴」，但代码里只绑定了 Ctrl+Shift+V，按 Ctrl+V 时终端把 ^V 原样发给了远端。现在两个组合键都可用。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">连接参数会被记住：Modbus 的地址端口、串口的波特率校验位，下次打开自动带回，不用每次重填。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">终端「片段」：把常用的几条命令存起来（预置了看日志、磁盘、内存、负载、进程、端口），点一下插入终端但不自动执行，可以改完参数再回车。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">「一键体检」：一条只读命令依次看负载、磁盘、内存、进程，连上设备后第一眼看这些最省事。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">深色主题：设置页可切换，适合车间强光反光或长时间盯屏。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">设置页增加快捷键说明，Ctrl+F / Ctrl+V / Ctrl+滚轮 / Esc 这些原本都能用但没人知道。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.11</span>
     <span class="rel-date">2026-11-23</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">修复</div><div class="txt">连接失败时顶栏状态胶囊会变红，但旁边的文字还停在「Modbus 连接中…」——红灯配着「进行中」的字样比单纯的红灯更让人困惑。现在失败后会正常显示「未连接」。</div></div>

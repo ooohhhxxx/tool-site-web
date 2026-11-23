@@ -96,7 +96,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
         <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">立即免费下载</a>
         <a class="btn btn-doc" href="./SOP.html">查看操作手册</a>
       </div>
-      <p class="meta">版本 v1.0.11 · 2026-11-23 · Windows 10/11 x64 · 23 MB · 免费</p>
+      <p class="meta">版本 v1.0.12 · 2026-11-23 · Windows 10/11 x64 · 23 MB · 免费</p>
       <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
     </div>
     <div class="hero-shot">
@@ -242,7 +242,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.11）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.12）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -254,9 +254,24 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v1.0.11</span>
+    <span class="rel-ver">v1.0.12</span>
     <span class="rel-date">2026-11-23</span>
     <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">SSH 终端里 Ctrl+V 无法粘贴。界面提示一直写着「Ctrl+V 粘贴」，但代码里只绑定了 Ctrl+Shift+V，按 Ctrl+V 时终端把 ^V 原样发给了远端。现在两个组合键都可用。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">连接参数会被记住：Modbus 的地址端口、串口的波特率校验位，下次打开自动带回，不用每次重填。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">终端「片段」：把常用的几条命令存起来（预置了看日志、磁盘、内存、负载、进程、端口），点一下插入终端但不自动执行，可以改完参数再回车。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">「一键体检」：一条只读命令依次看负载、磁盘、内存、进程，连上设备后第一眼看这些最省事。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">深色主题：设置页可切换，适合车间强光反光或长时间盯屏。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">设置页增加快捷键说明，Ctrl+F / Ctrl+V / Ctrl+滚轮 / Esc 这些原本都能用但没人知道。</div></div>
+  </div>
+</div>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.11</span>
+    <span class="rel-date">2026-11-23</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">修复</div><div class="txt">连接失败时顶栏状态胶囊会变红，但旁边的文字还停在「Modbus 连接中…」——红灯配着「进行中」的字样比单纯的红灯更让人困惑。现在失败后会正常显示「未连接」。</div></div>
@@ -273,21 +288,9 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <div class="row"><div class="tag">优化</div><div class="txt">串口端口不再开机就枚举，首次切到串口页时才扫描（之后可用「刷新端口」手动刷），避免软件刚启动就去动硬件。</div></div>
   </div>
 </div>
-<div class="release">
-  <div class="rel-head">
-    <span class="rel-ver">v1.0.9</span>
-    <span class="rel-date">2026-11-23</span>
-    
-  </div>
-  <div class="updates">
-    <div class="row"><div class="tag">改进</div><div class="txt">连接过程中顶栏显示黄色「连接中…」，不再一直停在灰色「未连接」——之前点连接后 3-10 秒内看不出到底在连还是没反应。</div></div>
-    <div class="row"><div class="tag">改进</div><div class="txt">断开时区分原因：远端关闭会话（设备重启或管理员踢出）与连接超时（网络中断或设备过载）给出不同提示，不再统一显示「连接已断开」。</div></div>
-    <div class="row"><div class="tag">修复</div><div class="txt">远程文件面板底部的「新建目录 / 删除」按钮改为右对齐，不再紧跟「N 项」计数挂在文字尾巴上。</div></div>
-  </div>
-</div>
 
 <p style="text-align:center;margin:26px 0 10px">
-  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 49 个版本 →</a>
+  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 50 个版本 →</a>
 </p>
 
 <h2 class="section-title" id="usage">使用方法</h2>
