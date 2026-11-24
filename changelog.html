@@ -85,13 +85,23 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 51 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 52 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.14</span>
+    <span class="rel-date">2026-11-24</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">v1.0.13 引入的严重问题：SSH 连上后顶栏仍显示「未连接」，还弹出错误条写「已断开」和红字「findCursor is not defined」。实际连接是好的（终端能看到登录信息），只是内部一个变量改名后漏了两处引用，导致连接成功后状态没同步、并误报断开。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.13</span>
     <span class="rel-date">2026-11-24</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">修复</div><div class="txt">深色主题下按钮、输入框、左侧导航仍是白色块。上一版只覆盖了颜色变量，而这几个元素把颜色写死了，切到深色后显得很扎眼。现在全部跟随主题。</div></div>

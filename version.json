@@ -1,11 +1,11 @@
 {
-  "version": "1.0.13",
+  "version": "1.0.14",
   "date": "2026-11-24",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23094265,
-  "sha256": "fc7f675ff2440a41d66b154ee4f4d8a6e9689137cc9ee83905feffe4bd3d4160",
+  "size": 23096686,
+  "sha256": "2c542508ca9d25af04108e215bb3fecf3ec6b84e93fffb233209e2f90c07599c",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.13",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.13/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.14",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.14/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.13：修复深色主题下按钮、输入框、左侧导航仍显示白底的问题。"
+  "notes": "v1.0.14：修复 SSH 连接成功后顶栏仍显示未连接、并误报「已断开」的问题（v1.0.13 引入）。"
 }
