@@ -1,11 +1,11 @@
 {
-  "version": "1.0.17",
+  "version": "1.0.18",
   "date": "2026-11-27",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23105903,
-  "sha256": "52d11c8c1536927e0d9d49898585cdfe7bc3f8ca11414443c33ecadfd2a929df",
+  "size": 23100952,
+  "sha256": "c9deed8b2402f261ffa304d607054998317568dd349f856c290307c7f77a1f1e",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.17",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.17/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.18",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.18/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.17：终端链接可点、SFTP 打包下载、记录批量删除；修复密码/口令无法清除、表单残留、CSV 公式注入。"
+  "notes": "v1.0.18：界面补操作提示（批量删除/多选/终端链接）；用户手册补齐新增功能说明。"
 }

@@ -96,7 +96,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
         <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">立即免费下载</a>
         <a class="btn btn-doc" href="./SOP.html">查看操作手册</a>
       </div>
-      <p class="meta">版本 v1.0.17 · 2026-11-27 · Windows 10/11 x64 · 23 MB · 免费</p>
+      <p class="meta">版本 v1.0.18 · 2026-11-27 · Windows 10/11 x64 · 23 MB · 免费</p>
       <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
     </div>
     <div class="hero-shot">
@@ -242,7 +242,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.17）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.18）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -254,9 +254,20 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v1.0.17</span>
+    <span class="rel-ver">v1.0.18</span>
     <span class="rel-date">2026-11-27</span>
     <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">优化</div><div class="txt">界面上补了操作提示：连接记录旁提示「勾选可批量删除」，文件管理提示「可 Ctrl/Shift 多选」，终端提示「网址可直接点」。新功能原来没有任何入口提示，不看更新日志不会知道能用。</div></div>
+    <div class="row"><div class="tag">文档</div><div class="txt">用户手册（本页 SOP）补齐了本次新增的说明：私钥口令、终端链接、打包下载、批量删除、清除已保存的凭据。</div></div>
+  </div>
+</div>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.17</span>
+    <span class="rel-date">2026-11-27</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">新增</div><div class="txt">终端里的网址可以直接点了（只支持 http/https 链接），不用再手动复制。</div></div>
@@ -281,26 +292,9 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <div class="row"><div class="tag">新增</div><div class="txt">支持带口令的加密私钥。以前私钥用密码保护过就连不上，只报「认证失败」不说原因；现在连接表单和记录编辑里都有「私钥口令」，填了私钥路径才出现。</div></div>
   </div>
 </div>
-<div class="release">
-  <div class="rel-head">
-    <span class="rel-ver">v1.0.15</span>
-    <span class="rel-date">2026-11-27</span>
-    
-  </div>
-  <div class="updates">
-    <div class="row"><div class="tag">新增</div><div class="txt">会话标签右键菜单：复制主机名 / 重连此会话 / 关闭其他会话 / 关闭全部会话。开满多个设备时不用再逐个点小叉。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">审计记录可以导出 CSV（按当前筛选结果导出），排障时作为证据留存，不再只能截图。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">S7 地址表可以导出 CSV，配好的几十个地址能备份、换机器不用重配。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">场景编排支持导出/导入场景定义（JSON）：备份、换机、分享给同事都行。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">HTTP 调试支持一键复制为 cURL，粘到终端或发给同事即可复现同一请求。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">诊断知识库支持导出 JSON，长期积累的排障经验不会随换机器丢失。</div></div>
-    <div class="row"><div class="tag">修复</div><div class="txt">用密码连接时，程序会先去翻本机 ~/.ssh 里的私钥逐个试一遍再回落密码，既慢又可能触发系统权限提示。现在密码认证只走密码。</div></div>
-    <div class="row"><div class="tag">修复</div><div class="txt">窗口较窄时按钮可能被挤成 0 宽消失，现在不会被压缩、空间不够时换行显示。</div></div>
-  </div>
-</div>
 
 <p style="text-align:center;margin:26px 0 10px">
-  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 55 个版本 →</a>
+  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 56 个版本 →</a>
 </p>
 
 <h2 class="section-title" id="usage">使用方法</h2>
