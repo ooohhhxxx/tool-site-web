@@ -96,7 +96,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
         <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">立即免费下载</a>
         <a class="btn btn-doc" href="./SOP.html">查看操作手册</a>
       </div>
-      <p class="meta">版本 v1.0.14 · 2026-11-24 · Windows 10/11 x64 · 23 MB · 免费</p>
+      <p class="meta">版本 v1.0.15 · 2026-11-27 · Windows 10/11 x64 · 23 MB · 免费</p>
       <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
     </div>
     <div class="hero-shot">
@@ -242,7 +242,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.14）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.15）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -254,9 +254,26 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
+    <span class="rel-ver">v1.0.15</span>
+    <span class="rel-date">2026-11-27</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">新增</div><div class="txt">会话标签右键菜单：复制主机名 / 重连此会话 / 关闭其他会话 / 关闭全部会话。开满多个设备时不用再逐个点小叉。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">审计记录可以导出 CSV（按当前筛选结果导出），排障时作为证据留存，不再只能截图。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">S7 地址表可以导出 CSV，配好的几十个地址能备份、换机器不用重配。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">场景编排支持导出/导入场景定义（JSON）：备份、换机、分享给同事都行。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">HTTP 调试支持一键复制为 cURL，粘到终端或发给同事即可复现同一请求。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">诊断知识库支持导出 JSON，长期积累的排障经验不会随换机器丢失。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">用密码连接时，程序会先去翻本机 ~/.ssh 里的私钥逐个试一遍再回落密码，既慢又可能触发系统权限提示。现在密码认证只走密码。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">窗口较窄时按钮可能被挤成 0 宽消失，现在不会被压缩、空间不够时换行显示。</div></div>
+  </div>
+</div>
+<div class="release">
+  <div class="rel-head">
     <span class="rel-ver">v1.0.14</span>
     <span class="rel-date">2026-11-24</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">修复</div><div class="txt">v1.0.13 引入的严重问题：SSH 连上后顶栏仍显示「未连接」，还弹出错误条写「已断开」和红字「findCursor is not defined」。实际连接是好的（终端能看到登录信息），只是内部一个变量改名后漏了两处引用，导致连接成功后状态没同步、并误报断开。</div></div>
@@ -272,24 +289,9 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <div class="row"><div class="tag">修复</div><div class="txt">深色主题下按钮、输入框、左侧导航仍是白色块。上一版只覆盖了颜色变量，而这几个元素把颜色写死了，切到深色后显得很扎眼。现在全部跟随主题。</div></div>
   </div>
 </div>
-<div class="release">
-  <div class="rel-head">
-    <span class="rel-ver">v1.0.12</span>
-    <span class="rel-date">2026-11-23</span>
-    
-  </div>
-  <div class="updates">
-    <div class="row"><div class="tag">修复</div><div class="txt">SSH 终端里 Ctrl+V 无法粘贴。界面提示一直写着「Ctrl+V 粘贴」，但代码里只绑定了 Ctrl+Shift+V，按 Ctrl+V 时终端把 ^V 原样发给了远端。现在两个组合键都可用。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">连接参数会被记住：Modbus 的地址端口、串口的波特率校验位，下次打开自动带回，不用每次重填。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">终端「片段」：把常用的几条命令存起来（预置了看日志、磁盘、内存、负载、进程、端口），点一下插入终端但不自动执行，可以改完参数再回车。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">「一键体检」：一条只读命令依次看负载、磁盘、内存、进程，连上设备后第一眼看这些最省事。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">深色主题：设置页可切换，适合车间强光反光或长时间盯屏。</div></div>
-    <div class="row"><div class="tag">新增</div><div class="txt">设置页增加快捷键说明，Ctrl+F / Ctrl+V / Ctrl+滚轮 / Esc 这些原本都能用但没人知道。</div></div>
-  </div>
-</div>
 
 <p style="text-align:center;margin:26px 0 10px">
-  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 52 个版本 →</a>
+  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 53 个版本 →</a>
 </p>
 
 <h2 class="section-title" id="usage">使用方法</h2>

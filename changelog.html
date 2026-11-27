@@ -85,13 +85,30 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 52 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 53 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.15</span>
+    <span class="rel-date">2026-11-27</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">新增</div><div class="txt">会话标签右键菜单：复制主机名 / 重连此会话 / 关闭其他会话 / 关闭全部会话。开满多个设备时不用再逐个点小叉。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">审计记录可以导出 CSV（按当前筛选结果导出），排障时作为证据留存，不再只能截图。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">S7 地址表可以导出 CSV，配好的几十个地址能备份、换机器不用重配。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">场景编排支持导出/导入场景定义（JSON）：备份、换机、分享给同事都行。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">HTTP 调试支持一键复制为 cURL，粘到终端或发给同事即可复现同一请求。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">诊断知识库支持导出 JSON，长期积累的排障经验不会随换机器丢失。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">用密码连接时，程序会先去翻本机 ~/.ssh 里的私钥逐个试一遍再回落密码，既慢又可能触发系统权限提示。现在密码认证只走密码。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">窗口较窄时按钮可能被挤成 0 宽消失，现在不会被压缩、空间不够时换行显示。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.14</span>
     <span class="rel-date">2026-11-24</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">修复</div><div class="txt">v1.0.13 引入的严重问题：SSH 连上后顶栏仍显示「未连接」，还弹出错误条写「已断开」和红字「findCursor is not defined」。实际连接是好的（终端能看到登录信息），只是内部一个变量改名后漏了两处引用，导致连接成功后状态没同步、并误报断开。</div></div>

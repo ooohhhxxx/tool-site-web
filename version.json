@@ -1,11 +1,11 @@
 {
-  "version": "1.0.14",
-  "date": "2026-11-24",
+  "version": "1.0.15",
+  "date": "2026-11-27",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23096686,
-  "sha256": "2c542508ca9d25af04108e215bb3fecf3ec6b84e93fffb233209e2f90c07599c",
+  "size": 23094223,
+  "sha256": "7453d6a1e754866e933ec43695d6ec1f61802a82faf26f407c4f08e8d332d003",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.14",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.14/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.15",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.15/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.14：修复 SSH 连接成功后顶栏仍显示未连接、并误报「已断开」的问题（v1.0.13 引入）。"
+  "notes": "v1.0.15：会话标签右键菜单；审计/S7/知识库导出；场景定义导入导出；HTTP 复制为 cURL；密码连接不再翻本机私钥；按钮不再被挤成 0 宽。"
 }
