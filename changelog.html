@@ -85,13 +85,27 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <a class="link" href="./index.html#download">立即下载</a>
   </div>
 </nav>
-<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 53 个版本</span></div>
+<div class="cl-top"><h1>更新记录</h1><span class="cnt">共 54 个版本</span></div>
 <div class="cl-body">
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.16</span>
+    <span class="rel-date">2026-11-27</span>
+    <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">导入场景文件时，如果文件缺字段（比如手工改过、或从旧版本导出的），整个场景页会变成空白。现在会逐项补默认值，导入后照常显示。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">批量关闭会话时，每关一个都让终端闪一下、还连弹好几条提示。现在只重绘一次，末尾一条汇总提示。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">导出的审计记录只有「月-日 时:分:秒」，跨年分不清。导出文件改成年月日完整格式。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">复制 cURL 时，如果地址里含单引号，粘到终端会断掉。已补转义。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">支持带口令的加密私钥。以前私钥用密码保护过就连不上，只报「认证失败」不说原因；现在连接表单和记录编辑里都有「私钥口令」，填了私钥路径才出现。</div></div>
+  </div>
+</div>
 <div class="release">
   <div class="rel-head">
     <span class="rel-ver">v1.0.15</span>
     <span class="rel-date">2026-11-27</span>
-    <span class="rel-badge">当前版本</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">新增</div><div class="txt">会话标签右键菜单：复制主机名 / 重连此会话 / 关闭其他会话 / 关闭全部会话。开满多个设备时不用再逐个点小叉。</div></div>

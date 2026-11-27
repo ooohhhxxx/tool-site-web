@@ -96,7 +96,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
         <a class="btn" href="https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe">立即免费下载</a>
         <a class="btn btn-doc" href="./SOP.html">查看操作手册</a>
       </div>
-      <p class="meta">版本 v1.0.15 · 2026-11-27 · Windows 10/11 x64 · 23 MB · 免费</p>
+      <p class="meta">版本 v1.0.16 · 2026-11-27 · Windows 10/11 x64 · 23 MB · 免费</p>
       <p class="mirror-tip"><strong>gitee 打不开？</strong>改用 <a href="https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe">备用下载</a>（GitHub Pages，同一安装包、同一 SHA256） ｜ 历史版本见 <a href="https://gitee.com/ooohhhxxx/tool-site-web/releases">Release 页</a>；版本清单见 <a href="./version.json">version.json</a>（含 SHA256 校验值）</p>
     </div>
     <div class="hero-shot">
@@ -242,7 +242,7 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <tr><th>对比项</th><th>经典 Tk 版</th><th>本桌面版</th></tr>
     <tr><td>界面技术</td><td>Python Tkinter</td><td>Vue 3 + WebView2 原生窗口</td></tr>
     <tr><td>运行形态</td><td>单一桌面进程</td><td>本地 uvicorn 服务 + 原生窗口（仅监听 127.0.0.1）</td></tr>
-    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.15）</td></tr>
+    <tr><td>安装包</td><td>UltimateTool.exe（v1.6.8）</td><td>UltimateToolWeb-Setup.exe（v1.0.16）</td></tr>
     <tr><td>AppId / 安装目录</td><td>独立</td><td>独立，与旧版不冲突</td></tr>
     <tr><td>依赖</td><td>无额外运行时</td><td>系统自带 WebView2 Runtime（Win10/11 通常已预装）</td></tr>
     <tr><td>在线更新</td><td>软件内检查并下载</td><td>已支持：设置页检查、多源下载、SHA256 校验、一键安装</td></tr>
@@ -254,9 +254,23 @@ footer a{color:#7b8a9e;text-decoration:underline}
 <h2 class="section-title" id="changelog">更新内容</h2>
 <div class="release">
   <div class="rel-head">
-    <span class="rel-ver">v1.0.15</span>
+    <span class="rel-ver">v1.0.16</span>
     <span class="rel-date">2026-11-27</span>
     <span class="rel-badge">当前版本</span>
+  </div>
+  <div class="updates">
+    <div class="row"><div class="tag">修复</div><div class="txt">导入场景文件时，如果文件缺字段（比如手工改过、或从旧版本导出的），整个场景页会变成空白。现在会逐项补默认值，导入后照常显示。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">批量关闭会话时，每关一个都让终端闪一下、还连弹好几条提示。现在只重绘一次，末尾一条汇总提示。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">导出的审计记录只有「月-日 时:分:秒」，跨年分不清。导出文件改成年月日完整格式。</div></div>
+    <div class="row"><div class="tag">修复</div><div class="txt">复制 cURL 时，如果地址里含单引号，粘到终端会断掉。已补转义。</div></div>
+    <div class="row"><div class="tag">新增</div><div class="txt">支持带口令的加密私钥。以前私钥用密码保护过就连不上，只报「认证失败」不说原因；现在连接表单和记录编辑里都有「私钥口令」，填了私钥路径才出现。</div></div>
+  </div>
+</div>
+<div class="release">
+  <div class="rel-head">
+    <span class="rel-ver">v1.0.15</span>
+    <span class="rel-date">2026-11-27</span>
+    
   </div>
   <div class="updates">
     <div class="row"><div class="tag">新增</div><div class="txt">会话标签右键菜单：复制主机名 / 重连此会话 / 关闭其他会话 / 关闭全部会话。开满多个设备时不用再逐个点小叉。</div></div>
@@ -279,19 +293,9 @@ footer a{color:#7b8a9e;text-decoration:underline}
     <div class="row"><div class="tag">修复</div><div class="txt">v1.0.13 引入的严重问题：SSH 连上后顶栏仍显示「未连接」，还弹出错误条写「已断开」和红字「findCursor is not defined」。实际连接是好的（终端能看到登录信息），只是内部一个变量改名后漏了两处引用，导致连接成功后状态没同步、并误报断开。</div></div>
   </div>
 </div>
-<div class="release">
-  <div class="rel-head">
-    <span class="rel-ver">v1.0.13</span>
-    <span class="rel-date">2026-11-24</span>
-    
-  </div>
-  <div class="updates">
-    <div class="row"><div class="tag">修复</div><div class="txt">深色主题下按钮、输入框、左侧导航仍是白色块。上一版只覆盖了颜色变量，而这几个元素把颜色写死了，切到深色后显得很扎眼。现在全部跟随主题。</div></div>
-  </div>
-</div>
 
 <p style="text-align:center;margin:26px 0 10px">
-  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 53 个版本 →</a>
+  <a class="cl-back" style="color:#38bdf8;font-size:14px;text-decoration:none" href="./changelog.html">查看全部 54 个版本 →</a>
 </p>
 
 <h2 class="section-title" id="usage">使用方法</h2>
