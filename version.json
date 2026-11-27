@@ -1,11 +1,11 @@
 {
-  "version": "1.0.16",
+  "version": "1.0.17",
   "date": "2026-11-27",
   "name": "调试工具",
   "file": "UltimateToolWeb-Setup.exe",
   "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/latest/UltimateToolWeb-Setup.exe",
-  "size": 23092524,
-  "sha256": "301df6ebf06ca71ea795c73eef44763efb8abeb70087801440009e1e04eb5cac",
+  "size": 23105903,
+  "sha256": "52d11c8c1536927e0d9d49898585cdfe7bc3f8ca11414443c33ecadfd2a929df",
   "mirrors": [
     {
       "name": "Gitee 国内镜像（最新版）",
@@ -16,9 +16,9 @@
       "url": "https://ooohhhxxx.github.io/tool-site-mirror/UltimateToolWeb-Setup.exe"
     },
     {
-      "name": "Gitee 固定版本 v1.0.16",
-      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.16/UltimateToolWeb-Setup.exe"
+      "name": "Gitee 固定版本 v1.0.17",
+      "url": "https://gitee.com/ooohhhxxx/tool-site-web/releases/download/v1.0.17/UltimateToolWeb-Setup.exe"
     }
   ],
-  "notes": "v1.0.16：修复导入场景白屏、批量关闭重复重绘、审计导出缺年份、cURL 单引号转义；新增加密私钥的口令支持。"
+  "notes": "v1.0.17：终端链接可点、SFTP 打包下载、记录批量删除；修复密码/口令无法清除、表单残留、CSV 公式注入。"
 }
